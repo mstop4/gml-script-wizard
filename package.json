@@ -6,9 +6,13 @@
   "repository": "https://github.com/mstop4/gml-script-template-generator.git",
   "author": "mstop4 <mstop4@gmail.com>",
   "license": "MIT",
+
   "scripts": {
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "./node_modules/.bin/webpack --config webpack.prod.js",
     "test": "mocha --reporter spec ./test/index.js \"./test/components/*.spec.js\""
   },
+
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -31,6 +35,7 @@
     "webpack-dev-server": "^2.11.1",
     "webpack-merge": "^4.1.1"
   },
+
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
