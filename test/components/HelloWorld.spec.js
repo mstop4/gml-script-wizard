@@ -1,7 +1,7 @@
 import React from 'react'
 import { expect } from 'chai'
 import { shallow, mount } from 'enzyme'
-import HellowWorld from '../../src/components/HelloWorld'
+import HellowWorld from '../../src/components/HelloWorld.js'
 
 const wrapper = shallow(<HelloWorld />)
 

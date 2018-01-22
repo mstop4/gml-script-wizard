@@ -8,7 +8,7 @@
   "license": "MIT",
 
   "scripts": {
-    "test": "mocha --reporter spec ./test/index.js \"./components/*.spec.js\""
+    "test": "mocha --reporter spec ./test/index.js \"./test/components/*.spec.js\""
   },
 
   "devDependencies": {

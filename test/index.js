@@ -4,10 +4,12 @@ process.env.NODE_ENV = 'test';
 require('babel-register')();
 
 // Set up JSDOM and global vars
-var jsdom = require('jsdom').jsdom;
+var jsdom = require('jsdom');
+const { JSDOM } = jsdom;
 var exposedProps = ['window', 'navigator', 'document'];
 
-global.document = jsdom('');
+const { document } = (new JSDOM('')).window;
+global.document = document;
 global.navigator = { userAgent: 'node.js' };
 global.window = document.defaultView;
 
