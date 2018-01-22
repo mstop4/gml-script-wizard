@@ -3,6 +3,12 @@ process.env.NODE_ENV = 'test';
 // register babel so it transpiles ES6 -> ES5 before the tests
 require('babel-register')();
 
+// Set up enzyme
+var enzyme = require('enzyme');
+var Adapter = require('enzyme-adapter-react-16');
+
+enzyme.configure({ adapter: new Adapter() });
+
 // Set up JSDOM and global vars
 var jsdom = require('jsdom');
 const { JSDOM } = jsdom;

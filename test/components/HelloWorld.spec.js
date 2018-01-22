@@ -1,17 +1,17 @@
 import React from 'react'
 import { expect } from 'chai'
 import { shallow, mount } from 'enzyme'
-import HellowWorld from '../../src/components/HelloWorld.js'
+import HelloWorld from '../../src/components/HelloWorld.js'
 
 const wrapper = shallow(<HelloWorld />)
 
 describe('HelloWorld Component', () => {
 
   it('renders h1', () => {
-    expect(wrapper.find('h1').text()).toEqual('Hello World')
+    expect(wrapper.find('h1').text()).equal('Hello World!')
   })
 
   it('renders p', () => {
-    expect(wrapper.find('p').text()).toEqual('Welcome to my world')
+    expect(wrapper.find('p').text()).equal('Welcome to my world')
   })
 })
