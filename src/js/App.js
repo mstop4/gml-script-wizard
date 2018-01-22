@@ -1,8 +1,8 @@
 import React from 'react'
 import { render } from 'react-dom'
-import HelloWorld from './components/HelloWorld'
+import OutputBox from './components/OutputBox'
 
 render(
-    <HelloWorld />,
+    <OutputBox />,
     document.getElementById('app')
 )
