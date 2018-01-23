@@ -9,6 +9,9 @@ var Adapter = require('enzyme-adapter-react-16');
 
 enzyme.configure({ adapter: new Adapter() });
 
+// Ignore CSS
+require.extensions['.css'] = () => { return null; };
+
 // Set up JSDOM and global vars
 var jsdom = require('jsdom');
 const { JSDOM } = jsdom;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import '../../styles/ArgumentBox.css'
 
 class ArgumentBox extends Component {
 
