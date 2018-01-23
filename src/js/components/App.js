@@ -19,18 +19,38 @@ class App extends Component {
 
     this.handleArgumentChange = this.handleArgumentChange.bind(this)
     this.handleReturnChange = this.handleReturnChange.bind(this)
+    this.updateOutput = this.updateOutput.bind(this)
   }
 
   handleArgumentChange(newArg, id) {
     let newArgs = this.state.arguments
     newArgs[id] = newArg
     this.setState({arguments: newArgs})
+    this.updateOutput()
     console.log("arg changed")
   }
 
   handleReturnChange(event) {
     this.setState({returnValue: event.target.value})
+    this.updateOutput()
     console.log("return changed")
+  }
+
+  updateOutput() {
+    let newOutput = ''
+
+    // Add arguments (@param)
+    for (let i = 0; i < 16; i++) {
+      if (this.state.arguments[i] !== '') {
+        newOutput += '/// @param ' + this.state.arguments[i] + '\n'
+      }
+    }
+
+    newOutput += '///\n'
+
+    // Add return (@returns)
+    newOutput += '/// @returns ' + this.state.returnValue
+    this.setState({ outputValue: newOutput })
   }
 
   render() {
