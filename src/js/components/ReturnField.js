@@ -3,8 +3,8 @@ import '../../styles/fields.css'
 
 class ReturnField extends Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
   }
 
   render() {
@@ -14,7 +14,10 @@ class ReturnField extends Component {
 
       <div className='return-field col-md-6'>
         <h2>Returns</h2>
-        <input type='text' placeholder={placeholderText}></input>
+        <input type='text'
+               placeholder={placeholderText}
+               value={this.props.value}
+               onChange={this.props.onChange}></input>
       </div>
     )    
   }
