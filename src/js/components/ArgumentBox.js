@@ -8,10 +8,13 @@ class ArgumentBox extends Component {
   }
 
   render() {
+    let placeholderText = 'argument[' + this.props.id + ']'
+
     return (
-      <div className='argument-box col-md-4'>
-        <h2>Argument {this.props.id}</h2>
-        <textarea></textarea>
+
+      <div className='argument-box col-md-6'>
+        <h2>Argument{this.props.id}</h2>
+        <input type='text' placeholder={placeholderText}></input>
       </div>
     )    
   }

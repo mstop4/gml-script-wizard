@@ -13,12 +13,12 @@ describe('ArgumentBox Component', () => {
   it('has the correct title', () => {
     let wrapper = mount(<ArgumentBox id={6} key={6}/>)
     let props = wrapper.props()
-    let title = 'Argument ' + props.id
-    expect(wrapper.find('h2').text()).equal(title)
+    let title = 'Argument' + props.id
+    expect(wrapper.find('h2').text()).to.equal(title)
   })
 
-  it('renders an empty text box', () => {
+  it('renders an empty input field', () => {
     let wrapper = shallow(<ArgumentBox id={0} key={0}/>)
-    expect(wrapper.find('textarea').text()).equal('')
+    expect(wrapper.find('input')).to.have.length(1)
   })
 })

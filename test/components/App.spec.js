@@ -6,6 +6,6 @@ import App from '../../src/js/components/App'
 describe('App Component', () => {
   it('has a title', () => {
     let wrapper = shallow(<App/>)
-    expect(wrapper.find('h1').text()).equal('GML Script Template Generator')
+    expect(wrapper.find('h1').text()).to.equal('GML Script Template Generator')
   })
 })
