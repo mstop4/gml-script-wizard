@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import '../../styles/ArgumentBox.css'
+import '../../styles/fields.css'
 
-class ArgumentBox extends Component {
+class ArgumentField extends Component {
 
   constructor() {
     super()
@@ -12,7 +12,7 @@ class ArgumentBox extends Component {
 
     return (
 
-      <div className='argument-box col-md-6'>
+      <div className='argument-field col-md-6'>
         <h2>Argument{this.props.id}</h2>
         <input type='text' placeholder={placeholderText}></input>
       </div>
@@ -20,4 +20,4 @@ class ArgumentBox extends Component {
   }
 }
 
-export default ArgumentBox
+export default ArgumentField
