@@ -1,6 +1,6 @@
 import React from 'react'
 
-const HelloWorld = () => {
+const OutputBox = () => {
   return (
     <div className='output-box'>
       <h2>Output</h2>
@@ -9,4 +9,4 @@ const HelloWorld = () => {
   )
 } 
 
-export default HelloWorld
+export default OutputBox
