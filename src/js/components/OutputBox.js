@@ -8,7 +8,7 @@ class OutputBox extends Component {
 
   render() {
     return (
-      <div className='output-box col-md-6'>
+      <div className='output-box'>
         <h2>Output</h2>
         <textarea readOnly 
                   placeholder='Output'

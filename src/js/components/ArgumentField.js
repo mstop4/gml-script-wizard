@@ -18,10 +18,9 @@ class ArgumentField extends Component {
     let placeholderText = 'argument[' + this.props.id + ']'
 
     return (
-      <div className='argument-field col-md-6'>
+      <div className='argument-field'>
         <h2>Argument{this.props.id}</h2>
         <input type='text'
-               placeholder={placeholderText}
                value={this.props.value}
                onChange={this.onFieldChange}></input>
       </div>
