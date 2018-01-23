@@ -11,6 +11,7 @@ const App = () => {
 
     return (
       <div className='app row'>
+        <h1>GML Script Template Generator</h1>
         <OutputBox/>
         <div className='arguments'>
             {argBoxes}
