@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const ArgumentBox = () => {
-  return (
-    <div className='argument-box'>
-      <h2>Argument</h2>
-      <textarea></textarea>
-    </div>
-  )
-} 
+class ArgumentBox extends Component {
+
+  constructor() {
+    super()
+  }
+
+  render() {
+    return (
+      <div className='argument-box col-md-4'>
+        <h2>Argument {this.props.id}</h2>
+        <textarea></textarea>
+      </div>
+    )    
+  }
+}
 
 export default ArgumentBox

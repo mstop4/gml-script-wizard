@@ -3,15 +3,22 @@ import { expect } from 'chai'
 import { shallow, mount } from 'enzyme'
 import ArgumentBox from '../../src/js/components/ArgumentBox.js'
 
-const wrapper = shallow(<ArgumentBox />)
-
 describe('ArgumentBox Component', () => {
 
-  it('has a title', () => {
-    expect(wrapper.find('h2').text()).equal('Argument')
+  it('has an id', () => {
+    let wrapper = mount(<ArgumentBox id={4} key={4}/>)
+    expect(wrapper.props().id).to.equal(4);
+  })
+
+  it('has the correct title', () => {
+    let wrapper = mount(<ArgumentBox id={6} key={6}/>)
+    let props = wrapper.props()
+    let title = 'Argument ' + props.id
+    expect(wrapper.find('h2').text()).equal(title)
   })
 
   it('renders an empty text box', () => {
+    let wrapper = shallow(<ArgumentBox id={0} key={0}/>)
     expect(wrapper.find('textarea').text()).equal('')
   })
 })

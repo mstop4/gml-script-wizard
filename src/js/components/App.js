@@ -3,10 +3,18 @@ import OutputBox from './OutputBox'
 import ArgumentBox from './ArgumentBox'
 
 const App = () => {
+
+    let argBoxes = [];
+    for (var i = 0; i < 16; i++) {
+        argBoxes.push(<ArgumentBox key={i} id={i} />);
+    }
+
     return (
-      <div className='app'>
+      <div className='app row'>
         <OutputBox/>
-        <ArgumentBox/>
+        <div className='arguments'>
+            {argBoxes}
+        </div>
       </div>
     )
   } 
