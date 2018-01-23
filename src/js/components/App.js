@@ -1,20 +1,26 @@
 import React from 'react'
 import OutputBox from './OutputBox'
-import ArgumentBox from './ArgumentBox'
+import ArgumentField from './ArgumentField'
+import ReturnField from './ReturnField'
 
 const App = () => {
 
     let argBoxes = [];
     for (var i = 0; i < 16; i++) {
-        argBoxes.push(<ArgumentBox key={i} id={i} />);
+        argBoxes.push(<ArgumentField key={i} id={i} />);
     }
 
     return (
-      <div className='app row'>
-        <h1>GML Script Template Generator</h1>
-        <OutputBox/>
-        <div className='arguments'>
-            {argBoxes}
+      <div className='app'>
+        <div className='row'>
+          <h1>GML Script Template Generator</h1>
+        </div>
+        <div className='row'>
+          <OutputBox/>
+          <div className='arguments'>
+              {argBoxes}
+          </div>
+          <ReturnField/>
         </div>
       </div>
     )
