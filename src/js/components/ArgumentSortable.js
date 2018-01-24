@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import ArgumentField from './ArgumentField'
 import { SortableContainer } from 'react-sortable-hoc'
 
-const ArgumentList = SortableContainer( ({ items, onChange }) => {
+const ArgumentList = SortableContainer( ({ items, onChange, onRemove }) => {
   return (
     <ul>
       {items.map((value, index) => (
@@ -11,25 +11,23 @@ const ArgumentList = SortableContainer( ({ items, onChange }) => {
           index={index} 
           id={index}
           value={value}
-          onChange={onChange}/>
+          onChange={onChange}
+          onRemove={onRemove}/>
       ))}
     </ul>
   )
 })
 
-class ArgumentSortable extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
-    return <ArgumentList 
+const ArgumentSortable = ({ items, onSortEnd, onChange, onRemove }) => {
+  return (
+    <ArgumentList 
       index={0}
-      items={this.props.items}
-      onSortEnd={this.props.onSortEnd}
-      onChange={this.props.onChange}
+      items={items}
+      onSortEnd={onSortEnd}
+      onChange={onChange}
+      onRemove={onRemove}
     />
-  }
+  )
 }
 
 export default ArgumentSortable

@@ -2,7 +2,7 @@ import React from 'react'
 import ArgumentSortable from './ArgumentSortable'
 import AddArgumentButton from './AddArgumentButton'
 
-const ArgumentContainer = ({ items, onClick, onChange, onSortEnd }) => {
+const ArgumentContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) => {
 
   return (
     <div className='argument-container'>
@@ -14,6 +14,7 @@ const ArgumentContainer = ({ items, onClick, onChange, onSortEnd }) => {
         items={items}
         onChange={onChange}
         onSortEnd={onSortEnd}
+        onRemove={onRemove}
       />
     </div>
   )

@@ -27,6 +27,7 @@ class App extends Component {
     this.handleArgumentChange = this.handleArgumentChange.bind(this)
     this.handleArgumentSort = this.handleArgumentSort.bind(this)
     this.handleAddArgument = this.handleAddArgument.bind(this)
+    this.handleRemoveArgument = this.handleRemoveArgument.bind(this)
     this.handleReturnChange = this.handleReturnChange.bind(this)
     this.handleScriptNameChange = this.handleScriptNameChange.bind(this)
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
@@ -55,6 +56,14 @@ class App extends Component {
     if (this.state.argumentNames.length < 16) {
       let newState = this.state
       newState.argumentNames.push('')
+      this.updateOutput(newState)
+    }
+  }
+
+  handleRemoveArgument(id) {
+    if (this.state.argumentNames.length > 0) {
+      let newState = this.state
+      newState.argumentNames.splice(id, 1)
       this.updateOutput(newState)
     }
   }
@@ -183,6 +192,7 @@ class App extends Component {
           <ArgumentContainer 
             items={this.state.argumentNames}
             onClick={this.handleAddArgument}
+            onRemove={this.handleRemoveArgument}
             onChange={this.handleArgumentChange}
             onSortEnd={this.handleArgumentSort}/>
         </Col>
