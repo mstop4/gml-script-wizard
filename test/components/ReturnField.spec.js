@@ -12,6 +12,6 @@ describe('ReturnField Component', () => {
 
   it('renders an empty input field', () => {
     let wrapper = shallow(<ReturnField/>)
-    expect(wrapper.find('input')).to.have.length(1)
+    expect(wrapper.find('FormControl')).to.have.length(1)
   })
 })

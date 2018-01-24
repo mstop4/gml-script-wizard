@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ArgumentField from './ArgumentField'
 import { SortableContainer } from 'react-sortable-hoc'
 
-const SortableList = SortableContainer( ({ items, onChange }) => {
+const ArgumentList = SortableContainer( ({ items, onChange }) => {
   return (
     <ul>
       {items.map((value, index) => (
@@ -17,13 +17,13 @@ const SortableList = SortableContainer( ({ items, onChange }) => {
   )
 })
 
-class SortableComponent extends Component {
+class ArgumentSortable extends Component {
   constructor(props) {
     super(props)
   }
 
   render() {
-    return <SortableList 
+    return <ArgumentList 
       index={0}
       items={this.props.items}
       onSortEnd={this.props.onSortEnd}
@@ -32,4 +32,4 @@ class SortableComponent extends Component {
   }
 }
 
-export default SortableComponent
+export default ArgumentSortable

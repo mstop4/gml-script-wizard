@@ -12,6 +12,6 @@ describe('DescriptionField Component', () => {
 
   it('renders an empty input field', () => {
     let wrapper = shallow(<DescriptionField/>)
-    expect(wrapper.find('input')).to.have.length(1)
+    expect(wrapper.find('FormControl')).to.have.length(1)
   })
 })

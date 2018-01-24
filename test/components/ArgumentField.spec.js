@@ -21,6 +21,6 @@ describe('ArgumentField Component', () => {
 
   it('renders an empty input field', () => {
     let wrapper = shallow(<ArgumentField index={0} id={0} key={0}/>)
-    expect(wrapper.find('input')).to.have.length(1)
+    expect(wrapper.find('FormControl')).to.have.length(1)
   })
 })

@@ -6,7 +6,7 @@ import OutputBox from './OutputBox'
 import ArgumentField from './ArgumentField'
 import ReturnField from './ReturnField'
 import DescriptionField from './DescriptionField'
-import SortableComponent from './SortableComponent'
+import ArgumentSortable from './ArgumentSortable'
 import ScriptNameField from './ScriptNameField';
 
 import '../../styles/main.css'
@@ -159,29 +159,25 @@ class App extends Component {
           <Col md={8} className='output-box-container'>
             <OutputBox value={this.state.outputValue}/>
           </Col>
-          <Col md={4} className='field-container'>
-            <Row>
-              <Col md={6}>
-                <ScriptNameField 
-                  value={this.state.scriptName}
-                  onChange={this.handleScriptNameChange}
-                />
-                <DescriptionField 
-                  value={this.state.description}
-                  onChange={this.handleDescriptionChange}
-                />
-                <ReturnField 
-                  value={this.state.returnValue}
-                  onChange={this.handleReturnChange}
-                />
-              </Col>
-              <Col md={6}>
-                <SortableComponent 
-                  items={this.state.argumentNames}
-                  onChange={this.handleArgumentChange}
-                  onSortEnd={this.handleArgumentSort}/>
-              </Col>
-            </Row>
+          <Col md={2} className='field-container'>
+            <ScriptNameField 
+              value={this.state.scriptName}
+              onChange={this.handleScriptNameChange}
+            />
+            <DescriptionField 
+              value={this.state.description}
+              onChange={this.handleDescriptionChange}
+            />
+            <ReturnField 
+              value={this.state.returnValue}
+              onChange={this.handleReturnChange}
+            />
+          </Col>
+          <Col md={2}>
+            <ArgumentSortable 
+              items={this.state.argumentNames}
+              onChange={this.handleArgumentChange}
+              onSortEnd={this.handleArgumentSort}/>
           </Col>
         </Row>
       </Grid>
