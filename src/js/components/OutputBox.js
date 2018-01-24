@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Well } from 'react-bootstrap'
 
 class OutputBox extends Component {
 
@@ -10,9 +11,9 @@ class OutputBox extends Component {
     return (
       <div className='output-box'>
         <h2>Script</h2>
-        <div className='generated-script'>
+        <Well bsSize='sm' className='generated-script'>
           {this.props.value}
-        </div>
+        </Well>
       </div>
     )
   }

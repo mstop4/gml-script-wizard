@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import { Grid, Row, Col } from 'react-bootstrap'
+
 import OutputBox from './OutputBox'
 import ArgumentField from './ArgumentField'
 import ReturnField from './ReturnField'
-import DescriptionField from './DescriptionField';
+import DescriptionField from './DescriptionField'
 
 class App extends Component {
 
@@ -106,18 +108,18 @@ class App extends Component {
     }
 
     return (
-      <div className='container'>
-        <div className='row'>
+      <Grid>
+        <Row>
           <h1>GML Script Template Generator</h1>
-        </div>
+        </Row>
 
-        <div className='row'>
-          <div className='output-box-container col-md-8'>
+        <Row>
+          <Col md={8} className='output-box-container'>
             <OutputBox value={this.state.outputValue}/>
-          </div>
-          <div className='field-container col-md-4'>
-            <div className='row'>
-              <div className='col-md-6'>
+          </Col>
+          <Col md={4} className='field-container'>
+            <Row>
+              <Col md={6}>
                 <DescriptionField 
                   value={this.state.description}
                   onChange={this.handleDescriptionChange}
@@ -126,14 +128,14 @@ class App extends Component {
                   value={this.state.returnValue}
                   onChange={this.handleReturnChange}
                 />
-              </div>
-              <div className='col-md-6'>
+              </Col>
+              <Col md={6}>
                 {argBoxes}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Grid>
     )
   } 
 }
