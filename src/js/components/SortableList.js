@@ -1,40 +1,37 @@
 import React, { Component } from 'react'
-import { SortableContainer, SortableElemnt, arrayMove, SortableElement } from 'react-sortable-hoc'
+import ArgumentField from './ArgumentField'
+import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc'
 
 const SortableItem = SortableElement( ({ value }) =>
   <li>{value}</li>
 )
 
-const SortableList = SortableContainer( ({ items }) => {
+const SortableList = SortableContainer( ({ items, onChange }) => {
   return (
     <ul>
       {items.map((value, index) => (
-        <SortableItem key={`item-${index}`} index={index} value={value} />
+        <SortableItem key={index} index={index} value={value}/>
       ))}
     </ul>
   )
 })
 
 class SortableComponent extends Component {
-  
-  constructor() {
-    super()
 
-    this.state = {
-      items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6']
-    }
+  constructor(props) {
+    super(props)
 
     this.onSortEnd = this.onSortEnd.bind(this)
   }
 
   onSortEnd({ oldIndex, newIndex }) {
     this.setState({
-      items: arrayMove(this.state.items, oldIndex, newIndex)
+      items: arrayMove(this.props.items, oldIndex, newIndex)
     })
   }
 
   render() {
-    return <SortableList items={this.state.items} onSortEnd={this.onSortEnd} />
+    return <SortableList items={this.props.items} onSortEnd={this.onSortEnd} />
   }
 }
 

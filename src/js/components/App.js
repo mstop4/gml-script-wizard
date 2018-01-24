@@ -136,10 +136,6 @@ class App extends Component {
             </Row>
           </Col>
         </Row>
-
-        <Row>
-          <SortableList/>
-        </Row>
       </Grid>
     )
   } 
