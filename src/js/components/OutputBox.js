@@ -9,7 +9,7 @@ class OutputBox extends Component {
   render() {
     return (
       <div className='output-box'>
-        <h2>Output</h2>
+        <h2>Script</h2>
         <textarea readOnly 
                   placeholder='Output'
                   value={this.props.value}>

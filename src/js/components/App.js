@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import OutputBox from './OutputBox'
 import ArgumentField from './ArgumentField'
 import ReturnField from './ReturnField'
+import DescriptionField from './DescriptionField';
 
 class App extends Component {
 
@@ -9,7 +10,8 @@ class App extends Component {
     super()
 
     this.state = {
-      argumentPrefix: '_',
+      localVarPrefix: '_',
+      description: '',
       outputValue: '',
       arguments: ['', '', '', '',
                   '', '', '', '',
@@ -20,6 +22,7 @@ class App extends Component {
 
     this.handleArgumentChange = this.handleArgumentChange.bind(this)
     this.handleReturnChange = this.handleReturnChange.bind(this)
+    this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
     this.updateOutput = this.updateOutput.bind(this)
   }
 
@@ -27,6 +30,13 @@ class App extends Component {
     // Make a copy of old state and change relevant values
     let newState = this.state
     newState.arguments[id] = newArg
+    this.updateOutput(newState)
+  }
+
+  handleDescriptionChange(event) {
+    // Make a copy of old state and change relevant values
+    let newState = this.state
+    newState.description = event.target.value
     this.updateOutput(newState)
   }
 
@@ -42,17 +52,20 @@ class App extends Component {
 
     // Create script JSDoc header
 
+    // Description (@desc)
+    if (newState.description !== '')
+      newOutput += '/// @description ' + newState.description + '\n'
+
     // Arguments (@param)
     for (let i = 0; i < 16; i++) {
-      if (this.state.arguments[i] !== '') {
-        newOutput += '/// @param ' + this.state.arguments[i] + '\n'
+      if (newState.arguments[i] !== '') {
+        newOutput += '/// @param ' + newState.arguments[i] + '\n'
       }
     }
 
     // Return (@returns)
-    if (this.state.returnValue !== '') {
-      newOutput += '///\n'
-      newOutput += '/// @returns ' + this.state.returnValue + '\n'
+    if (newState.returnValue !== '') {
+      newOutput += '/// @returns ' + newState.returnValue + '\n'
     }
 
     newOutput += '\n'
@@ -61,16 +74,21 @@ class App extends Component {
 
     // Arguments
     for (let i = 0; i < 16; i++) {
-      if (this.state.arguments[i] !== '') {
-        newOutput += 'var ' + this.state.argumentPrefix + this.state.arguments[i] + '= argument[' + i + '];\n'
+      if (newState.arguments[i] !== '') {
+        newOutput += 'var ' + newState.localVarPrefix + newState.arguments[i] + ' = argument[' + i + '];\n'
       }
+    }
+
+    // Other local variables
+    if (newState.returnValue !== '') {
+      newOutput += '\nvar ' + newState.localVarPrefix + newState.returnValue + ';\n'
     }
 
     newOutput += '\n/*\n* Your code goes here...\n*/\n'
 
     // Return
-    if (this.state.returnValue !== '') {
-      newOutput += 'return ' + this.state.returnValue + ';'
+    if (newState.returnValue !== '') {
+      newOutput += '\nreturn ' + newState.localVarPrefix + newState.returnValue + ';'
     }
 
     newState.outputValue = newOutput
@@ -88,7 +106,7 @@ class App extends Component {
     }
 
     return (
-      <div class='container'>
+      <div className='container'>
         <div className='row'>
           <h1>GML Script Template Generator</h1>
         </div>
@@ -100,13 +118,17 @@ class App extends Component {
           <div className='field-container col-md-4'>
             <div className='row'>
               <div className='col-md-6'>
-                {argBoxes}
-              </div>
-              <div className='col-md-6'>
+                <DescriptionField 
+                  value={this.state.description}
+                  onChange={this.handleDescriptionChange}
+                />
                 <ReturnField 
                   value={this.state.returnValue}
                   onChange={this.handleReturnChange}
-                  />
+                />
+              </div>
+              <div className='col-md-6'>
+                {argBoxes}
               </div>
             </div>
           </div>
