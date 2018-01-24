@@ -1,31 +1,22 @@
 import React, { Component } from 'react'
 import '../../styles/fields.css'
 
-class ArgumentField extends Component {
+const ArgumentField = ({ id, value, onChange }) => {
 
-  constructor(props) {
-    super(props)
-
-    this.onFieldChange = this.onFieldChange.bind(this)
-  }
-
-  onFieldChange(event) {
+  const onFieldChange = (event) => {
     let newArg = event.target.value
-    this.props.onChange(newArg, this.props.id)
+    onChange(newArg, id)
   }
 
-  render() {
-    let placeholderText = 'argument[' + this.props.id + ']'
-
-    return (
-      <div className='argument-field'>
-        <h2>Argument{this.props.id}</h2>
-        <input type='text'
-               value={this.props.value}
-               onChange={this.onFieldChange}></input>
-      </div>
-    )    
-  }
+  return (
+    <div className='argument-field'>
+      <h2>Argument{id}</h2>
+      <input type='text'
+            value={value}
+            onChange={onFieldChange}>
+      </input>
+    </div>
+  )
 }
 
 export default ArgumentField
