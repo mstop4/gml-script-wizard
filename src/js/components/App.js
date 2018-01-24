@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Row, Col } from 'react-bootstrap'
+import { Grid, Row, Col, Well } from 'react-bootstrap'
 import { arrayMove } from 'react-sortable-hoc'
 
 import OutputBox from './OutputBox'

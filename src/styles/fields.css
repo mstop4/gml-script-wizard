@@ -5,3 +5,7 @@ h2 {
 .generated-script {
   white-space: pre-line;
 }
+
+.argument-field {
+  background-color: white;
+}
