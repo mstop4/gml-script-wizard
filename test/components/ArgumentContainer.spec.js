@@ -5,6 +5,11 @@ import ArgumentContainer from '../../src/js/components/ArgumentContainer.js'
 
 describe('ArgumentContainer Component', () => {
 
+  it('has an AddArgumentButton component', () => {
+    let wrapper = shallow(<ArgumentContainer/>)
+    expect(wrapper.find('AddArgumentButton')).to.have.length(1)
+  })
+
   it('has an ArgumentSortable component', () => {
     let wrapper = shallow(<ArgumentContainer/>)
     expect(wrapper.find('ArgumentSortable')).to.have.length(1)

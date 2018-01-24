@@ -26,6 +26,7 @@ class App extends Component {
 
     this.handleArgumentChange = this.handleArgumentChange.bind(this)
     this.handleArgumentSort = this.handleArgumentSort.bind(this)
+    this.handleAddArgument = this.handleAddArgument.bind(this)
     this.handleReturnChange = this.handleReturnChange.bind(this)
     this.handleScriptNameChange = this.handleScriptNameChange.bind(this)
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
@@ -48,6 +49,14 @@ class App extends Component {
     let newState = this.state
     newState.argumentNames = arrayMove(newState.argumentNames, event.oldIndex, event.newIndex)
     this.updateOutput(newState)
+  }
+
+  handleAddArgument(event) {
+    if (this.state.argumentNames.length < 16) {
+      let newState = this.state
+      newState.argumentNames.push('')
+      this.updateOutput(newState)
+    }
   }
 
   handleDescriptionChange(event) {
@@ -173,6 +182,7 @@ class App extends Component {
         <Col md={4} className='argument-container'>
           <ArgumentContainer 
             items={this.state.argumentNames}
+            onClick={this.handleAddArgument}
             onChange={this.handleArgumentChange}
             onSortEnd={this.handleArgumentSort}/>
         </Col>
