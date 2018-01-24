@@ -5,6 +5,7 @@ import OutputBox from './OutputBox'
 import ArgumentField from './ArgumentField'
 import ReturnField from './ReturnField'
 import DescriptionField from './DescriptionField'
+import SortableList from './SortableList'
 
 class App extends Component {
 
@@ -134,6 +135,10 @@ class App extends Component {
               </Col>
             </Row>
           </Col>
+        </Row>
+
+        <Row>
+          <SortableList/>
         </Row>
       </Grid>
     )
