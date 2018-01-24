@@ -9,6 +9,8 @@ import DescriptionField from './DescriptionField'
 import SortableComponent from './SortableComponent'
 import ScriptNameField from './ScriptNameField';
 
+import '../../styles/main.css'
+
 class App extends Component {
 
   constructor() {

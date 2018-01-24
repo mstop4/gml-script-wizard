@@ -1,13 +1,20 @@
 import React from 'react'
+import { ControlLabel, FormControl, FormGroup } from 'react-bootstrap'
 import '../../styles/fields.css'
 
 const ScriptNameField = ({ value, onChange }) => {
   return (
     <div className='return-field'>
-      <h2>Script Name</h2>
-      <input type='text'
-             value={value}
-             onChange={onChange}></input>
+      <form>
+      <FormGroup>
+        <ControlLabel>Script Name</ControlLabel>
+        <FormControl
+          type="text"
+          value={value}
+          onChange={onChange}
+        />
+      </FormGroup>
+    </form>
     </div>
   )    
 }

@@ -1,7 +1,7 @@
 import React from 'react'
-import '../../styles/fields.css'
 import { SortableElement } from 'react-sortable-hoc'
-import { ControlLabel, FormControl, FormGroup } from 'react-bootstrap';
+import { ControlLabel, FormControl, FormGroup } from 'react-bootstrap'
+import '../../styles/fields.css'
 
 const ArgumentField = SortableElement( ({ index, id, value, onChange }) => {
 
