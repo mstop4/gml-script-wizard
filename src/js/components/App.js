@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
+import { arrayMove } from 'react-sortable-hoc'
 
 import OutputBox from './OutputBox'
 import ArgumentField from './ArgumentField'
@@ -24,6 +25,7 @@ class App extends Component {
     }
 
     this.handleArgumentChange = this.handleArgumentChange.bind(this)
+    this.handleArgumentSort = this.handleArgumentSort.bind(this)
     this.handleReturnChange = this.handleReturnChange.bind(this)
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
     this.updateOutput = this.updateOutput.bind(this)
@@ -33,6 +35,12 @@ class App extends Component {
     // Make a copy of old state and change relevant values
     let newState = this.state
     newState.arguments[id] = newArg
+    this.updateOutput(newState)
+  }
+
+  handleArgumentSort(event) {
+    let newState = this.state
+    newState.arguments = arrayMove(newState.arguments, event.oldIndex, event.newIndex)
     this.updateOutput(newState)
   }
 
@@ -124,7 +132,8 @@ class App extends Component {
               <Col md={6}>
                 <SortableComponent 
                   items={this.state.arguments}
-                  onChange={this.handleArgumentChange}/>
+                  onChange={this.handleArgumentChange}
+                  onSortEnd={this.handleArgumentSort}/>
               </Col>
             </Row>
           </Col>
