@@ -3,10 +3,9 @@ import { Grid, Row, Col, Well } from 'react-bootstrap'
 import { arrayMove } from 'react-sortable-hoc'
 
 import OutputBox from './OutputBox'
-import ArgumentField from './ArgumentField'
 import ReturnField from './ReturnField'
 import DescriptionField from './DescriptionField'
-import ArgumentSortable from './ArgumentSortable'
+import ArgumentContainer from './ArgumentContainer'
 import ScriptNameField from './ScriptNameField';
 
 import '../../styles/main.css'
@@ -21,10 +20,7 @@ class App extends Component {
       scriptName: 'untitled_script',
       description: '',
       outputValue: '',
-      argumentNames: ['', '', '', '',
-                      '', '', '', '',
-                      '', '', '', '',
-                      '', '', '', ''],
+      argumentNames: [''],
       returnValue: ''
     }
 
@@ -84,7 +80,7 @@ class App extends Component {
       // add parameters
       let hasParams = false
 
-      for (let i = 0; i < 16; i++) {
+      for (let i = 0; i < argumentNames.length; i++) {
         if (argumentNames[i] !== '') {
           newOutput += `${argumentNames[i]}, `
           hasParams = true
@@ -105,7 +101,7 @@ class App extends Component {
     }
 
     // Arguments (@param)
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < argumentNames.length; i++) {
       if (argumentNames[i] !== '') {
         newOutput += `/// @param ${argumentNames[i]}\n`
       }
@@ -121,7 +117,7 @@ class App extends Component {
     // Create script body
 
     // Arguments
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < argumentNames.length; i++) {
       if (argumentNames[i] !== '') {
         newOutput += `var ${localVarPrefix}${argumentNames[i]} = argument[${i}];\n`
       }
@@ -155,11 +151,8 @@ class App extends Component {
           <h1>GML Script Template Generator</h1>
         </Row>
 
+        <Col md={8} className='output-box-container'>
         <Row>
-          <Col md={8} className='output-box-container'>
-            <OutputBox value={this.state.outputValue}/>
-          </Col>
-          <Col md={2} className='field-container'>
             <ScriptNameField 
               value={this.state.scriptName}
               onChange={this.handleScriptNameChange}
@@ -172,14 +165,17 @@ class App extends Component {
               value={this.state.returnValue}
               onChange={this.handleReturnChange}
             />
-          </Col>
-          <Col md={2}>
-            <ArgumentSortable 
-              items={this.state.argumentNames}
-              onChange={this.handleArgumentChange}
-              onSortEnd={this.handleArgumentSort}/>
-          </Col>
-        </Row>
+          </Row>
+          <Row>
+            <OutputBox value={this.state.outputValue}/>
+          </Row>
+        </Col>
+        <Col md={4} className='argument-container'>
+          <ArgumentContainer 
+            items={this.state.argumentNames}
+            onChange={this.handleArgumentChange}
+            onSortEnd={this.handleArgumentSort}/>
+        </Col>
       </Grid>
     )
   } 

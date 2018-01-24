@@ -7,5 +7,7 @@ h2 {
 }
 
 .argument-field {
-  background-color: white;
+  background-color: cadetblue;
+  padding: 0.25em;
+  margin: 0.5em;
 }
