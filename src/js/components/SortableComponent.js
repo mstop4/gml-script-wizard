@@ -1,23 +1,23 @@
 import React, { Component } from 'react'
 import ArgumentField from './ArgumentField'
-import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc'
-
-const SortableItem = SortableElement( ({ value }) =>
-  <li>{value}</li>
-)
+import { SortableContainer, arrayMove } from 'react-sortable-hoc'
 
 const SortableList = SortableContainer( ({ items, onChange }) => {
   return (
     <ul>
       {items.map((value, index) => (
-        <SortableItem key={index} index={index} value={value}/>
+        <ArgumentField 
+          key={index}
+          index={index}
+          id={index}
+          value={value}
+          onChange={onChange}/>
       ))}
     </ul>
   )
 })
 
 class SortableComponent extends Component {
-
   constructor(props) {
     super(props)
 
@@ -31,7 +31,12 @@ class SortableComponent extends Component {
   }
 
   render() {
-    return <SortableList items={this.props.items} onSortEnd={this.onSortEnd} />
+    return <SortableList 
+      index={0}
+      items={this.props.items}
+      onSortEnd={this.onSortEnd}
+      onChange={this.props.onChange}
+    />
   }
 }
 

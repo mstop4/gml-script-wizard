@@ -5,7 +5,7 @@ import OutputBox from './OutputBox'
 import ArgumentField from './ArgumentField'
 import ReturnField from './ReturnField'
 import DescriptionField from './DescriptionField'
-import SortableList from './SortableList'
+import SortableComponent from './SortableComponent'
 
 class App extends Component {
 
@@ -99,15 +99,6 @@ class App extends Component {
   }
 
   render() {
-    let argBoxes = [];
-    for (var i = 0; i < 16; i++) {
-        argBoxes.push(<ArgumentField 
-                        key={i} 
-                        id={i}
-                        value={this.state.arguments[i]}
-                        onChange={this.handleArgumentChange}/>);
-    }
-
     return (
       <Grid>
         <Row>
@@ -131,7 +122,9 @@ class App extends Component {
                 />
               </Col>
               <Col md={6}>
-                {argBoxes}
+                <SortableComponent 
+                  items={this.state.arguments}
+                  onChange={this.handleArgumentChange}/>
               </Col>
             </Row>
           </Col>

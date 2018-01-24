@@ -1,7 +1,8 @@
 import React from 'react'
 import '../../styles/fields.css'
+import { SortableElement } from 'react-sortable-hoc'
 
-const ArgumentField = ({ id, value, onChange }) => {
+const ArgumentField = SortableElement( ({ index, id, value, onChange }) => {
 
   const onFieldChange = (event) => {
     let newArg = event.target.value
@@ -17,6 +18,6 @@ const ArgumentField = ({ id, value, onChange }) => {
       </input>
     </div>
   )
-}
+})
 
 export default ArgumentField
