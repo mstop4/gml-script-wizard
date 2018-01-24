@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from 'react-bootstrap'
+import { Button, Glyphicon } from 'react-bootstrap'
 
 const AddArgumentButton = ({onClick}) => (
     <div className='add-argument-button'>
@@ -7,7 +7,7 @@ const AddArgumentButton = ({onClick}) => (
         bsStyle='primary'
         onClick={onClick}
       >
-        +
+        <Glyphicon glyph='plus'/>
       </Button>
     </div>
   )

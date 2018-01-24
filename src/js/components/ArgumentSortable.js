@@ -8,7 +8,8 @@ const ArgumentList = SortableContainer( ({ items, onChange, onRemove }) => {
       {items.map((value, index) => (
         <ArgumentField 
           key={index}
-          index={index} 
+          index={index}
+          pressDelay={200} 
           id={index}
           value={value}
           onChange={onChange}

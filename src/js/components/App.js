@@ -20,7 +20,7 @@ class App extends Component {
       scriptName: 'untitled_script',
       description: '',
       outputValue: '',
-      argumentNames: [''],
+      argumentNames: [],
       returnValue: ''
     }
 
@@ -169,7 +169,7 @@ class App extends Component {
           <h1>GML Script Template Generator</h1>
         </Row>
 
-        <Col md={8} className='output-box-container'>
+        <Col md={8} className='output-box-column'>
         <Row>
             <ScriptNameField 
               value={this.state.scriptName}
@@ -188,7 +188,7 @@ class App extends Component {
             <OutputBox value={this.state.outputValue}/>
           </Row>
         </Col>
-        <Col md={4} className='argument-container'>
+        <Col md={4} className='argument-column'>
           <ArgumentContainer 
             items={this.state.argumentNames}
             onClick={this.handleAddArgument}

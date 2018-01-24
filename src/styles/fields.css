@@ -1,5 +1,5 @@
 h2 {
-  font-size: 1em;
+  font-size: 2em;
 }
 
 .generated-script {
@@ -8,6 +8,7 @@ h2 {
 
 .argument-field {
   background-color: lightgray;
-  padding: 0.25em;
+  padding: 0.5em;
   margin: 0.5em;
+  width: 100%;
 }
