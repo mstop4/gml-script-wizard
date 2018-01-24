@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../styles/fields.css'
 import { SortableElement } from 'react-sortable-hoc'
+import { ControlLabel, FormControl, FormGroup } from 'react-bootstrap';
 
 const ArgumentField = SortableElement( ({ index, id, value, onChange }) => {
 
@@ -11,11 +12,16 @@ const ArgumentField = SortableElement( ({ index, id, value, onChange }) => {
 
   return (
     <div className='argument-field'>
-      <h2>Argument{id}</h2>
-      <input type='text'
+      <form>
+        <FormGroup>
+          <ControlLabel>Argument{id}</ControlLabel>
+          <FormControl
+            type="text"
             value={value}
-            onChange={onFieldChange}>
-      </input>
+            onChange={onFieldChange}
+          />
+        </FormGroup>
+      </form>
     </div>
   )
 })
