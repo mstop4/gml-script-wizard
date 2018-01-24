@@ -2,7 +2,6 @@ h2 {
   font-size: 1em;
 }
 
-textarea {
-  width: 100%;
-  height: 500px;
+.generated-script {
+  white-space: pre-line;
 }

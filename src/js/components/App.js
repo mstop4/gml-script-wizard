@@ -52,7 +52,7 @@ class App extends Component {
 
     // Create script JSDoc header
 
-    // Description (@desc)
+    // Description (@description)
     if (newState.description !== '')
       newOutput += '/// @description ' + newState.description + '\n'
 

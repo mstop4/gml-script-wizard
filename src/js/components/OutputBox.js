@@ -10,10 +10,9 @@ class OutputBox extends Component {
     return (
       <div className='output-box'>
         <h2>Script</h2>
-        <textarea readOnly 
-                  placeholder='Output'
-                  value={this.props.value}>
-        </textarea>
+        <div className='generated-script'>
+          {this.props.value}
+        </div>
       </div>
     )
   }
