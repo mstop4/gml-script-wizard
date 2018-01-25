@@ -1,4 +1,4 @@
-# GML Script Template Generator
+# [GML Script Template Generator](https://mstop4.github.io/gml-script-template-generator/)
 
 As a GML coder who writes a lot of scripts, do you like to document your code using JSDoc and assigning all your arguments to local variables? For example:
 
