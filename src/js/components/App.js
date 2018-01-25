@@ -23,7 +23,8 @@ class App extends Component {
       outputValue: '',
       argumentNames: [],
       localVarNames: [],
-      returnValue: ''
+      returnValue: '',
+      argumentWarning: false
     }
 
     this.handleArgumentChange = this.handleArgumentChange.bind(this)
@@ -125,6 +126,7 @@ class App extends Component {
 
   updateOutput ({ scriptName, description, argumentNames, localVarNames, returnValue, localVarPrefix }) {
     let newOutput = ''
+    let newArgumentWarning = false
 
     // Create script JSDoc header
 
@@ -156,9 +158,17 @@ class App extends Component {
     }
 
     // Arguments (@param)
+    let argumentSkipped = false
+
     for (let i = 0; i < argumentNames.length; i++) {
       if (argumentNames[i] !== '') {
         newOutput += `/// @param ${argumentNames[i]}\n`
+        if (argumentSkipped) {
+          newArgumentWarning = true
+          argumentSkipped = false
+        }
+      } else {
+        argumentSkipped = true
       }
     }
 
@@ -173,6 +183,7 @@ class App extends Component {
 
     // Arguments
     for (let i = 0; i < argumentNames.length; i++) {
+
       if (argumentNames[i] !== '') {
         newOutput += `var ${localVarPrefix}${argumentNames[i]} = argument[${i}];\n`
       }
@@ -207,12 +218,16 @@ class App extends Component {
        newOutput += `\nreturn /* return value */;`
     }
 
+    if (newArgumentWarning)
+      console.log("Warning: not all arguments are used")
+
     this.setState({
       scriptName: scriptName,
       description: description,
       outputValue: newOutput,
       argumentNames: argumentNames,
-      returnValue: returnValue
+      returnValue: returnValue,
+      argumentWarning: newArgumentWarning
     })
   }
 

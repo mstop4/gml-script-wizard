@@ -8,7 +8,7 @@ h2 {
 
 .argument-list{
   height: 70vh;
-  overflow: scroll;
+  overflow-y: scroll;
   background-color: lightcyan;
   border-style: solid;
   border-width: 1px;
