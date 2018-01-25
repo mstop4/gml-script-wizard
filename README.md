@@ -2,7 +2,7 @@
 
 As a GML coder who writes a lot of scripts, do you like to document your code using JSDoc and assigning all your arguments to local variables? For example:
 
-    /// @function mean_5
+    /// @function area_triangle
     /// @description Calculates the area of a triangle
     /// @param {real} base The length of the base of the triangle
     /// @param {real} height The height of the triangle
