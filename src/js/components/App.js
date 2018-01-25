@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Row, Col, Well } from 'react-bootstrap'
+import { Navbar, Grid, Row, Col, Well } from 'react-bootstrap'
 import { arrayMove } from 'react-sortable-hoc'
 
 import OutputBox from './OutputBox'
@@ -218,51 +218,50 @@ class App extends Component {
 
   render() {
     return (
-      <Grid>
-        <Row>
-          <h1>GML Script Template Generator</h1>
-        </Row>
-        
-        <Row>
-          <Col md={6} className='output-box-column'>
-            <Row>
-              <ScriptNameField 
-                value={this.state.scriptName}
-                onChange={this.handleScriptNameChange}
-              />
-              <DescriptionField 
-                value={this.state.description}
-                onChange={this.handleDescriptionChange}
-              />
-              {/* <ReturnField 
-                value={this.state.returnValue}
-                onChange={this.handleReturnChange}
-              /> */}
-            </Row>
-            <Row>
-              <OutputBox value={this.state.outputValue}/>
-            </Row>
-          </Col>
-          <Col md={3} className='argument-column'>
-            <ArgumentContainer 
-              items={this.state.argumentNames}
-              onClick={this.handleAddArgument}
-              onRemove={this.handleRemoveArgument}
-              onChange={this.handleArgumentChange}
-              onSortEnd={this.handleArgumentSort}/>
-          </Col>
-          <Col md={3} className='local-var-column'>
-            <LocalVarContainer 
-              items={this.state.localVarNames}
-              onClick={this.handleAddLocalVar}
-              onRemove={this.handleRemoveLocalVar}
-              onChange={this.handleLocalVarChange}
-              onSortEnd={this.handleLocalVarSort}/>
-          </Col>
-        </Row>
-        <Row>
-        </Row>
-      </Grid>
+      <div>
+        <Navbar>
+          <Navbar.Brand>GML Script Template Generator</Navbar.Brand>
+        </Navbar>
+        <Grid>
+          <Row>
+            <Col md={6} className='output-box-column'>
+              <Row>
+                <ScriptNameField 
+                  value={this.state.scriptName}
+                  onChange={this.handleScriptNameChange}
+                />
+                <DescriptionField 
+                  value={this.state.description}
+                  onChange={this.handleDescriptionChange}
+                />
+                {/* <ReturnField 
+                  value={this.state.returnValue}
+                  onChange={this.handleReturnChange}
+                /> */}
+              </Row>
+              <Row>
+                <OutputBox value={this.state.outputValue}/>
+              </Row>
+            </Col>
+            <Col md={3} className='argument-column'>
+              <ArgumentContainer 
+                items={this.state.argumentNames}
+                onClick={this.handleAddArgument}
+                onRemove={this.handleRemoveArgument}
+                onChange={this.handleArgumentChange}
+                onSortEnd={this.handleArgumentSort}/>
+            </Col>
+            <Col md={3} className='local-var-column'>
+              <LocalVarContainer 
+                items={this.state.localVarNames}
+                onClick={this.handleAddLocalVar}
+                onRemove={this.handleRemoveLocalVar}
+                onChange={this.handleLocalVarChange}
+                onSortEnd={this.handleLocalVarSort}/>
+            </Col>
+          </Row>
+        </Grid>
+      </div>
     )
   } 
 }

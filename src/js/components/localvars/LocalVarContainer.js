@@ -8,10 +8,10 @@ const LocalVarContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) =>
   return (
     <div className='local-var-container'>
       <Row>
-        <Col md={10}>
+        <Col md={9}>
             <h2>Local Variables</h2>
         </Col>
-        <Col md={2}>
+        <Col md={3}>
             <AddLocalVarButton
               onClick={onClick}
             />

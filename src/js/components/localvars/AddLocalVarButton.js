@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Glyphicon } from 'react-bootstrap'
+import '../../../styles/fields.css'
 
 const AddLocalVarButton = ({onClick}) => (
     <div className='add-local-var-button'>

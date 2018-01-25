@@ -8,10 +8,10 @@ const ArgumentContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) =>
   return (
     <div className='argument-container'>
       <Row>
-        <Col md={10}>
+        <Col md={9}>
             <h2>Arguments</h2>
         </Col>
-        <Col md={2}>
+        <Col md={3}>
             <AddArgumentButton
               onClick={onClick}
             />
