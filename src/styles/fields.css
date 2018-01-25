@@ -1,5 +1,5 @@
 h2 {
-  font-size: 2em;
+  font-size: 1.75em;
 }
 
 .generated-script {
@@ -11,4 +11,12 @@ h2 {
   padding: 0.5em;
   margin: 0.5em;
   width: 100%;
+}
+
+span .glyphicon-sort {
+  font-size: 2em;
+}
+
+.control-label {
+  font-size: 1.25em
 }

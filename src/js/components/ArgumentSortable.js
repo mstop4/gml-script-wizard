@@ -27,6 +27,7 @@ const ArgumentSortable = ({ items, onSortEnd, onChange, onRemove }) => {
       onSortEnd={onSortEnd}
       onChange={onChange}
       onRemove={onRemove}
+      useDragHandle={true}
     />
   )
 }

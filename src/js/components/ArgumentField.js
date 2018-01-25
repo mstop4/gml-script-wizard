@@ -1,7 +1,9 @@
 import React from 'react'
-import { SortableElement } from 'react-sortable-hoc'
+import { SortableElement, SortableHandle } from 'react-sortable-hoc'
 import { Row, Col, ControlLabel, FormControl, FormGroup, Button, Glyphicon } from 'react-bootstrap'
 import '../../styles/fields.css'
+
+const DragHandle = SortableHandle(() => <span><Glyphicon glyph='sort'/></span>)
 
 const ArgumentField = SortableElement( ({ index, id, value, onChange, onRemove }) => {
 
@@ -17,24 +19,23 @@ const ArgumentField = SortableElement( ({ index, id, value, onChange, onRemove }
   return (
     <div className='argument-field'>
       <Row>
-        <Col md={12}>
-          <FormGroup>
-            <ControlLabel>Argument{id}</ControlLabel>
-            <FormControl
-              type="text"
-              value={value}
-              onChange={onFieldChange}
-            />
-          </FormGroup>
+        <Col md={9}>
+          <DragHandle/>
+        </Col>
+        <Col md={3}>
+          <Button bsStyle='danger' onClick={onFieldRemove}>
+            <Glyphicon glyph='remove'/>
+          </Button>
         </Col>
       </Row>
       <Row>
-        <Col mdOffset={9} md={3}>
-          <FormGroup>
-            <Button bsStyle='danger' onClick={onFieldRemove}>
-              <Glyphicon glyph="minus"/>
-            </Button>
-          </FormGroup>
+        <Col md={12}>
+          <ControlLabel>Argument {id}</ControlLabel>
+          <FormControl
+            type="text"
+            value={value}
+            onChange={onFieldChange}
+          />
         </Col>
       </Row>
     </div>
