@@ -4,18 +4,20 @@ import { SortableContainer } from 'react-sortable-hoc'
 
 const LocalVarList = SortableContainer( ({ items, onChange, onRemove }) => {
   return (
-    <ul>
-      {items.map((value, index) => (
-        <LocalVarField 
-          key={index}
-          index={index}
-          pressDelay={200} 
-          id={index}
-          value={value}
-          onChange={onChange}
-          onRemove={onRemove}/>
-      ))}
-    </ul>
+    <div className='argument-list'>
+      <ul>
+        {items.map((value, index) => (
+          <LocalVarField 
+            key={index}
+            index={index}
+            pressDelay={200} 
+            id={index}
+            value={value}
+            onChange={onChange}
+            onRemove={onRemove}/>
+        ))}
+      </ul>
+    </div>
   )
 })
 

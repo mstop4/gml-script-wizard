@@ -1,8 +1,8 @@
 import React from 'react'
 import { SortableElement } from 'react-sortable-hoc'
 import { Row, Col, ControlLabel, FormControl, FormGroup, Button, Glyphicon } from 'react-bootstrap'
-import DragHandle from './DragHandle'
-import '../../styles/fields.css'
+import DragHandle from '../DragHandle'
+import '../../../styles/fields.css'
 
 const LocalVarField = SortableElement( ({ index, id, value, onChange, onRemove }) => {
 
@@ -18,20 +18,27 @@ const LocalVarField = SortableElement( ({ index, id, value, onChange, onRemove }
   return (
     <div className='local-var-field'>
       <Row>
-        <Col md={9}>
+        <Col md={3}>
           <DragHandle/>
         </Col>
+        <Col md={6}>
+          <div className='text-center'>
+            <ControlLabel>Name</ControlLabel>
+          </div>
+        </Col>
         <Col md={3}>
-          <Button bsStyle='danger' onClick={onFieldRemove}>
-            <Glyphicon glyph='remove'/>
-          </Button>
+          <div className='text-right'>
+            <Button bsStyle='danger' bsSize='xsmall' onClick={onFieldRemove}>
+              <Glyphicon glyph='remove'/>
+            </Button>
+          </div>
         </Col>
       </Row>
       <Row>
         <Col md={12}>
-          <ControlLabel>Name</ControlLabel>
           <FormControl
-            type="text"
+            type='text'
+            bsSize='small'
             value={value}
             onChange={onFieldChange}
           />

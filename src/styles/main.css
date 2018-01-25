@@ -1,3 +1,4 @@
-.argument-container {
-  height: 100%
+.argument-list {
+  height: 70vh;
+  overflow: auto;
 }

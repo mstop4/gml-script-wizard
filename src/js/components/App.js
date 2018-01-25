@@ -5,8 +5,8 @@ import { arrayMove } from 'react-sortable-hoc'
 import OutputBox from './OutputBox'
 import ReturnField from './ReturnField'
 import DescriptionField from './DescriptionField'
-import ArgumentContainer from './ArgumentContainer'
-import LocalVarContainer from './LocalVarContainer'
+import ArgumentContainer from './arguments/ArgumentContainer'
+import LocalVarContainer from './localvars/LocalVarContainer'
 import ScriptNameField from './ScriptNameField';
 
 import '../../styles/main.css'
@@ -123,7 +123,7 @@ class App extends Component {
     this.updateOutput(newState)
   }
 
-  updateOutput ({ scriptName, description, argumentNames, returnValue, localVarPrefix }) {
+  updateOutput ({ scriptName, description, argumentNames, localVarNames, returnValue, localVarPrefix }) {
     let newOutput = ''
 
     // Create script JSDoc header
@@ -178,10 +178,27 @@ class App extends Component {
       }
     }
 
-    // Other local variables
-    // if (returnValue !== '') {
-    //   newOutput += `\nvar ${localVarPrefix}${returnValue};\n`
-    // }
+    // Additional local variables
+    if (localVarNames.length > 0) {
+      let hasLocalVars = false
+
+      for (let i = 0; i < localVarNames.length; i++) {
+        if (localVarNames[i] !== '') {
+          if (!hasLocalVars) {
+            newOutput += '\nvar '
+            hasLocalVars = true
+          }
+
+          newOutput += `${localVarPrefix}${localVarNames[i]}, `
+        }
+      }
+
+      // Remove final comma and space if script has local variables
+      if (hasLocalVars) {
+        newOutput = newOutput.slice(0,newOutput.length-2)
+        newOutput += ';\n'
+      }
+    }
 
     newOutput += '\n/*\n* Your code goes here...\n*/\n'
 
@@ -207,7 +224,7 @@ class App extends Component {
         </Row>
         
         <Row>
-          <Col md={4} className='output-box-column'>
+          <Col md={6} className='output-box-column'>
             <Row>
               <ScriptNameField 
                 value={this.state.scriptName}
@@ -217,13 +234,16 @@ class App extends Component {
                 value={this.state.description}
                 onChange={this.handleDescriptionChange}
               />
-              <ReturnField 
+              {/* <ReturnField 
                 value={this.state.returnValue}
                 onChange={this.handleReturnChange}
-              />
+              /> */}
+            </Row>
+            <Row>
+              <OutputBox value={this.state.outputValue}/>
             </Row>
           </Col>
-          <Col md={4} className='argument-column'>
+          <Col md={3} className='argument-column'>
             <ArgumentContainer 
               items={this.state.argumentNames}
               onClick={this.handleAddArgument}
@@ -231,7 +251,7 @@ class App extends Component {
               onChange={this.handleArgumentChange}
               onSortEnd={this.handleArgumentSort}/>
           </Col>
-          <Col md={4} className='local-var-column'>
+          <Col md={3} className='local-var-column'>
             <LocalVarContainer 
               items={this.state.localVarNames}
               onClick={this.handleAddLocalVar}
@@ -241,9 +261,6 @@ class App extends Component {
           </Col>
         </Row>
         <Row>
-          <Col md={12}>
-            <OutputBox value={this.state.outputValue}/>
-          </Col>
         </Row>
       </Grid>
     )
