@@ -4,7 +4,7 @@ import { Row, Col, ControlLabel, FormControl, FormGroup, Button, Glyphicon } fro
 import DragHandle from './DragHandle'
 import '../../styles/fields.css'
 
-const ArgumentField = SortableElement( ({ index, id, value, onChange, onRemove }) => {
+const LocalVarField = SortableElement( ({ index, id, value, onChange, onRemove }) => {
 
   const onFieldChange = (event) => {
     let newArg = event.target.value
@@ -16,7 +16,7 @@ const ArgumentField = SortableElement( ({ index, id, value, onChange, onRemove }
   }
 
   return (
-    <div className='argument-field'>
+    <div className='local-var-field'>
       <Row>
         <Col md={9}>
           <DragHandle/>
@@ -29,7 +29,7 @@ const ArgumentField = SortableElement( ({ index, id, value, onChange, onRemove }
       </Row>
       <Row>
         <Col md={12}>
-          <ControlLabel>Argument {id}</ControlLabel>
+          <ControlLabel>Name</ControlLabel>
           <FormControl
             type="text"
             value={value}
@@ -41,4 +41,4 @@ const ArgumentField = SortableElement( ({ index, id, value, onChange, onRemove }
   )
 })
 
-export default ArgumentField
+export default LocalVarField

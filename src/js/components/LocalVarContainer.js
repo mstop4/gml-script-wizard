@@ -1,25 +1,25 @@
 import React from 'react'
 import { Row, Col } from 'react-bootstrap'
-import ArgumentSortable from './ArgumentSortable'
-import AddArgumentButton from './AddArgumentButton'
+import LocalVarSortable from './LocalVarSortable'
+import AddLocalVarButton from './AddLocalVarButton'
 
-const ArgumentContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) => {
+const LocalVarContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) => {
 
   return (
-    <div className='argument-container'>
+    <div className='local-var-container'>
       <Row>
         <Col md={10}>
-            <h2>Arguments</h2>
+            <h2>Local Variables</h2>
         </Col>
         <Col md={2}>
-            <AddArgumentButton
+            <AddLocalVarButton
               onClick={onClick}
             />
         </Col>
       </Row>
       <Row>
         <Col md={12}>
-            <ArgumentSortable 
+            <LocalVarSortable 
               items={items}
               onChange={onChange}
               onSortEnd={onSortEnd}
@@ -31,4 +31,4 @@ const ArgumentContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) =>
   )
 }
 
-export default ArgumentContainer
+export default LocalVarContainer

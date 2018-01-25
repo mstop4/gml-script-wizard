@@ -6,6 +6,7 @@ import OutputBox from './OutputBox'
 import ReturnField from './ReturnField'
 import DescriptionField from './DescriptionField'
 import ArgumentContainer from './ArgumentContainer'
+import LocalVarContainer from './LocalVarContainer'
 import ScriptNameField from './ScriptNameField';
 
 import '../../styles/main.css'
@@ -21,6 +22,7 @@ class App extends Component {
       description: '',
       outputValue: '',
       argumentNames: [],
+      localVarNames: [],
       returnValue: ''
     }
 
@@ -28,6 +30,12 @@ class App extends Component {
     this.handleArgumentSort = this.handleArgumentSort.bind(this)
     this.handleAddArgument = this.handleAddArgument.bind(this)
     this.handleRemoveArgument = this.handleRemoveArgument.bind(this)
+
+    this.handleLocalVarChange = this.handleLocalVarChange.bind(this)
+    this.handleLocalVarSort = this.handleLocalVarSort.bind(this)
+    this.handleAddLocalVar = this.handleAddLocalVar.bind(this)
+    this.handleRemoveLocalVar = this.handleRemoveLocalVar.bind(this)
+
     this.handleReturnChange = this.handleReturnChange.bind(this)
     this.handleScriptNameChange = this.handleScriptNameChange.bind(this)
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
@@ -64,6 +72,35 @@ class App extends Component {
     if (this.state.argumentNames.length > 0) {
       let newState = this.state
       newState.argumentNames.splice(id, 1)
+      this.updateOutput(newState)
+    }
+  }
+
+  handleLocalVarChange(newArg, id) {
+    // Make a copy of old state and change relevant values
+    let newState = this.state
+    newState.localVarNames[id] = newArg
+    this.updateOutput(newState)
+  }
+
+  handleLocalVarSort(event) {
+    let newState = this.state
+    newState.localVarNames = arrayMove(newState.localVarNames, event.oldIndex, event.newIndex)
+    this.updateOutput(newState)
+  }
+
+  handleAddLocalVar(event) {
+    if (this.state.localVarNames.length < 16) {
+      let newState = this.state
+      newState.localVarNames.push('')
+      this.updateOutput(newState)
+    }
+  }
+
+  handleRemoveLocalVar(id) {
+    if (this.state.localVarNames.length > 0) {
+      let newState = this.state
+      newState.localVarNames.splice(id, 1)
       this.updateOutput(newState)
     }
   }
@@ -127,7 +164,7 @@ class App extends Component {
 
     // Return (@returns)
     if (returnValue !== '') {
-      newOutput += `/// @returns ${returnValue}\n`
+      newOutput += `/// @returns {${returnValue}}\n`
     }
 
     newOutput += '\n'
@@ -142,15 +179,15 @@ class App extends Component {
     }
 
     // Other local variables
-    if (returnValue !== '') {
-      newOutput += `\nvar ${localVarPrefix}${returnValue};\n`
-    }
+    // if (returnValue !== '') {
+    //   newOutput += `\nvar ${localVarPrefix}${returnValue};\n`
+    // }
 
     newOutput += '\n/*\n* Your code goes here...\n*/\n'
 
     // Return
     if (returnValue !== '') {
-      newOutput += `\nreturn ${localVarPrefix}${returnValue};`
+       newOutput += `\nreturn /* return value */;`
     }
 
     this.setState({
@@ -168,34 +205,46 @@ class App extends Component {
         <Row>
           <h1>GML Script Template Generator</h1>
         </Row>
-
-        <Col md={8} className='output-box-column'>
+        
         <Row>
-            <ScriptNameField 
-              value={this.state.scriptName}
-              onChange={this.handleScriptNameChange}
-            />
-            <DescriptionField 
-              value={this.state.description}
-              onChange={this.handleDescriptionChange}
-            />
-            <ReturnField 
-              value={this.state.returnValue}
-              onChange={this.handleReturnChange}
-            />
-          </Row>
-          <Row>
+          <Col md={4} className='output-box-column'>
+            <Row>
+              <ScriptNameField 
+                value={this.state.scriptName}
+                onChange={this.handleScriptNameChange}
+              />
+              <DescriptionField 
+                value={this.state.description}
+                onChange={this.handleDescriptionChange}
+              />
+              <ReturnField 
+                value={this.state.returnValue}
+                onChange={this.handleReturnChange}
+              />
+            </Row>
+          </Col>
+          <Col md={4} className='argument-column'>
+            <ArgumentContainer 
+              items={this.state.argumentNames}
+              onClick={this.handleAddArgument}
+              onRemove={this.handleRemoveArgument}
+              onChange={this.handleArgumentChange}
+              onSortEnd={this.handleArgumentSort}/>
+          </Col>
+          <Col md={4} className='local-var-column'>
+            <LocalVarContainer 
+              items={this.state.localVarNames}
+              onClick={this.handleAddLocalVar}
+              onRemove={this.handleRemoveLocalVar}
+              onChange={this.handleLocalVarChange}
+              onSortEnd={this.handleLocalVarSort}/>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={12}>
             <OutputBox value={this.state.outputValue}/>
-          </Row>
-        </Col>
-        <Col md={4} className='argument-column'>
-          <ArgumentContainer 
-            items={this.state.argumentNames}
-            onClick={this.handleAddArgument}
-            onRemove={this.handleRemoveArgument}
-            onChange={this.handleArgumentChange}
-            onSortEnd={this.handleArgumentSort}/>
-        </Col>
+          </Col>
+        </Row>
       </Grid>
     )
   } 

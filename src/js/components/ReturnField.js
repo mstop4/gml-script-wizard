@@ -7,7 +7,7 @@ const ReturnField = ({ value, onChange }) => {
     <div className='return-field'>
       <form>
       <FormGroup>
-        <ControlLabel>Returns</ControlLabel>
+        <ControlLabel>Return Type</ControlLabel>
         <FormControl
           type="text"
           value={value}
