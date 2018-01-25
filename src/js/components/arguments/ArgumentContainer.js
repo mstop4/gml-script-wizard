@@ -2,6 +2,7 @@ import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 import ArgumentSortable from './ArgumentSortable'
 import AddArgumentButton from './AddArgumentButton'
+import WarningBadge from '../WarningBadge';
 
 const ArgumentContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) => {
 
@@ -9,7 +10,7 @@ const ArgumentContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) =>
     <div className='argument-container'>
       <Row>
         <Col md={9}>
-            <h2>Arguments</h2>
+            <h2>Arguments</h2><WarningBadge/>
         </Col>
         <Col md={3}>
             <AddArgumentButton
