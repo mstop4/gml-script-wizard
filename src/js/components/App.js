@@ -218,9 +218,6 @@ class App extends Component {
        newOutput += `\nreturn /* return value */;`
     }
 
-    if (newArgumentWarning)
-      console.log("Warning: not all arguments are used")
-
     this.setState({
       scriptName: scriptName,
       description: description,
@@ -235,7 +232,7 @@ class App extends Component {
     return (
       <div>
         <Navbar>
-          <Navbar.Brand>GML Script Template Generator</Navbar.Brand>
+          <Navbar.Brand>GML Script Template Generator (alpha)</Navbar.Brand>
         </Navbar>
         <Grid>
           <Row>
@@ -261,7 +258,7 @@ class App extends Component {
             <Col md={3} className='argument-column'>
               <ArgumentContainer 
                 items={this.state.argumentNames}
-                argumentWarning={this.argumentWarning}
+                argumentWarning={this.state.argumentWarning}
                 onClick={this.handleAddArgument}
                 onRemove={this.handleRemoveArgument}
                 onChange={this.handleArgumentChange}

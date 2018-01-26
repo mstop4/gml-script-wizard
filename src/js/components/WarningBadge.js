@@ -1,9 +1,9 @@
 import React from 'react'
 import { Badge } from 'react-bootstrap'
 
-const WarningBadge = ({ argumentWarning }) => {
+const WarningBadge = () => {
   return (
-    <Badge hidden={argumentWarning}>!</Badge>
+    <Badge>!</Badge>
   )
 }
 

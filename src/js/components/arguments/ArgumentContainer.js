@@ -10,8 +10,10 @@ const ArgumentContainer = ({ items, argumentWarning, onClick, onChange, onRemove
     <div className='argument-container'>
       <Row>
         <Col md={9}>
-            <h2 className='inline-heading'>Arguments </h2><WarningBadge argumentWarning={false}/>
-        </Col>
+          <h2 className='inline-heading'>Arguments </h2>
+          {argumentWarning &&
+            <WarningBadge/>}
+          </Col>
         <Col md={3}>
             <AddArgumentButton
               onClick={onClick}
