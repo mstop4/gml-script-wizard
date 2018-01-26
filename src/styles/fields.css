@@ -55,3 +55,7 @@ span .glyphicon-sort {
 .add-local-var-button {
   vertical-align: bottom;
 }
+
+.inline-heading {
+  display: inline;
+}

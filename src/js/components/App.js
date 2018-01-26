@@ -261,6 +261,7 @@ class App extends Component {
             <Col md={3} className='argument-column'>
               <ArgumentContainer 
                 items={this.state.argumentNames}
+                argumentWarning={this.argumentWarning}
                 onClick={this.handleAddArgument}
                 onRemove={this.handleRemoveArgument}
                 onChange={this.handleArgumentChange}
