@@ -10,19 +10,19 @@ const ArgumentContainer = ({ items, argumentWarning, onClick, onChange, onRemove
     /* this might do something bad */
     <Container className='argument-container'> 
       <Row>
-        <Col md="9">
+        <Col lg="9">
           <h2 className='inline-heading'>Arguments </h2>
           {argumentWarning &&
             <WarningBadge/>}
           </Col>
-        <Col md="3">
+        <Col lg="3">
             <AddArgumentButton
               onClick={onClick}
             />
         </Col>
       </Row>
       <Row>
-        <Col md="12">
+        <Col lg="12">
             <ArgumentSortable 
               items={items}
               onChange={onChange}

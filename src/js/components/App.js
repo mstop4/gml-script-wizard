@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 import { Navbar, NavbarBrand, Container, Row, Col } from 'reactstrap'
-import { arrayMove } from 'react-sortable-hoc'
+
+import fontawesome from '@fortawesome/fontawesome'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import faPlus from '@fortawesome/fontawesome-free-solid/faPlus'
+import faMinus from '@fortawesome/fontawesome-free-solid/faMinus'
+import faBars from '@fortawesome/fontawesome-free-solid/faBars'
+
+fontawesome.library.add(faPlus, faMinus, faBars)
 
 import OutputBox from './OutputBox'
 import ReturnField from './ReturnField'
@@ -232,18 +239,20 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="app">
         <Navbar>
           <NavbarBrand>GML Script Template Generator (alpha)</NavbarBrand>
         </Navbar>
-        <Container>
+        <Container fluid>
           <Row>
-            <Col md="6" className='output-box-column'>
+            <Col lg="6" className='output-box-column'>
               <Row>
                 <ScriptNameField 
                   value={this.state.scriptName}
                   onChange={this.handleScriptNameChange}
                 />
+              </Row>
+              <Row>
                 <DescriptionField 
                   value={this.state.description}
                   onChange={this.handleDescriptionChange}
@@ -257,7 +266,7 @@ class App extends Component {
                 <OutputBox value={this.state.outputValue}/>
               </Row>
             </Col>
-            <Col md= "3" className='argument-column'>
+            <Col lg= "3" className='argument-column'>
               <ArgumentContainer 
                 items={this.state.argumentNames}
                 argumentWarning={this.state.argumentWarning}
@@ -266,7 +275,7 @@ class App extends Component {
                 onChange={this.handleArgumentChange}
                 onSortEnd={this.handleArgumentSort}/>
             </Col>
-            <Col md="3" className='local-var-column'>
+            <Col lg="3" className='local-var-column'>
               <LocalVarContainer 
                 items={this.state.localVarNames}
                 onClick={this.handleAddLocalVar}

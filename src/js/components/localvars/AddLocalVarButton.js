@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from 'reactstrap'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import '../../../styles/fields.css'
 
 const AddLocalVarButton = ({onClick}) => (
@@ -8,7 +9,7 @@ const AddLocalVarButton = ({onClick}) => (
         color='primary'
         onClick={onClick}
       >
-        Plus
+      <FontAwesomeIcon icon="plus"/>
       </Button>
     </div>
   )

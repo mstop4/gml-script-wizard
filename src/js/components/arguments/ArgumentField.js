@@ -2,6 +2,7 @@ import React from 'react'
 import { SortableElement } from 'react-sortable-hoc'
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap'
 import DragHandle from '../DragHandle'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import '../../../styles/fields.css'
 
 const ArgumentField = SortableElement( ({ index, id, value, onChange, onRemove }) => {
@@ -19,24 +20,24 @@ const ArgumentField = SortableElement( ({ index, id, value, onChange, onRemove }
     /* this might do something bad */
     <Container className='argument-field'>
       <Row>
-        <Col md="3">
+        <Col lg="2">
           <DragHandle/>
         </Col>
-        <Col md="6">
+        <Col lg="6">
           <div className='text-center'>
-            <Label>Argument {id}</Label>
+            <Label>Argument[{id}]</Label>
           </div>
         </Col>
-        <Col md="3">
+        <Col lg="4">
           <div className='text-right'>
-            <Button color='danger' size='xsmall' onClick={onFieldRemove}>
-              Remove
+            <Button color='danger' size='sm' onClick={onFieldRemove}>
+              <FontAwesomeIcon icon='minus' size='sm'/>
             </Button>
           </div>
         </Col>
       </Row>
       <Row>
-        <Col md="12">
+        <Col lg="12">
           <Input
             type='text'
             bsSize='small'
