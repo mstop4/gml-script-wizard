@@ -1,13 +1,13 @@
 import React from 'react'
-import { Button, Glyphicon } from 'react-bootstrap'
+import { Button } from 'reactstrap'
 
 const AddArgumentButton = ({onClick}) => (
     <div className='add-argument-button'>
       <Button 
-        bsStyle='primary'
+        color='primary'
         onClick={onClick}
       >
-        <Glyphicon glyph='plus'/>
+        Plus
       </Button>
     </div>
   )

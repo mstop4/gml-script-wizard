@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Navbar, Grid, Row, Col, Well } from 'react-bootstrap'
+import { Navbar, NavbarBrand, Container, Row, Col } from 'reactstrap'
 import { arrayMove } from 'react-sortable-hoc'
 
 import OutputBox from './OutputBox'
@@ -234,11 +234,11 @@ class App extends Component {
     return (
       <div>
         <Navbar>
-          <Navbar.Brand>GML Script Template Generator (alpha)</Navbar.Brand>
+          <NavbarBrand>GML Script Template Generator (alpha)</NavbarBrand>
         </Navbar>
-        <Grid>
+        <Container>
           <Row>
-            <Col md={6} className='output-box-column'>
+            <Col md="6" className='output-box-column'>
               <Row>
                 <ScriptNameField 
                   value={this.state.scriptName}
@@ -257,7 +257,7 @@ class App extends Component {
                 <OutputBox value={this.state.outputValue}/>
               </Row>
             </Col>
-            <Col md={3} className='argument-column'>
+            <Col md= "3" className='argument-column'>
               <ArgumentContainer 
                 items={this.state.argumentNames}
                 argumentWarning={this.state.argumentWarning}
@@ -266,7 +266,7 @@ class App extends Component {
                 onChange={this.handleArgumentChange}
                 onSortEnd={this.handleArgumentSort}/>
             </Col>
-            <Col md={3} className='local-var-column'>
+            <Col md="3" className='local-var-column'>
               <LocalVarContainer 
                 items={this.state.localVarNames}
                 onClick={this.handleAddLocalVar}
@@ -275,7 +275,7 @@ class App extends Component {
                 onSortEnd={this.handleLocalVarSort}/>
             </Col>
           </Row>
-        </Grid>
+        </Container>
       </div>
     )
   } 

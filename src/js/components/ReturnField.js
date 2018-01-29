@@ -1,21 +1,19 @@
 import React from 'react'
-import { ControlLabel, FormControl, FormGroup } from 'react-bootstrap'
+import { Form, Label, Input, FormGroup } from 'reactstrap'
 import '../../styles/fields.css'
 
 const ReturnField = ({ value, onChange }) => {
   return (
-    <div className='return-field'>
-      <form>
+    <Form className='return-field'>
       <FormGroup>
-        <ControlLabel>Return Type</ControlLabel>
-        <FormControl
+        <Label>Return Type</Label>
+        <Input
           type="text"
           value={value}
           onChange={onChange}
         />
       </FormGroup>
-    </form>
-    </div>
+    </Form>
   )    
 }
 
