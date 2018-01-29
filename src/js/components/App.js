@@ -48,6 +48,8 @@ class App extends Component {
     this.updateOutput(this.state)
   }
 
+  // TODO: Reduce duplicate code in handle* functions
+
   handleArgumentChange(newArg, id) {
     // Make a copy of old state and change relevant values
     let newState = this.state
