@@ -1,9 +1,16 @@
 import React from 'react'
 import Badge from 'material-ui/Badge'
 
-const WarningBadge = () => {
+const WarningBadge = ({ argumentWarning }) => {
   return (
-    <Badge color="secondary" badgeContent="!"></Badge>
+    <h2>
+    { argumentWarning && (
+      <Badge color="secondary" badgeContent="!">Arguments  </Badge>
+    )}
+    { !argumentWarning && (
+      "Arguments"
+    )}
+    </h2>
   )
 }
 

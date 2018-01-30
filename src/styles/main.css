@@ -6,3 +6,7 @@ body {
 .generated-script {
   white-space: pre-line;
 }
+
+.inline-heading {
+  display: inline
+}

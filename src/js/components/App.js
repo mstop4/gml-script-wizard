@@ -17,6 +17,8 @@ import DescriptionField from './DescriptionField'
 import ArgumentContainer from './arguments/ArgumentContainer'
 import LocalVarContainer from './localvars/LocalVarContainer'
 import ScriptNameField from './ScriptNameField';
+import { MuiThemeProvider } from 'material-ui/styles'
+import ColourTheme from '../ColourTheme'
 
 import '../../styles/main.css'
 
@@ -243,39 +245,41 @@ class App extends Component {
     return (
       <div className="app">
         <Reboot/>
-        <AppBar color="default">
-          GML Script Template Generator (alpha)
-        </AppBar>
-        <Grid container>
-          <Grid item xs={6}>
-              <ScriptNameField 
-                value={this.state.scriptName}
-                onChange={this.handleScriptNameChange}
-              />
-              <DescriptionField 
-                value={this.state.description}
-                onChange={this.handleDescriptionChange}
-              />
-              <OutputBox value={this.state.outputValue}/>
+        <MuiThemeProvider theme={ColourTheme}>
+          <AppBar color="default">
+            GML Script Template Generator (alpha)
+          </AppBar>
+          <Grid container>
+            <Grid item xs={6}>
+                <ScriptNameField 
+                  value={this.state.scriptName}
+                  onChange={this.handleScriptNameChange}
+                />
+                <DescriptionField 
+                  value={this.state.description}
+                  onChange={this.handleDescriptionChange}
+                />
+                <OutputBox value={this.state.outputValue}/>
+            </Grid>
+            <Grid item xs={3}>
+              <ArgumentContainer 
+                items={this.state.argumentNames}
+                argumentWarning={this.state.argumentWarning}
+                onClick={this.handleAddArgument}
+                onRemove={this.handleRemoveArgument}
+                onChange={this.handleArgumentChange}
+                onSortEnd={this.handleArgumentSort}/>
+            </Grid>
+            <Grid item xs={3}>
+              <LocalVarContainer 
+                items={this.state.localVarNames}
+                onClick={this.handleAddLocalVar}
+                onRemove={this.handleRemoveLocalVar}
+                onChange={this.handleLocalVarChange}
+                onSortEnd={this.handleLocalVarSort}/>
+            </Grid>
           </Grid>
-          <Grid item xs={3}>
-            <ArgumentContainer 
-              items={this.state.argumentNames}
-              argumentWarning={this.state.argumentWarning}
-              onClick={this.handleAddArgument}
-              onRemove={this.handleRemoveArgument}
-              onChange={this.handleArgumentChange}
-              onSortEnd={this.handleArgumentSort}/>
-          </Grid>
-          <Grid item xs={3}>
-            <LocalVarContainer 
-              items={this.state.localVarNames}
-              onClick={this.handleAddLocalVar}
-              onRemove={this.handleRemoveLocalVar}
-              onChange={this.handleLocalVarChange}
-              onSortEnd={this.handleLocalVarSort}/>
-          </Grid>
-        </Grid>
+        </MuiThemeProvider>
       </div>
     )
   } 

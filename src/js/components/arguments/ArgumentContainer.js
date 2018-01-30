@@ -10,11 +10,9 @@ const ArgumentContainer = ({ items, argumentWarning, onClick, onChange, onRemove
     <div>
       <Grid container> 
         <Grid item xs={9}>
-          <h2 className='inline-heading'>Arguments </h2>
-          {argumentWarning &&
-            <WarningBadge/>}
+          <WarningBadge argumentWarning={argumentWarning}/>
         </Grid>
-        <Grid item xs={3}>
+        <Grid itemxs={3}>
           <AddArgumentButton
             onClick={onClick}
           />
