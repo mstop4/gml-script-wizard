@@ -10,7 +10,6 @@ const ArgumentList = SortableContainer( ({ items, onChange, onRemove }) => {
           <ArgumentField 
             key={index}
             index={index}
-            pressDelay={200}
             id={index}
             name={arg.name}
             type={arg.type}
@@ -28,6 +27,7 @@ const ArgumentSortable = ({ items, onSortEnd, onChange, onRemove, height }) => {
     <ArgumentList 
       index={0}
       items={items}
+      transitionDuration={0}
       onSortEnd={onSortEnd}
       onChange={onChange}
       onRemove={onRemove}

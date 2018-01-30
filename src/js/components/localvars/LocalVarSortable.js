@@ -10,7 +10,6 @@ const LocalVarList = SortableContainer( ({ items, onChange, onRemove }) => {
           <LocalVarField 
             key={index}
             index={index}
-            pressDelay={200} 
             id={index}
             value={value}
             onChange={onChange}
@@ -26,6 +25,7 @@ const LocalVarSortable = ({ items, onSortEnd, onChange, onRemove }) => {
     <LocalVarList 
       index={0}
       items={items}
+      transitionDuration={0}
       onSortEnd={onSortEnd}
       onChange={onChange}
       onRemove={onRemove}

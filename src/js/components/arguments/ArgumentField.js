@@ -3,15 +3,19 @@ import { SortableElement } from 'react-sortable-hoc'
 
 import Grid from 'material-ui/Grid'
 import IconButton from 'material-ui/IconButton'
+import Icon from 'material-ui/Icon'
 import TextField from 'material-ui/TextField'
 import Card from 'material-ui/Card'
 import Typography from 'material-ui/Typography'
 import ExpansionPanel, { ExpansionPanelSummary, ExpansionPanelDetails } from 'material-ui/ExpansionPanel'
 
 import DragHandle from '../DragHandle'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 const ArgumentField = SortableElement( ({ index, id, name, type, description, onChange, onRemove }) => {
+
+  const onClick = (event) => {
+    event.stopPropagation()
+  }
 
   const onFieldChange = (event) => {
     let newArg = event.target.value
@@ -25,7 +29,7 @@ const ArgumentField = SortableElement( ({ index, id, name, type, description, on
 
   return (
     <ExpansionPanel>
-      <ExpansionPanelSummary expandIcon={8}>
+      <ExpansionPanelSummary expandIcon={<Icon>expand_more</Icon>}>
         <Grid container alignItems="center">
           <Grid item xs={3}>
             <DragHandle/>
@@ -36,6 +40,7 @@ const ArgumentField = SortableElement( ({ index, id, name, type, description, on
               id="name"
               placeholder={"Argument " + id}
               value={name}
+              onClick={onClick}
               onChange={onFieldChange}
               fullWidth
             />
@@ -44,8 +49,8 @@ const ArgumentField = SortableElement( ({ index, id, name, type, description, on
         </Grid>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
-        <Grid container>
-          <Grid item xs={12}>
+        <Grid container alignItems="center">
+          <Grid item xs={10}>
             <TextField
               id="type"
               label="Type"
@@ -53,6 +58,17 @@ const ArgumentField = SortableElement( ({ index, id, name, type, description, on
               onChange={onFieldChange}
               fullWidth
             />
+          </Grid>
+          <Grid item xs={2}>
+            <IconButton 
+              color="secondary"
+              size="small"
+              onClick={onFieldRemove}
+            >
+              <Icon>delete_forever</Icon>
+            </IconButton>
+          </Grid>
+          <Grid item xs={12}>
             <TextField
               id="description"
               label="Description"
@@ -64,48 +80,6 @@ const ArgumentField = SortableElement( ({ index, id, name, type, description, on
         </Grid>
       </ExpansionPanelDetails>
     </ExpansionPanel>
-
-    // <Card className="argument-item">
-    //   <Grid container alignItems="center">
-    //     <Grid item xs={2}>
-    //       <DragHandle/>
-    //     </Grid>
-    //     <Grid item xs={8}>
-    //       <Typography type="title">Argument {id}</Typography>
-    //     </Grid>
-    //     <Grid item xs={2}>
-    //       <IconButton color="secondary" size="small" onClick={onFieldRemove}>
-    //         <FontAwesomeIcon icon="minus" size="sm"/>
-    //       </IconButton>
-    //     </Grid>
-    //   </Grid>
-
-    //   <Grid container>
-    //     <Grid item xs={12}>
-    //       <TextField
-    //         id="name"
-    //         label="Name"
-    //         value={name}
-    //         onChange={onFieldChange}
-    //         fullWidth
-    //       />
-    //       <TextField
-    //         id="type"
-    //         label="Type"
-    //         value={type}
-    //         onChange={onFieldChange}
-    //         fullWidth
-    //       />
-    //       <TextField
-    //         id="description"
-    //         label="Description"
-    //         value={description}
-    //         onChange={onFieldChange}
-    //         fullWidth
-    //       />
-    //     </Grid>
-    //   </Grid>
-    // </Card>
   )
 })
 

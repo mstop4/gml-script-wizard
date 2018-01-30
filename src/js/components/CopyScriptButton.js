@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { Component } from 'react'
 import IconButton from 'material-ui/IconButton'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import Icon from 'material-ui/Icon'
+import Snackbar from 'material-ui/Snackbar'
 
-const CopyScriptButton = () => {
+class CopyScriptButton extends Component {
 
-  const copyScript = () => {
+  constructor() {
+    super()
+
+    this.state = {
+      snackbarOpen: false
+    }
+
+    this.copyScript = this.copyScript.bind(this)
+    this.handleClose = this.handleClose.bind(this)
+  }
+
+  copyScript() {
     let scriptText = document.getElementById('generated-script').innerHTML
     let tempBox = document.createElement('textarea')
     document.body.appendChild(tempBox)
@@ -13,19 +25,46 @@ const CopyScriptButton = () => {
     tempBox.select()
     document.execCommand('Copy')
     document.body.removeChild(tempBox)
+    this.setState({ snackbarOpen: true })
   }
 
-  return (
-    <div className='copy-output-button'>
-      <IconButton 
-        color="secondary"
-        size="small"
-        onClick={copyScript}
-      >
-      <FontAwesomeIcon icon="copy" />
-      </IconButton>
-    </div>
-  )
+  handleClose() {
+    this.setState({ snackbarOpen: false })
+  }
+
+  render() {
+    return (
+      <div className='copy-output-button'>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+          }}
+          open={this.state.snackbarOpen}
+          autoHideDuration={3000}
+          onClose={this.handleClose}
+          message="Script copied to clipboard"
+          action={[
+            <IconButton
+              key="close"
+              color="inherit"
+              onClick={this.handleClose}
+            >
+              <Icon>close</Icon>
+            </IconButton>
+          ]}
+        />
+
+        <IconButton 
+          color="secondary"
+          size="small"
+          onClick={this.copyScript}
+        >
+        <Icon>content_copy</Icon>
+        </IconButton>
+      </div>
+    )
+  }
 }
 
 export default CopyScriptButton

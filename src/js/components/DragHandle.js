@@ -1,7 +1,7 @@
 import React from 'react'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import Icon from 'material-ui/Icon'
 import { SortableHandle } from 'react-sortable-hoc'
 
-const DragHandle = SortableHandle(() => <FontAwesomeIcon size="lg" icon="bars"/>)
+const DragHandle = SortableHandle(() => <Icon>drag_handle</Icon>)
 
 export default DragHandle

@@ -3,12 +3,12 @@ import { SortableElement } from 'react-sortable-hoc'
 
 import Grid from 'material-ui/Grid'
 import IconButton from 'material-ui/IconButton'
+import Icon from 'material-ui/Icon'
 import TextField from 'material-ui/TextField'
 import Typography from 'material-ui/Typography'
 import Card from 'material-ui/Card'
 
 import DragHandle from '../DragHandle'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 const LocalVarField = SortableElement( ({ index, id, value, onChange, onRemove }) => {
 
@@ -36,7 +36,7 @@ const LocalVarField = SortableElement( ({ index, id, value, onChange, onRemove }
         </Grid>
         <Grid item xs={2}>
           <IconButton color="secondary" size="small" onClick={onFieldRemove}>
-            <FontAwesomeIcon icon="minus" size="sm"/>
+            <Icon>delete_forever</Icon>
           </IconButton>
         </Grid>
       </Grid>

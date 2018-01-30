@@ -5,15 +5,6 @@ import Grid from 'material-ui/Grid'
 import AppBar from 'material-ui/AppBar'
 import Typography from 'material-ui/Typography'
 
-import fontawesome from '@fortawesome/fontawesome'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import faPlus from '@fortawesome/fontawesome-free-solid/faPlus'
-import faMinus from '@fortawesome/fontawesome-free-solid/faMinus'
-import faBars from '@fortawesome/fontawesome-free-solid/faBars'
-import faCopy from '@fortawesome/fontawesome-free-solid/faCopy'
-
-fontawesome.library.add(faPlus, faMinus, faBars, faCopy)
-
 import OutputBox from './OutputBox'
 import ReturnField from './ReturnField'
 import DescriptionField from './DescriptionField'

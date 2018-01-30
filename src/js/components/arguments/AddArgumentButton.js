@@ -1,6 +1,6 @@
 import React from 'react'
 import IconButton from 'material-ui/IconButton'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import Icon from 'material-ui/Icon'
 
 const AddArgumentButton = ({onClick}) => (
     <div className='add-argument-button'>
@@ -9,7 +9,7 @@ const AddArgumentButton = ({onClick}) => (
         size="small"
         onClick={onClick}
       >
-      <FontAwesomeIcon icon="plus" />
+      <Icon>add_circle</Icon>
       </IconButton>
     </div>
   )

@@ -1,6 +1,6 @@
 import React from 'react'
 import IconButton from 'material-ui/IconButton'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import Icon from 'material-ui/Icon'
 
 const AddLocalVarButton = ({onClick}) => (
   <div className='add-local-var-button'>
@@ -9,7 +9,7 @@ const AddLocalVarButton = ({onClick}) => (
       size="small"
       onClick={onClick}
     >
-    <FontAwesomeIcon icon="plus"/>
+      <Icon>add_circle</Icon>
     </IconButton>
   </div>
 )
