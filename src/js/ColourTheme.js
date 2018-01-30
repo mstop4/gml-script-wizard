@@ -5,6 +5,10 @@ import black from 'material-ui/colors/grey'
 
 const ColourTheme = createMuiTheme({
   palette: {
+    background: {
+      default: black[300],
+      paper: red[300]
+    },
     primary: {
       light: black[400],
       main: black[600],

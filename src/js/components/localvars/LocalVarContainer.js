@@ -1,13 +1,15 @@
 import React from 'react'
 import Grid from 'material-ui/Grid'
+import Paper from 'material-ui/Paper'
+import Typography from 'material-ui/Typography'
+
 import LocalVarSortable from './LocalVarSortable'
 import AddLocalVarButton from './AddLocalVarButton'
-import Typography from 'material-ui/Typography'
 
 const LocalVarContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) => {
 
   return (
-    <div className="item-list">
+    <Paper className="item-list">
       <Grid container alignItems="center">
         <Grid item xs={10}>
           <Typography type="headline">Local Variables</Typography>
@@ -28,7 +30,7 @@ const LocalVarContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) =>
           />
         </Grid>
       </Grid>
-    </div>
+    </Paper>
   )
 }
 
