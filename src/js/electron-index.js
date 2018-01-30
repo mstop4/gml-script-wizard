@@ -8,7 +8,12 @@ let win;
 function createWindow() {
   win = new BrowserWindow({width: 1280, height: 720});
 
-  win.loadURL('http://localhost:8080');
+  const startUrl = process.env.ELECTRON_START_URL || url.format({
+    pathname: path.join(__dirname, './../../dist/index.html'),
+    protocol: 'file:',
+    slashes: true
+  });
+  win.loadURL(startUrl);
 
   win.webContents.openDevTools();
 
