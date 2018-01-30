@@ -11,10 +11,10 @@ const LocalVarContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) =>
   return (
     <Paper className="item-list">
       <Grid container alignItems="center">
-        <Grid item xs={10}>
+        <Grid item xs={11} md={10}>
           <Typography type="headline">Local Variables</Typography>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={1} md={2}>
             <AddLocalVarButton
               onClick={onClick}
             />

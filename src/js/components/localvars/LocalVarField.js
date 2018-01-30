@@ -24,17 +24,17 @@ const LocalVarField = SortableElement( ({ index, id, value, onChange, onRemove }
   return (
     <Card className="argument-item">
       <Grid container alignItems="center">
-        <Grid item xs={2}>
+        <Grid item xs={1} md={2}>
           <DragHandle/>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={10} md={8}>
           <TextField
             value={value}
             onChange={onFieldChange}
             fullWidth
           />
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={1} md={2}>
           <IconButton color="secondary" size="small" onClick={onFieldRemove}>
             <Icon>delete_forever</Icon>
           </IconButton>
