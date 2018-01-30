@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { arrayMove } from 'react-sortable-hoc'
 import Reboot from 'material-ui/Reboot'
 import Grid from 'material-ui/Grid'
 import AppBar from 'material-ui/AppBar'

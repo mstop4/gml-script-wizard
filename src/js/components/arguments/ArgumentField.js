@@ -3,6 +3,7 @@ import { SortableElement } from 'react-sortable-hoc'
 import Grid from 'material-ui/Grid'
 import IconButton from 'material-ui/IconButton'
 import TextField from 'material-ui/TextField'
+import { FormLabel } from 'material-ui/Form'
 import DragHandle from '../DragHandle'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
@@ -19,16 +20,16 @@ const ArgumentField = SortableElement( ({ index, id, value, onChange, onRemove }
 
   return (
     <div>
-      <Grid container>
+      <Grid container alignItems="center">
         <Grid item xs={2}>
           <DragHandle/>
         </Grid>
-        <Grid item xs={6}>
-          Argument[{id}]
+        <Grid item xs={8}>
+          <FormLabel>Argument[{id}]</FormLabel>
         </Grid>
-        <Grid item xs={4}>
-          <IconButton color='secondary' onClick={onFieldRemove}>
-            <FontAwesomeIcon icon='minus' size='sm'/>
+        <Grid item xs={2}>
+          <IconButton color="secondary" size="small" onClick={onFieldRemove}>
+            <FontAwesomeIcon icon="minus" size="sm"/>
           </IconButton>
         </Grid>
       </Grid>

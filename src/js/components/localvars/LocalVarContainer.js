@@ -7,11 +7,11 @@ const LocalVarContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) =>
 
   return (
     <div>
-      <Grid container>
-        <Grid item xs={9}>
+      <Grid container alignItems="center">
+        <Grid item xs={10}>
             <h2>Local Variables</h2>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2}>
             <AddLocalVarButton
               onClick={onClick}
             />

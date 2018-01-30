@@ -7,6 +7,6 @@ body {
   white-space: pre-line;
 }
 
-.inline-heading {
-  display: inline
+.list-heading {
+  vertical-align: middle;
 }

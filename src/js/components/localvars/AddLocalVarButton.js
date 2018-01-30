@@ -5,7 +5,8 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 const AddLocalVarButton = ({onClick}) => (
   <div className='add-local-var-button'>
     <IconButton 
-      color='secondary'
+      color="secondary"
+      size="small"
       onClick={onClick}
     >
     <FontAwesomeIcon icon="plus"/>

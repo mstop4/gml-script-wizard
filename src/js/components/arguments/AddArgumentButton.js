@@ -5,7 +5,8 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 const AddArgumentButton = ({onClick}) => (
     <div className='add-argument-button'>
       <IconButton 
-        color='secondary'
+        color="secondary"
+        size="small"
         onClick={onClick}
       >
       <FontAwesomeIcon icon="plus" />
