@@ -44,6 +44,11 @@ ul {
   width: 100%;
 }
 
+.single-element-field {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
 .control-label {
   font-size: 1em;
 }

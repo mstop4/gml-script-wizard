@@ -4,16 +4,14 @@ import '../../styles/fields.css'
 
 const ScriptNameField = ({ value, onChange }) => {
   return (
-    <Form className='return-field'>
-      <FormGroup>
-        <Label>Script Name</Label>
-        <Input
-          type="text"
-          value={value}
-          onChange={onChange}
-        />
-      </FormGroup>
-    </Form>
+    <div className='single-element-field'>
+      <Label>Script Name</Label>
+      <Input
+        type="text"
+        value={value}
+        onChange={onChange}
+      />
+    </div>
   )    
 }
 
