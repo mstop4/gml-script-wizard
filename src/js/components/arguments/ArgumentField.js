@@ -19,13 +19,13 @@ const ArgumentField = SortableElement( ({ index, id, value, onChange, onRemove }
   }
 
   return (
-    <div>
+    <div className="argument-item">
       <Grid container alignItems="center">
         <Grid item xs={2}>
           <DragHandle/>
         </Grid>
         <Grid item xs={8}>
-          <FormLabel>Argument[{id}]</FormLabel>
+          Argument {id}
         </Grid>
         <Grid item xs={2}>
           <IconButton color="secondary" size="small" onClick={onFieldRemove}>

@@ -18,7 +18,7 @@ const LocalVarField = SortableElement( ({ index, id, value, onChange, onRemove }
   }
 
   return (
-    <div>
+    <div className="argument-item">
       <Grid container alignItems="center">
         <Grid item xs={2}>
           <DragHandle/>

@@ -3,6 +3,7 @@ import { arrayMove } from 'react-sortable-hoc'
 import Reboot from 'material-ui/Reboot'
 import Grid from 'material-ui/Grid'
 import AppBar from 'material-ui/AppBar'
+import Typography from 'material-ui/Typography'
 
 import fontawesome from '@fortawesome/fontawesome'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
@@ -58,6 +59,7 @@ class App extends Component {
   componentDidMount() {
     // init output based on intial state
     this.updateOutput(this.state)
+    console.dir(ColourTheme);
   }
 
   // TODO: Reduce duplicate code in handle* functions
@@ -245,10 +247,12 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Reboot/>
+        {/* <Reboot/> */}
         <MuiThemeProvider theme={ColourTheme}>
           <AppBar color="default">
-            GML Script Template Generator (alpha)
+            <Typography type="display1" align="center" gutterBottom>
+              GML Script Template Generator (alpha)
+            </Typography>
           </AppBar>
           <Grid container>
             <Grid item xs={6}>
