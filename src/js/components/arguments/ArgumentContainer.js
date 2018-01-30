@@ -7,7 +7,6 @@ import WarningBadge from '../WarningBadge';
 const ArgumentContainer = ({ items, argumentWarning, onClick, onChange, onRemove, onSortEnd }) => {
 
   return (
-    /* this might do something bad */
     <Container className='argument-container'> 
       <Row>
         <Col lg="9">

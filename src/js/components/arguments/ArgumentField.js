@@ -17,7 +17,6 @@ const ArgumentField = SortableElement( ({ index, id, value, onChange, onRemove }
   }
 
   return (
-    /* this might do something bad */
     <Container className='argument-field'>
       <Row>
         <Col lg="2">

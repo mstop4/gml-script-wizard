@@ -64,3 +64,7 @@ ul {
 .inline-heading {
   display: inline;
 }
+
+.output-box-column {
+  padding-left: 1em;
+}

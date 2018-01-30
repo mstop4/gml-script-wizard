@@ -240,29 +240,25 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Navbar>
+        <Navbar color="secondary">
           <NavbarBrand>GML Script Template Generator (alpha)</NavbarBrand>
         </Navbar>
         <Container fluid>
           <Row>
             <Col lg="6" className='output-box-column'>
-              <Row>
+              <Row noGutters>
                 <ScriptNameField 
                   value={this.state.scriptName}
                   onChange={this.handleScriptNameChange}
                 />
               </Row>
-              <Row>
+              <Row noGutters>
                 <DescriptionField 
                   value={this.state.description}
                   onChange={this.handleDescriptionChange}
                 />
-                {/* <ReturnField 
-                  value={this.state.returnValue}
-                  onChange={this.handleReturnChange}
-                /> */}
               </Row>
-              <Row>
+              <Row noGutters>
                 <OutputBox value={this.state.outputValue}/>
               </Row>
             </Col>
