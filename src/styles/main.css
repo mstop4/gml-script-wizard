@@ -1,70 +1,8 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  padding: 2em 1em 0em 1em;
+}
+
 .generated-script {
   white-space: pre-line;
 }
-
-/*h2 {
-  font-size: 1.5em;
-}
-
-.argument-list{
-  height: 70vh;
-  overflow-y: scroll;
-  background-color: lightcyan;
-  border-style: solid;
-  border-width: 1px;
-  border-color: cyan;
-  border-radius: 1em;
-  padding: 0.5em;
-}
-
-ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.argument-field {
-  background-color: lightgray;
-  border-style: solid;
-  border-width: 1px;
-  border-color: gray;
-  border-radius: 0.5em;
-  padding: 0.5em;
-  margin: 0.5em 0em;
-  width: 100%;
-}
-
-.local-var-field {
-  background-color: greenyellow;
-  border-radius: 0.5em;
-  border-style: solid;
-  border-width: 1px;
-  border-color: darkgreen;
-  padding: 0.5em;
-  margin: 0.5em 0em;
-  width: 100%;
-}
-
-.single-element-field {
-  width: 100%;
-  margin-bottom: 1em;
-}
-
-.control-label {
-  font-size: 1em;
-}
-
-.add-argument-button {
-  vertical-align: bottom;
-}
-
-.add-local-var-button {
-  vertical-align: bottom;
-}
-
-.inline-heading {
-  display: inline;
-}
-
-.output-box-column {
-  padding-left: 1em;
-}*/

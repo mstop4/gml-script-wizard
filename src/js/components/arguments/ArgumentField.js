@@ -38,6 +38,7 @@ const ArgumentField = SortableElement( ({ index, id, value, onChange, onRemove }
           <TextField
             value={value}
             onChange={onFieldChange}
+            fullWidth
           />
         </Grid>
       </Grid>

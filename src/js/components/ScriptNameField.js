@@ -3,10 +3,11 @@ import TextField from 'material-ui/TextField'
 
 const ScriptNameField = ({ value, onChange }) => {
   return (
-    <Input
-      id="return-field"
-      label="Return Type"
-      type="text"
+    <TextField
+      id="scriptName"
+      label="Script Name"
+      margin="normal"
+      fullWidth
       value={value}
       onChange={onChange}
     />

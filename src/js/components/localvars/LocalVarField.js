@@ -27,17 +27,18 @@ const LocalVarField = SortableElement( ({ index, id, value, onChange, onRemove }
             var
         </Grid>
         <Grid item xs={4}>
-          <IconButton color='primary' onClick={onFieldRemove}>
+          <IconButton color='secondary' onClick={onFieldRemove}>
             <FontAwesomeIcon icon='minus' size='sm'/>
           </IconButton>
         </Grid>
       </Grid>
 
       <Grid container>
-        <Grid xs={12}>
+        <Grid item xs={12}>
           <TextField
             value={value}
             onChange={onFieldChange}
+            fullWidth
           />
         </Grid>
       </Grid>

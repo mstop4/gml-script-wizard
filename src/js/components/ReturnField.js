@@ -3,10 +3,10 @@ import TextField from 'material-ui/TextField'
 
 const ReturnField = ({ value, onChange }) => {
   return (
-    <Input
-      id="return-field"
+    <TextField
+      id="returnType"
       label="Return Type"
-      type="text"
+      margin="normal"
       value={value}
       onChange={onChange}
     />

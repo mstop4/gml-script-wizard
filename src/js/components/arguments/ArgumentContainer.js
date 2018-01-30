@@ -1,5 +1,5 @@
 import React from 'react'
-import Paper from 'material-ui/Paper'
+import Grid from 'material-ui/Grid'
 import ArgumentSortable from './ArgumentSortable'
 import AddArgumentButton from './AddArgumentButton'
 import WarningBadge from '../WarningBadge';
@@ -14,7 +14,7 @@ const ArgumentContainer = ({ items, argumentWarning, onClick, onChange, onRemove
           {argumentWarning &&
             <WarningBadge/>}
         </Grid>
-        <Grid xs={3}>
+        <Grid item xs={3}>
           <AddArgumentButton
             onClick={onClick}
           />

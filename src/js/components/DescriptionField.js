@@ -3,15 +3,14 @@ import TextField from 'material-ui/TextField'
 
 const DescriptionField = ({ value, onChange }) => {
   return (
-    <div className='single-element-field'>
-      <TextField
-        id="description"
-        label="Description"
-        type="text"
-        value={value}
-        onChange={onChange}
-      />
-    </div>
+    <TextField
+      id="description"
+      label="Description"
+      margin="normal"
+      fullWidth
+      value={value}
+      onChange={onChange}
+    />
   )   
 }
 

@@ -258,7 +258,7 @@ class App extends Component {
               />
               <OutputBox value={this.state.outputValue}/>
           </Grid>
-          <Grid xs={3}>
+          <Grid item xs={3}>
             <ArgumentContainer 
               items={this.state.argumentNames}
               argumentWarning={this.state.argumentWarning}
@@ -267,7 +267,7 @@ class App extends Component {
               onChange={this.handleArgumentChange}
               onSortEnd={this.handleArgumentSort}/>
           </Grid>
-          <Grid xs={3}>
+          <Grid item xs={3}>
             <LocalVarContainer 
               items={this.state.localVarNames}
               onClick={this.handleAddLocalVar}
