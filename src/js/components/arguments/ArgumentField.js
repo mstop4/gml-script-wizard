@@ -18,7 +18,7 @@ const ArgumentField = SortableElement( ({ index, id, value, onChange, onRemove }
 
   return (
     <Container className='argument-field'>
-      <Row>
+      <Row noGutters>
         <Col lg="2">
           <DragHandle/>
         </Col>
@@ -35,7 +35,7 @@ const ArgumentField = SortableElement( ({ index, id, value, onChange, onRemove }
           </div>
         </Col>
       </Row>
-      <Row>
+      <Row noGutters>
         <Col lg="12">
           <Input
             type='text'

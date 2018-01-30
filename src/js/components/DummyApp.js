@@ -10,7 +10,7 @@ class DummyApp extends Component {
     return (
       <div>
         <Container fluid>
-          <Row>
+          <Row noGutters>
             <Col lg="6">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque id ultricies nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed nec volutpat leo, sed sollicitudin lectus. Vestibulum suscipit eros nec arcu feugiat, id posuere dui lacinia. Quisque convallis sem dui, eu fringilla diam venenatis vitae. Etiam varius ante vel tortor molestie, quis gravida ipsum dignissim. Integer et dapibus neque. In quis leo a velit dictum pulvinar consequat vitae odio. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed egestas ullamcorper est vitae pellentesque. Nulla et facilisis felis. Maecenas vitae velit mauris. Cras vel nisi vel urna commodo efficitur. Phasellus at leo elementum ipsum porttitor iaculis. Donec ipsum dui, convallis eu leo quis, tincidunt imperdiet tellus.
             </Col>

@@ -7,7 +7,7 @@ const LocalVarContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) =>
 
   return (
     <Container className='local-var-container'>
-      <Row>
+      <Row noGutters>
         <Col lg="9">
             <h2>Local Variables</h2>
         </Col>
@@ -17,7 +17,7 @@ const LocalVarContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) =>
             />
         </Col>
       </Row>
-      <Row>
+      <Row noGutters>
         <Col lg="12">
             <LocalVarSortable 
               items={items}

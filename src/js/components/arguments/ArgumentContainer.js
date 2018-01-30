@@ -8,7 +8,7 @@ const ArgumentContainer = ({ items, argumentWarning, onClick, onChange, onRemove
 
   return (
     <Container className='argument-container'> 
-      <Row>
+      <Row noGutters>
         <Col lg="9">
           <h2 className='inline-heading'>Arguments </h2>
           {argumentWarning &&
@@ -20,7 +20,7 @@ const ArgumentContainer = ({ items, argumentWarning, onClick, onChange, onRemove
             />
         </Col>
       </Row>
-      <Row>
+      <Row noGutters>
         <Col lg="12">
             <ArgumentSortable 
               items={items}

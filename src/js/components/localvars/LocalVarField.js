@@ -18,7 +18,7 @@ const LocalVarField = SortableElement( ({ index, id, value, onChange, onRemove }
 
   return (
     <Container className='local-var-field'>
-      <Row>
+      <Row noGutters>
         <Col lg="4">
           <DragHandle/>
         </Col>
@@ -35,7 +35,7 @@ const LocalVarField = SortableElement( ({ index, id, value, onChange, onRemove }
           </div>
         </Col>
       </Row>
-      <Row>
+      <Row noGutters>
         <Col lg="12">
           <Input
             type='text'
