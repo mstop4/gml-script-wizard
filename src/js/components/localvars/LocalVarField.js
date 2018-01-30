@@ -28,22 +28,16 @@ const LocalVarField = SortableElement( ({ index, id, value, onChange, onRemove }
           <DragHandle/>
         </Grid>
         <Grid item xs={8}>
-          <Typography type="title">var</Typography>
-        </Grid>
-        <Grid item xs={2}>
-          <IconButton color="secondary" size="small" onClick={onFieldRemove}>
-            <FontAwesomeIcon icon="minus" size="sm"/>
-          </IconButton>
-        </Grid>
-      </Grid>
-
-      <Grid container>
-        <Grid item xs={12}>
           <TextField
             value={value}
             onChange={onFieldChange}
             fullWidth
           />
+        </Grid>
+        <Grid item xs={2}>
+          <IconButton color="secondary" size="small" onClick={onFieldRemove}>
+            <FontAwesomeIcon icon="minus" size="sm"/>
+          </IconButton>
         </Grid>
       </Grid>
     </Card>
