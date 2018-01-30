@@ -177,9 +177,12 @@ class App extends Component {
     let argumentSkipped = false
 
     for (let i = 0; i < args.length; i++) {
+      let argumentExists = false
 
-      if (args[i])
+      if (args[i].name !== '') {
         newOutput += '/// @param'
+        argumentExists = true
+      }
 
       if (args[i].type !== '') {
         newOutput += ` \{${args[i].type}\}`
@@ -199,7 +202,9 @@ class App extends Component {
         newOutput += ` ${args[i].description}`
       }
 
-      newOutput += '\n'
+      if (argumentExists) {
+        newOutput += '\n'
+      }
     }
 
     // Return (@returns)
