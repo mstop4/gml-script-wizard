@@ -34,7 +34,7 @@ class App extends Component {
       scriptName: 'untitled_script',
       description: '',
       outputValue: '',
-      argumentNames: [],
+      args: [],
       localVarNames: [],
       returnValue: '',
       argumentWarning: false
@@ -64,36 +64,36 @@ class App extends Component {
 
   // TODO: Reduce duplicate code in handle* functions
 
-  handleArgumentChange(newArg, id) {
+  handleArgumentChange(newArg, id, key) {
     // Make a copy of old state and change relevant values
     let newState = this.state
-    newState.argumentNames[id] = newArg
+    newState.args[id][key] = newArg
     this.updateOutput(newState)
   }
 
   handleArgumentSort(event) {
     let newState = this.state
-    newState.argumentNames = arrayMove(newState.argumentNames, event.oldIndex, event.newIndex)
+    newState.args = arrayMove(newState.args, event.oldIndex, event.newIndex)
     this.updateOutput(newState)
   }
 
   handleAddArgument(event) {
-    if (this.state.argumentNames.length < 16) {
+    if (this.state.args.length < 16) {
       let newState = this.state
-      newState.argumentNames.push('')
+      newState.args.push({name: '', type: '', description: ''})
       this.updateOutput(newState)
     }
   }
 
   handleRemoveArgument(id) {
-    if (this.state.argumentNames.length > 0) {
+    if (this.state.args.length > 0) {
       let newState = this.state
-      newState.argumentNames.splice(id, 1)
+      newState.args.splice(id, 1)
       this.updateOutput(newState)
     }
   }
 
-  handleLocalVarChange(newArg, id) {
+  handleLocalVarChange(newArg, id, key) {
     // Make a copy of old state and change relevant values
     let newState = this.state
     newState.localVarNames[id] = newArg
@@ -140,7 +140,7 @@ class App extends Component {
     this.updateOutput(newState)
   }
 
-  updateOutput ({ scriptName, description, argumentNames, localVarNames, returnValue, localVarPrefix }) {
+  updateOutput ({ scriptName, description, args, localVarNames, returnValue, localVarPrefix }) {
     let newOutput = ''
     let newArgumentWarning = false
 
@@ -153,9 +153,9 @@ class App extends Component {
       // add parameters
       let hasParams = false
 
-      for (let i = 0; i < argumentNames.length; i++) {
-        if (argumentNames[i] !== '') {
-          newOutput += `${argumentNames[i]}, `
+      for (let i = 0; i < args.length; i++) {
+        if (args[i].name !== '') {
+          newOutput += `${args[i].name}, `
           hasParams = true
         }
       }
@@ -176,9 +176,17 @@ class App extends Component {
     // Arguments (@param)
     let argumentSkipped = false
 
-    for (let i = 0; i < argumentNames.length; i++) {
-      if (argumentNames[i] !== '') {
-        newOutput += `/// @param ${argumentNames[i]}\n`
+    for (let i = 0; i < args.length; i++) {
+
+      if (args[i])
+        newOutput += '/// @param'
+
+      if (args[i].type !== '') {
+        newOutput += ` \{${args[i].type}\}`
+      }
+
+      if (args[i].name !== '') {
+        newOutput += ` ${args[i].name}`
         if (argumentSkipped) {
           newArgumentWarning = true
           argumentSkipped = false
@@ -186,6 +194,12 @@ class App extends Component {
       } else {
         argumentSkipped = true
       }
+
+      if (args[i].description !== '') {
+        newOutput += ` ${args[i].description}`
+      }
+
+      newOutput += '\n'
     }
 
     // Return (@returns)
@@ -198,10 +212,10 @@ class App extends Component {
     // Create script body
 
     // Arguments
-    for (let i = 0; i < argumentNames.length; i++) {
+    for (let i = 0; i < args.length; i++) {
 
-      if (argumentNames[i] !== '') {
-        newOutput += `var ${localVarPrefix}${argumentNames[i]} = argument[${i}];\n`
+      if (args[i].name !== '') {
+        newOutput += `var ${localVarPrefix}${args[i].name} = argument[${i}];\n`
       }
     }
 
@@ -231,14 +245,15 @@ class App extends Component {
 
     // Return
     if (returnValue !== '') {
-       newOutput += `\nreturn /* return value */;`
+       newOutput += `\nreturn return value ;`
     }
 
     this.setState({
       scriptName: scriptName,
       description: description,
       outputValue: newOutput,
-      argumentNames: argumentNames,
+      args: args,
+      localVarNames: localVarNames,
       returnValue: returnValue,
       argumentWarning: newArgumentWarning
     })
@@ -268,7 +283,7 @@ class App extends Component {
             </Grid>
             <Grid item xs={3}>
               <ArgumentContainer 
-                items={this.state.argumentNames}
+                items={this.state.args}
                 argumentWarning={this.state.argumentWarning}
                 onClick={this.handleAddArgument}
                 onRemove={this.handleRemoveArgument}

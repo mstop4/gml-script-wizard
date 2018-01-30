@@ -4,17 +4,23 @@ import { SortableElement } from 'react-sortable-hoc'
 import Grid from 'material-ui/Grid'
 import IconButton from 'material-ui/IconButton'
 import TextField from 'material-ui/TextField'
+import Select from 'material-ui/Select'
+import { InputLabel } from 'material-ui/Input'
+import { FormControl } from 'material-ui/Form'
+import { MenuItem } from 'material-ui/Menu'
 import Card from 'material-ui/Card'
 import Typography from 'material-ui/Typography'
 
 import DragHandle from '../DragHandle'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
-const ArgumentField = SortableElement( ({ index, id, value, onChange, onRemove }) => {
+const ArgumentField = SortableElement( ({ index, id, name, type, description, onChange, onRemove }) => {
 
   const onFieldChange = (event) => {
+    console.dir(event.target)
     let newArg = event.target.value
-    onChange(newArg, id)
+    let key = event.target.name
+    onChange(newArg, id, key)
   }
 
   const onFieldRemove = (event) => {
@@ -40,7 +46,32 @@ const ArgumentField = SortableElement( ({ index, id, value, onChange, onRemove }
       <Grid container>
         <Grid item xs={12}>
           <TextField
-            value={value}
+            id="name"
+            label="Name"
+            value={name}
+            onChange={onFieldChange}
+            fullWidth
+          />
+          <FormControl>
+            <InputLabel htmlFor="type-menu">Type</InputLabel>
+            <Select
+              value={type}
+              onChange={onFieldChange}
+              inputProps={{
+                id: 'type-menu',
+                name: 'type'
+              }}
+            >
+              <MenuItem value="">None</MenuItem>
+              <MenuItem value="real">Real</MenuItem>
+              <MenuItem value="string">String</MenuItem>
+              <MenuItem value="string">Boolean</MenuItem>
+            </Select>
+          </FormControl>
+          <TextField
+            id="description"
+            label="Description"
+            value={description}
             onChange={onFieldChange}
             fullWidth
           />

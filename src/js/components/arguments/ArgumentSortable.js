@@ -6,13 +6,15 @@ const ArgumentList = SortableContainer( ({ items, onChange, onRemove }) => {
   return (
     <div className='argument-list'>
       <ul>
-        {items.map((value, index) => (
+        {items.map((arg, index) => (
           <ArgumentField 
             key={index}
             index={index}
             pressDelay={200}
             id={index}
-            value={value}
+            name={arg.name}
+            type={arg.type}
+            description={arg.description}
             onChange={onChange}
             onRemove={onRemove}/>
         ))}
