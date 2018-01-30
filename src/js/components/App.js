@@ -10,15 +10,18 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faPlus from '@fortawesome/fontawesome-free-solid/faPlus'
 import faMinus from '@fortawesome/fontawesome-free-solid/faMinus'
 import faBars from '@fortawesome/fontawesome-free-solid/faBars'
+import faCopy from '@fortawesome/fontawesome-free-solid/faCopy'
 
-fontawesome.library.add(faPlus, faMinus, faBars)
+fontawesome.library.add(faPlus, faMinus, faBars, faCopy)
 
 import OutputBox from './OutputBox'
 import ReturnField from './ReturnField'
 import DescriptionField from './DescriptionField'
 import ArgumentContainer from './arguments/ArgumentContainer'
 import LocalVarContainer from './localvars/LocalVarContainer'
-import ScriptNameField from './ScriptNameField';
+import ScriptNameField from './ScriptNameField'
+import CopyScriptButton from './CopyScriptButton'
+
 import { MuiThemeProvider } from 'material-ui/styles'
 import ColourTheme from '../ColourTheme'
 
@@ -59,7 +62,7 @@ class App extends Component {
   componentDidMount() {
     // init output based on intial state
     this.updateOutput(this.state)
-    console.dir(ColourTheme);
+    //console.dir(ColourTheme);
   }
 
   // TODO: Reduce duplicate code in handle* functions
@@ -285,6 +288,7 @@ class App extends Component {
                   onChange={this.handleDescriptionChange}
                 />
                 <OutputBox value={this.state.outputValue}/>
+                <CopyScriptButton/>
             </Grid>
             <Grid item xs={3}>
               <ArgumentContainer 

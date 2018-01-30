@@ -8,7 +8,7 @@ const OutputBox = ({ value }) => {
       <Typography type="headline" gutterBottom>Script</Typography>
       <Card>
         <CardContent>
-          <p className="generated-script">
+          <p id="generated-script">
             {value}
           </p>
         </CardContent>
