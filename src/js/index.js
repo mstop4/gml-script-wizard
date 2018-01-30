@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import App from './components/App'
-// import DummyApp from './components/DummyApp'
+import DummyApp from './components/DummyApp'
 
 render (
     <App />,

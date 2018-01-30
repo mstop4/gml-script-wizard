@@ -32,7 +32,6 @@ const ArgumentSortable = ({ items, onSortEnd, onChange, onRemove, height }) => {
       onChange={onChange}
       onRemove={onRemove}
       useDragHandle={true}
-      helperClass='argument-list'
     />
   )
 }

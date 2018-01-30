@@ -20,7 +20,6 @@ import DescriptionField from './DescriptionField'
 import ArgumentContainer from './arguments/ArgumentContainer'
 import LocalVarContainer from './localvars/LocalVarContainer'
 import ScriptNameField from './ScriptNameField'
-import CopyScriptButton from './CopyScriptButton'
 
 import { MuiThemeProvider } from 'material-ui/styles'
 import ColourTheme from '../ColourTheme'
@@ -288,7 +287,6 @@ class App extends Component {
                   onChange={this.handleDescriptionChange}
                 />
                 <OutputBox value={this.state.outputValue}/>
-                <CopyScriptButton/>
             </Grid>
             <Grid item xs={3}>
               <ArgumentContainer 

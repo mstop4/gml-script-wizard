@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Grid from 'material-ui/Grid'
 import Paper from 'material-ui/Paper'
 import Typography from 'material-ui/Typography'
@@ -7,9 +7,7 @@ import ArgumentSortable from './ArgumentSortable'
 import AddArgumentButton from './AddArgumentButton'
 import WarningBadge from '../WarningBadge'
 
-
 const ArgumentContainer = ({ items, argumentWarning, onClick, onChange, onRemove, onSortEnd }) => {
-
   return (
     <Paper className="item-list">
       <Grid container alignItems="center"> 
