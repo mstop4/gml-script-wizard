@@ -1,9 +1,9 @@
 import React from 'react'
-import { Badge } from 'reactstrap'
+import Badge from 'material-ui/Badge'
 
 const WarningBadge = () => {
   return (
-    <Badge color="danger">!</Badge>
+    <Badge color="secondary" badgeContent="!"></Badge>
   )
 }
 

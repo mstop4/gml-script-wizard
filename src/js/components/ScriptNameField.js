@@ -1,17 +1,15 @@
 import React from 'react'
-import { Form, Label, Input, FormGroup } from 'reactstrap'
-import '../../styles/fields.css'
+import TextField from 'material-ui/TextField'
 
 const ScriptNameField = ({ value, onChange }) => {
   return (
-    <div className='single-element-field'>
-      <Label>Script Name</Label>
-      <Input
-        type="text"
-        value={value}
-        onChange={onChange}
-      />
-    </div>
+    <Input
+      id="return-field"
+      label="Return Type"
+      type="text"
+      value={value}
+      onChange={onChange}
+    />
   )    
 }
 

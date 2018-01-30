@@ -1,12 +1,16 @@
 import React from 'react'
-import { Card } from 'reactstrap'
+import Card, { CardContent } from 'material-ui/Card'
 
 const OutputBox = ({ value }) => {
   return (
-    <div className='single-element-field'>
+    <div>
       <h2>Script</h2>
-      <Card body className='generated-script'>
-        {value}
+      <Card>
+        <CardContent>
+          <p className='generated-script'>
+            {value}
+          </p>
+        </CardContent>
       </Card>
     </div>
   )

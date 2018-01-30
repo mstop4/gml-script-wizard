@@ -1,19 +1,15 @@
 import React from 'react'
-import { Form, Label, Input, FormGroup } from 'reactstrap'
-import '../../styles/fields.css'
+import TextField from 'material-ui/TextField'
 
 const ReturnField = ({ value, onChange }) => {
   return (
-    <Form className='return-field'>
-      <FormGroup>
-        <Label>Return Type</Label>
-        <Input
-          type="text"
-          value={value}
-          onChange={onChange}
-        />
-      </FormGroup>
-    </Form>
+    <Input
+      id="return-field"
+      label="Return Type"
+      type="text"
+      value={value}
+      onChange={onChange}
+    />
   )    
 }
 

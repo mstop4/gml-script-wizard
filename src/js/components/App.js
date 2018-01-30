@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { Navbar, NavbarBrand, Container, Row, Col } from 'reactstrap'
+import Reboot from 'material-ui/Reboot'
+import Grid from 'material-ui/Grid'
+import AppBar from 'material-ui/AppBar'
 
 import fontawesome from '@fortawesome/fontawesome'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
@@ -240,47 +242,40 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Navbar color="secondary">
-          <NavbarBrand>GML Script Template Generator (alpha)</NavbarBrand>
-        </Navbar>
-        <Container fluid>
-          <Row>
-            <Col lg="6" className='output-box-column'>
-              <Row noGutters>
-                <ScriptNameField 
-                  value={this.state.scriptName}
-                  onChange={this.handleScriptNameChange}
-                />
-              </Row>
-              <Row noGutters>
-                <DescriptionField 
-                  value={this.state.description}
-                  onChange={this.handleDescriptionChange}
-                />
-              </Row>
-              <Row noGutters>
-                <OutputBox value={this.state.outputValue}/>
-              </Row>
-            </Col>
-            <Col lg= "3" className='argument-column'>
-              <ArgumentContainer 
-                items={this.state.argumentNames}
-                argumentWarning={this.state.argumentWarning}
-                onClick={this.handleAddArgument}
-                onRemove={this.handleRemoveArgument}
-                onChange={this.handleArgumentChange}
-                onSortEnd={this.handleArgumentSort}/>
-            </Col>
-            <Col lg="3" className='local-var-column'>
-              <LocalVarContainer 
-                items={this.state.localVarNames}
-                onClick={this.handleAddLocalVar}
-                onRemove={this.handleRemoveLocalVar}
-                onChange={this.handleLocalVarChange}
-                onSortEnd={this.handleLocalVarSort}/>
-            </Col>
-          </Row>
-        </Container>
+        <Reboot/>
+        <AppBar color="default">
+          GML Script Template Generator (alpha)
+        </AppBar>
+        <Grid container>
+          <Grid item xs={6}>
+              <ScriptNameField 
+                value={this.state.scriptName}
+                onChange={this.handleScriptNameChange}
+              />
+              <DescriptionField 
+                value={this.state.description}
+                onChange={this.handleDescriptionChange}
+              />
+              <OutputBox value={this.state.outputValue}/>
+          </Grid>
+          <Grid xs={3}>
+            <ArgumentContainer 
+              items={this.state.argumentNames}
+              argumentWarning={this.state.argumentWarning}
+              onClick={this.handleAddArgument}
+              onRemove={this.handleRemoveArgument}
+              onChange={this.handleArgumentChange}
+              onSortEnd={this.handleArgumentSort}/>
+          </Grid>
+          <Grid xs={3}>
+            <LocalVarContainer 
+              items={this.state.localVarNames}
+              onClick={this.handleAddLocalVar}
+              onRemove={this.handleRemoveLocalVar}
+              onChange={this.handleLocalVarChange}
+              onSortEnd={this.handleLocalVarSort}/>
+          </Grid>
+        </Grid>
       </div>
     )
   } 

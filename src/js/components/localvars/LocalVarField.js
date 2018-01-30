@@ -1,9 +1,10 @@
 import React from 'react'
 import { SortableElement } from 'react-sortable-hoc'
-import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap'
+import Grid from 'material-ui/Grid'
+import IconButton from 'material-ui/IconButton'
+import TextField from 'material-ui/TextField'
 import DragHandle from '../DragHandle'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import '../../../styles/fields.css'
 
 const LocalVarField = SortableElement( ({ index, id, value, onChange, onRemove }) => {
 
@@ -17,35 +18,30 @@ const LocalVarField = SortableElement( ({ index, id, value, onChange, onRemove }
   }
 
   return (
-    <Container className='local-var-field'>
-      <Row noGutters>
-        <Col lg="4">
+    <div>
+      <Grid container>
+        <Grid item xs={4}>
           <DragHandle/>
-        </Col>
-        <Col lg="4">
-          <div className='text-center'>
-            <Label>Name</Label>
-          </div>
-        </Col>
-        <Col lg="4">
-          <div className='text-right'>
-            <Button color='danger' size='sm' onClick={onFieldRemove}>
-              <FontAwesomeIcon icon='minus' size='sm'/>
-            </Button>
-          </div>
-        </Col>
-      </Row>
-      <Row noGutters>
-        <Col lg="12">
-          <Input
-            type='text'
-            bsSize='small'
+        </Grid>
+        <Grid item xs={4}>
+            var
+        </Grid>
+        <Grid item xs={4}>
+          <IconButton color='primary' onClick={onFieldRemove}>
+            <FontAwesomeIcon icon='minus' size='sm'/>
+          </IconButton>
+        </Grid>
+      </Grid>
+
+      <Grid container>
+        <Grid xs={12}>
+          <TextField
             value={value}
             onChange={onFieldChange}
           />
-        </Col>
-      </Row>
-    </Container>
+        </Grid>
+      </Grid>
+    </div>
   )
 })
 
