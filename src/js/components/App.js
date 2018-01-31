@@ -137,6 +137,7 @@ class App extends Component {
   updateOutput ({ scriptName, description, args, localVarNames, returnValue, localVarPrefix }) {
     let newOutput = ''
     let newArgumentWarning = false
+    let hasParams = false
 
     // Create script JSDoc header
 
@@ -145,7 +146,7 @@ class App extends Component {
       newOutput += `/// @function ${scriptName}(`
 
       // add parameters
-      let hasParams = false
+      hasParams = false
 
       for (let i = 0; i < args.length; i++) {
         if (args[i].name !== '') {
@@ -206,16 +207,20 @@ class App extends Component {
       newOutput += `/// @returns {${returnValue}}\n`
     }
 
-    newOutput += '\n'
-
     // Create script body
 
     // Arguments
-    for (let i = 0; i < args.length; i++) {
+    hasParams = false
 
+    for (let i = 0; i < args.length; i++) {
       if (args[i].name !== '') {
-        newOutput += `var ${localVarPrefix}${args[i].name} = argument[${i}];\n`
+        newOutput += `\nvar ${localVarPrefix}${args[i].name} = argument[${i}];`
+        hasParams = true
       }
+    }
+
+    if (hasParams) {
+      newOutput += '\n'
     }
 
     // Additional local variables

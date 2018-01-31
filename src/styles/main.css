@@ -9,6 +9,12 @@ ul {
   padding-left: 0;
 }
 
+#generated-script {
+  color: #fff;
+  font-family: 'Roboto Mono', monospace;
+  white-space: pre-line;
+}
+
 .item-list {
   height: 80vh;
   overflow-y: scroll;
@@ -20,7 +26,6 @@ ul {
   margin: 8px 0em;
 }
 
-#generated-script {
+.drag-handle {
   color: #fff;
-  white-space: pre-line;
 }
