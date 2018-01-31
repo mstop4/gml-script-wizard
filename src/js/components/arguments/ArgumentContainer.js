@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Grid from 'material-ui/Grid'
 import Paper from 'material-ui/Paper'
 import Typography from 'material-ui/Typography'
+import { Scrollbars } from 'react-custom-scrollbars'
 
 import ArgumentSortable from './ArgumentSortable'
 import AddArgumentButton from './AddArgumentButton'
@@ -21,12 +22,14 @@ const ArgumentContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) =>
       </Grid>
       <Grid container>
         <Grid item xs={12}>
-          <ArgumentSortable 
-            items={items}
-            onChange={onChange}
-            onSortEnd={onSortEnd}
-            onRemove={onRemove}
-          /> 
+          <Scrollbars autoHeight autoHeightMin={`calc(80vh - 5em)`} autoHeightMax={`calc(80vh - 5em)`}>
+            <ArgumentSortable 
+              items={items}
+              onChange={onChange}
+              onSortEnd={onSortEnd}
+              onRemove={onRemove}
+            /> 
+          </Scrollbars>
         </Grid>
       </Grid>
     </Paper>

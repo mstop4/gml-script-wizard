@@ -17,7 +17,6 @@ ul {
 
 .item-list {
   height: 80vh;
-  overflow-y: scroll;
   padding: 0.5em 1em;
 }
 
