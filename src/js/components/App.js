@@ -177,20 +177,19 @@ class App extends Component {
         argumentExists = true
       }
 
-      if (args[i].type !== '') {
-        newOutput += ` \{${args[i].type}\}`
-      }
-
-      if (args[i].name !== '') {
-        newOutput += ` ${args[i].name}`
-      }
-
-      if (args[i].description !== '') {
-        newOutput += ` ${args[i].description}`
-      }
-
       if (argumentExists) {
-        newOutput += '\n'
+        if (args[i].type !== '') {
+          newOutput += ` \{${args[i].type}\}`
+        }
+
+        if (args[i].name !== '') {
+          newOutput += ` ${args[i].name}`
+        }
+
+        if (args[i].description !== '') {
+          newOutput += ` ${args[i].description}`
+        }
+          newOutput += '\n'
       }
     }
 
