@@ -35,7 +35,7 @@ const LocalVarField = SortableElement( ({ index, id, value, onChange, onRemove }
           />
         </Grid>
         <Grid item xs={1} md={2}>
-          <IconButton color="secondary" size="small" onClick={onFieldRemove}>
+          <IconButton color="primary" size="small" onClick={onFieldRemove}>
             <Icon>delete_forever</Icon>
           </IconButton>
         </Grid>

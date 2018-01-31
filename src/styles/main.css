@@ -1,8 +1,7 @@
 body {
-  /* background-color: darkolivegreen; */
-  /* color: #ffffff; */
+  background-color: #181818;
   font-family: 'Roboto', sans-serif;
-  padding: 4em 1em 0em 1em;
+  padding: 5em 1em 0em 1em;
 }
 
 ul {
@@ -22,5 +21,6 @@ ul {
 }
 
 #generated-script {
+  color: #fff;
   white-space: pre-line;
 }

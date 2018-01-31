@@ -5,7 +5,7 @@ import Icon from 'material-ui/Icon'
 const AddArgumentButton = ({onClick}) => (
     <div className='add-argument-button'>
       <IconButton 
-        color="secondary"
+        color="primary"
         size="small"
         onClick={onClick}
       >

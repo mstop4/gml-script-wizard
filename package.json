@@ -2,7 +2,7 @@
   "name": "gml-script-template-generator",
   "version": "0.4.0",
   "description": "GML Script Template Generator",
-  "main": "./dist",
+  "main": "index.js",
   "repository": "https://github.com/mstop4/gml-script-template-generator.git",
   "author": "mstop4 <mstop4@gmail.com>",
   "license": "MIT",

@@ -56,7 +56,7 @@ class CopyScriptButton extends Component {
         />
 
         <IconButton 
-          color="secondary"
+          color="primary"
           size="small"
           onClick={this.copyScript}
         >

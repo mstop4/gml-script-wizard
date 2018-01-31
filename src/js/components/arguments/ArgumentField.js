@@ -61,7 +61,7 @@ const ArgumentField = SortableElement( ({ index, id, name, type, description, on
           </Grid>
           <Grid item xs={2}>
             <IconButton 
-              color="secondary"
+              color="primary"
               size="small"
               onClick={onFieldRemove}
             >

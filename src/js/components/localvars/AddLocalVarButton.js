@@ -5,7 +5,7 @@ import Icon from 'material-ui/Icon'
 const AddLocalVarButton = ({onClick}) => (
   <div className='add-local-var-button'>
     <IconButton 
-      color="secondary"
+      color="primary"
       size="small"
       onClick={onClick}
     >
