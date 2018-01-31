@@ -30,8 +30,7 @@ class App extends Component {
       outputValue: '',
       args: [],
       localVarNames: [],
-      returnValue: '',
-      argumentWarning: false
+      returnValue: ''
     }
 
     this.handleArgumentChange = this.handleArgumentChange.bind(this)
@@ -136,7 +135,6 @@ class App extends Component {
 
   updateOutput ({ scriptName, description, args, localVarNames, returnValue, localVarPrefix }) {
     let newOutput = ''
-    let newArgumentWarning = false
     let hasParams = false
 
     // Create script JSDoc header
@@ -185,12 +183,6 @@ class App extends Component {
 
       if (args[i].name !== '') {
         newOutput += ` ${args[i].name}`
-        if (argumentSkipped) {
-          newArgumentWarning = true
-          argumentSkipped = false
-        }
-      } else {
-        argumentSkipped = true
       }
 
       if (args[i].description !== '') {
@@ -211,11 +203,13 @@ class App extends Component {
 
     // Arguments
     hasParams = false
+    let currentArgIndex = 0
 
     for (let i = 0; i < args.length; i++) {
       if (args[i].name !== '') {
-        newOutput += `\nvar ${localVarPrefix}${args[i].name} = argument[${i}];`
+        newOutput += `\nvar ${localVarPrefix}${args[i].name} = argument[${currentArgIndex}];`
         hasParams = true
+        currentArgIndex++
       }
     }
 
@@ -259,7 +253,6 @@ class App extends Component {
       args: args,
       localVarNames: localVarNames,
       returnValue: returnValue,
-      argumentWarning: newArgumentWarning
     })
   }
 
@@ -290,7 +283,6 @@ class App extends Component {
             <Grid item xs={12} md={3}>
               <ArgumentContainer 
                 items={this.state.args}
-                argumentWarning={this.state.argumentWarning}
                 onClick={this.handleAddArgument}
                 onRemove={this.handleRemoveArgument}
                 onChange={this.handleArgumentChange}

@@ -29,6 +29,7 @@ const LocalVarField = SortableElement( ({ index, id, value, onChange, onRemove }
         </Grid>
         <Grid item xs={10} md={8}>
           <TextField
+            placeholder="unused"
             value={value}
             onChange={onFieldChange}
             fullWidth

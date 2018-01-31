@@ -38,7 +38,7 @@ const ArgumentField = SortableElement( ({ index, id, name, type, description, on
             <Typography type="title">
             <TextField
               id="name"
-              placeholder={"Argument " + id}
+              placeholder={"unused"}
               value={name}
               onClick={onClick}
               onChange={onFieldChange}
