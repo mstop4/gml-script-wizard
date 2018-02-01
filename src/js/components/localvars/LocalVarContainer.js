@@ -1,6 +1,5 @@
 import React from 'react'
 import Grid from 'material-ui/Grid'
-import Paper from 'material-ui/Paper'
 import Typography from 'material-ui/Typography'
 import { Scrollbars } from 'react-custom-scrollbars'
 
@@ -10,7 +9,7 @@ import AddLocalVarButton from './AddLocalVarButton'
 const LocalVarContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) => {
 
   return (
-    <Paper className="item-list">
+    <div className="item-list">
       <Grid container alignItems="center">
         <Grid item xs={11} md={10}>
           <Typography type="headline">Local Variables</Typography>
@@ -33,7 +32,7 @@ const LocalVarContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) =>
           </Scrollbars>
         </Grid>
       </Grid>
-    </Paper>
+    </div>
   )
 }
 

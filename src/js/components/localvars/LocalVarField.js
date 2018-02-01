@@ -6,7 +6,8 @@ import IconButton from 'material-ui/IconButton'
 import Icon from 'material-ui/Icon'
 import TextField from 'material-ui/TextField'
 import Typography from 'material-ui/Typography'
-import Card from 'material-ui/Card'
+import Paper from 'material-ui/Paper'
+import ExpansionPanel, { ExpansionPanelSummary, ExpansionPanelDetails } from 'material-ui/ExpansionPanel'
 
 import DragHandle from '../DragHandle'
 
@@ -22,9 +23,9 @@ const LocalVarField = SortableElement( ({ index, id, value, onChange, onRemove }
   }
 
   return (
-    <Card className="argument-item">
+    <Paper className="argument-item">
       <Grid container alignItems="center">
-        <Grid item xs={1} md={2}>
+        <Grid item alignItems="center" xs={1} md={2}>
           <DragHandle/>
         </Grid>
         <Grid item xs={10} md={8}>
@@ -41,7 +42,7 @@ const LocalVarField = SortableElement( ({ index, id, value, onChange, onRemove }
           </IconButton>
         </Grid>
       </Grid>
-    </Card>
+    </Paper>
   )
 })
 

@@ -17,12 +17,12 @@ ul {
 
 .item-list {
   height: 80vh;
-  padding: 0.5em 1em;
+  padding: 0.5em 0em;
 }
 
 .argument-item {
-  padding: 0em 1em 1em;
-  margin: 8px 0em;
+  padding: 0em 1em 0em;
+  margin: 0px 0em;
 }
 
 .drag-handle {

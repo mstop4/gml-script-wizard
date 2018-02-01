@@ -31,11 +31,10 @@ const ArgumentField = SortableElement( ({ index, id, name, type, description, on
     <ExpansionPanel>
       <ExpansionPanelSummary expandIcon={<Icon>expand_more</Icon>}>
         <Grid container alignItems="center">
-          <Grid item xs={3}>
+          <Grid item alignItems="center" xs={1} md={2}>
             <DragHandle/>
           </Grid>
-          <Grid item xs={9}>
-            <Typography type="title">
+          <Grid item xs={11} md={9}>
             <TextField
               id="name"
               placeholder={"unused"}
@@ -44,13 +43,12 @@ const ArgumentField = SortableElement( ({ index, id, name, type, description, on
               onChange={onFieldChange}
               fullWidth
             />
-            </Typography>
           </Grid>
         </Grid>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
         <Grid container alignItems="center">
-          <Grid item xs={10}>
+          <Grid item xs={11} md={10}>
             <TextField
               id="type"
               label="Type"
@@ -59,7 +57,7 @@ const ArgumentField = SortableElement( ({ index, id, name, type, description, on
               fullWidth
             />
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={1} md={2}>
             <IconButton 
               color="primary"
               size="small"

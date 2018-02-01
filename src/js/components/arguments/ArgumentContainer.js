@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Grid from 'material-ui/Grid'
-import Paper from 'material-ui/Paper'
 import Typography from 'material-ui/Typography'
 import { Scrollbars } from 'react-custom-scrollbars'
 
@@ -9,7 +8,7 @@ import AddArgumentButton from './AddArgumentButton'
 
 const ArgumentContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) => {
   return (
-    <Paper className="item-list">
+    <div className="item-list">
       <Grid container alignItems="center"> 
         <Grid item xs={11} md={10}>
           <Typography type="headline">Arguments</Typography>
@@ -32,7 +31,7 @@ const ArgumentContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) =>
           </Scrollbars>
         </Grid>
       </Grid>
-    </Paper>
+    </div>
   )
 }
 
