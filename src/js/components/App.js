@@ -135,115 +135,96 @@ class App extends Component {
 
   updateOutput ({ scriptName, description, args, localVarNames, returnValue, localVarPrefix }) {
     let newOutput = ''
+    
+    let headFunction =      '/// @function    '
+    let headArgumentTypes = []
+    let headArgumentNames = []
+    let headArgumentDescs = []
+    let headDescription =   `/// @description ${description}`
+
+    let declArguments = []
+    let declLocals = []
+
     let hasParams = false
 
     // Create script JSDoc header
 
-    // Script Name (@function)
+    // Script name
     if (scriptName !== '') {
-      newOutput += `/// @function ${scriptName}(`
+      headFunction += `${scriptName}(`
 
       // add parameters
       hasParams = false
 
       for (let i = 0; i < args.length; i++) {
         if (args[i].name !== '') {
-          newOutput += `${args[i].name}, `
+          headFunction += `${args[i].name}, `
           hasParams = true
         }
       }
 
       // Remove final comma and space if script has parameters
       if (hasParams) {
-        newOutput = newOutput.slice(0,newOutput.length-2)
+        headFunction = headFunction.slice(0,headFunction.length-2)
       }
 
-      newOutput += ')\n'
+      headFunction += ')'
     }
 
-    // Description (@description)
-    if (description !== '') {
-      newOutput += `/// @description ${description}\n`
-    }
-
-    // Arguments (@param)
-    let argumentSkipped = false
+    // Arguments
+    let currentArgIndex = 0;
 
     for (let i = 0; i < args.length; i++) {
-      let argumentExists = false
 
+      // Build JSDoc line
       if (args[i].name !== '') {
-        newOutput += '/// @param'
-        argumentExists = true
-      }
-
-      if (argumentExists) {
+  
         if (args[i].type !== '') {
-          newOutput += ` \{${args[i].type}\}`
+          headArgumentTypes.push(` \{${args[i].type}\}`)
+        } else {
+          headArgumentTypes.push('')
         }
 
         if (args[i].name !== '') {
-          newOutput += ` ${args[i].name}`
+          headArgumentNames.push(` ${args[i].name}`)
+        } else {
+          headArgumentNames.push('')
         }
+
 
         if (args[i].description !== '') {
-          newOutput += ` ${args[i].description}`
+          headArgumentDescs.push(` ${args[i].description}`)
+        } else {
+          headArgumentDescs.push('')
         }
-          newOutput += '\n'
-      }
-    }
 
-    // Return (@returns)
-    if (returnValue !== '') {
-      newOutput += `/// @returns {${returnValue}}\n`
-    }
-
-    // Create script body
-
-    // Arguments
-    hasParams = false
-    let currentArgIndex = 0
-
-    for (let i = 0; i < args.length; i++) {
-      if (args[i].name !== '') {
-        newOutput += `\nvar ${localVarPrefix}${args[i].name} = argument[${currentArgIndex}];`
-        hasParams = true
+        // Build declaration line
+        declArguments.push(`\nvar ${localVarPrefix}${args[i].name} = argument[${currentArgIndex}];`)
         currentArgIndex++
       }
     }
 
-    if (hasParams) {
-      newOutput += '\n'
-    }
-
     // Additional local variables
-    if (localVarNames.length > 0) {
-      let hasLocalVars = false
-
-      for (let i = 0; i < localVarNames.length; i++) {
-        if (localVarNames[i] !== '') {
-          if (!hasLocalVars) {
-            newOutput += '\nvar '
-            hasLocalVars = true
-          }
-
-          newOutput += `${localVarPrefix}${localVarNames[i]}, `
-        }
-      }
-
-      // Remove final comma and space if script has local variables
-      if (hasLocalVars) {
-        newOutput = newOutput.slice(0,newOutput.length-2)
-        newOutput += ';\n'
+    for (let i = 0; i < localVarNames.length; i++) {
+      if (localVarNames[i] !== '') {
+          declLocals.push(`var ${localVarPrefix}${localVarNames[i]};`)
       }
     }
 
-    newOutput += '\n/*\n* Your code goes here...\n*/\n'
+    // Build Script
 
-    // Return
-    if (returnValue !== '') {
-       newOutput += `\nreturn return value ;`
+    // @function
+    newOutput += `${headFunction}\n///\n`
+    
+    // @param
+    for (let i = 0; i < headArgumentNames.length; i++) {
+      newOutput += `/// @param       ${headArgumentTypes[i]} ${headArgumentNames[i]} ${headArgumentDescs[i]}\n`
     }
+
+    newOutput += '///\n'
+
+    // @description
+    newOutput += `${headDescription}\n\n`
 
     this.setState({
       scriptName: scriptName,
