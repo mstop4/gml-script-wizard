@@ -172,14 +172,29 @@ class App extends Component {
     // Arguments
     let currentArgIndex = 0;
 
+    // find longest type and argument names for spacing purposes
+    let typeMaxLength = -3;
+    let nameMaxLength = 0;
+
     for (let i = 0; i < args.length; i++) {
+      if (args[i].type && args[i].type.length > typeMaxLength) {
+        typeMaxLength = args[i].type.length
+      }
+
+      if (args[i].name && args[i].name.length > nameMaxLength) {
+        nameMaxLength = args[i].name.length
+      }
+    }
+
+    for (let i = 0; i < args.length; i++) {
+
       // Build JSDoc line
       if (args[i].name !== '') {
   
         if (args[i].type !== '') {
-          headArgumentTypes.push(` \{${args[i].type}\}`)
+          headArgumentTypes.push(` \{${args[i].type}\}${'\xa0'.repeat(typeMaxLength-args[i].type.length)}`)
         } else {
-          headArgumentTypes.push('')
+          headArgumentTypes.push('\xa0'.repeat(typeMaxLength+3))
         }
 
         if (args[i].name !== '') {
