@@ -192,15 +192,17 @@ class App extends Component {
       if (args[i].name !== '') {
   
         if (args[i].type !== '') {
-          headArgumentTypes.push(` \{${args[i].type}\}${'\xa0'.repeat(typeMaxLength-args[i].type.length)}`)
+          let spaceBufferSize = Math.max(0,typeMaxLength-args[i].type.length)
+          headArgumentTypes.push(` \{${args[i].type}\}${'\xa0'.repeat(spaceBufferSize)}`)
         } else {
           headArgumentTypes.push('\xa0'.repeat(typeMaxLength+3))
         }
 
         if (args[i].name !== '') {
-          headArgumentNames.push(`${args[i].name}`)
+          let spaceBufferSize = Math.max(0,nameMaxLength-args[i].name.length)
+          headArgumentNames.push(`${args[i].name}${'\xa0'.repeat(spaceBufferSize)}`)
         } else {
-          headArgumentNames.push('')
+          headArgumentNames.push('\xa0'.repeat(nameMaxLength))
         }
 
         if (args[i].description !== '') {
