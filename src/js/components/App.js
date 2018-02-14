@@ -134,11 +134,11 @@ class App extends Component {
   updateOutput ({ scriptName, description, args, localVars, returnValue, localVarPrefix }) {
     let newOutput = ''
     
-    let headFunction =      `/// @function    `
+    let headFunction =      `/// @function${'\xa0'.repeat(5)}`
     let headArgumentTypes = []
     let headArgumentNames = []
     let headArgumentDescs = []
-    let headDescription =   `/// @description ${description}`
+    let headDescription =   `/// @description${'\xa0'.repeat(2)}${description}`
 
     let declArguments = []
     let declLocals = []
@@ -173,7 +173,6 @@ class App extends Component {
     let currentArgIndex = 0;
 
     for (let i = 0; i < args.length; i++) {
-
       // Build JSDoc line
       if (args[i].name !== '') {
   
@@ -220,17 +219,21 @@ class App extends Component {
 
     // @function
     if (scriptName !== '') {
-      newOutput += `${headFunction}\n///\n`
+      newOutput += `${headFunction}\n`
+    }
+
+    if (headArgumentNames.length > 0) {
+      newOutput += '///\n'
     }
 
     // @param
     for (let i = 0; i < headArgumentNames.length; i++) {
-      newOutput += `/// @param       ${headArgumentTypes[i]} ${headArgumentNames[i]} ${headArgumentDescs[i]}\n`
+      newOutput += `/// @param${'\xa0'.repeat(7)}${headArgumentTypes[i]} ${headArgumentNames[i]} ${headArgumentDescs[i]}\n`
     }
 
     // @description
     if (description !== '') {
-      newOutput += `${headDescription}\n`
+      newOutput += `///\n${headDescription}\n`
     }
 
     if (declArguments.length > 0) {
