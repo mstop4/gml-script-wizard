@@ -31,7 +31,7 @@ const ArgumentField = SortableElement( ({ index, id, name, type, description, on
     <ExpansionPanel>
       <ExpansionPanelSummary expandIcon={<Icon>expand_more</Icon>}>
         <Grid container alignItems="center">
-          <Grid item alignItems="center" xs={1} md={2}>
+          <Grid item xs={1} md={2}>
             <DragHandle/>
           </Grid>
           <Grid item xs={11} md={9}>

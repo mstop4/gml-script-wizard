@@ -6,12 +6,13 @@ const LocalVarList = SortableContainer( ({ items, onChange, onRemove }) => {
   return (
     <div className='argument-list'>
       <ul>
-        {items.map((value, index) => (
+        {items.map((localVar, index) => (
           <LocalVarField 
             key={index}
             index={index}
             id={index}
-            value={value}
+            name={localVar.name}
+            description={localVar.description}
             onChange={onChange}
             onRemove={onRemove}/>
         ))}

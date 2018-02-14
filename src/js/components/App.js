@@ -29,7 +29,7 @@ class App extends Component {
       description: '',
       outputValue: '',
       args: [],
-      localVarNames: [],
+      localVars: [],
       returnValue: ''
     }
 
@@ -89,28 +89,26 @@ class App extends Component {
   handleLocalVarChange(newArg, id, key) {
     // Make a copy of old state and change relevant values
     let newState = this.state
-    newState.localVarNames[id] = newArg
+    newState.localVars[id][key] = newArg
     this.updateOutput(newState)
   }
 
   handleLocalVarSort(event) {
     let newState = this.state
-    newState.localVarNames = arrayMove(newState.localVarNames, event.oldIndex, event.newIndex)
+    newState.localVars = arrayMove(newState.localVars, event.oldIndex, event.newIndex)
     this.updateOutput(newState)
   }
 
   handleAddLocalVar(event) {
-    if (this.state.localVarNames.length < 16) {
-      let newState = this.state
-      newState.localVarNames.push('')
-      this.updateOutput(newState)
-    }
+    let newState = this.state
+    newState.localVars.push({name: '', description: ''})
+    this.updateOutput(newState)
   }
 
   handleRemoveLocalVar(id) {
-    if (this.state.localVarNames.length > 0) {
+    if (this.state.localVars.length > 0) {
       let newState = this.state
-      newState.localVarNames.splice(id, 1)
+      newState.localVars.splice(id, 1)
       this.updateOutput(newState)
     }
   }
@@ -133,10 +131,10 @@ class App extends Component {
     this.updateOutput(newState)
   }
 
-  updateOutput ({ scriptName, description, args, localVarNames, returnValue, localVarPrefix }) {
+  updateOutput ({ scriptName, description, args, localVars, returnValue, localVarPrefix }) {
     let newOutput = ''
     
-    let headFunction =      '/// @function    '
+    let headFunction =      `/// @function    `
     let headArgumentTypes = []
     let headArgumentNames = []
     let headArgumentDescs = []
@@ -186,11 +184,10 @@ class App extends Component {
         }
 
         if (args[i].name !== '') {
-          headArgumentNames.push(` ${args[i].name}`)
+          headArgumentNames.push(`${args[i].name}`)
         } else {
           headArgumentNames.push('')
         }
-
 
         if (args[i].description !== '') {
           headArgumentDescs.push(` ${args[i].description}`)
@@ -199,39 +196,67 @@ class App extends Component {
         }
 
         // Build declaration line
-        declArguments.push(`\nvar ${localVarPrefix}${args[i].name} = argument[${currentArgIndex}];`)
+        declArguments.push(`var ${localVarPrefix}${args[i].name} = argument[${currentArgIndex}];\n`)
         currentArgIndex++
       }
     }
 
     // Additional local variables
-    for (let i = 0; i < localVarNames.length; i++) {
-      if (localVarNames[i] !== '') {
-          declLocals.push(`var ${localVarPrefix}${localVarNames[i]};`)
+    for (let i = 0; i < localVars.length; i++) {
+      if (localVars[i].name !== '') {
+          let localVarDecl = `var ${localVarPrefix}${localVars[i].name};`
+
+          if (localVars[i].description !== '') {
+            localVarDecl +=  `//${localVars[i].description}`
+          }
+
+          localVarDecl += '\n'
+
+        declLocals.push(localVarDecl)
       }
     }
 
     // Build Script
 
     // @function
-    newOutput += `${headFunction}\n///\n`
-    
+    if (scriptName !== '') {
+      newOutput += `${headFunction}\n///\n`
+    }
+
     // @param
     for (let i = 0; i < headArgumentNames.length; i++) {
       newOutput += `/// @param       ${headArgumentTypes[i]} ${headArgumentNames[i]} ${headArgumentDescs[i]}\n`
     }
 
-    newOutput += '///\n'
-
     // @description
-    newOutput += `${headDescription}\n\n`
+    if (description !== '') {
+      newOutput += `${headDescription}\n`
+    }
+
+    if (declArguments.length > 0) {
+      newOutput += '\n'
+    }
+
+    // arguments
+    for (let i = 0; i < declArguments.length; i++) {
+      newOutput += declArguments[i]
+    }
+
+    if (declLocals.length > 0) {
+      newOutput += '\n'
+    }
+
+    // local vars
+    for (let i = 0; i < declLocals.length; i++) {
+      newOutput += declLocals[i]
+    }
 
     this.setState({
       scriptName: scriptName,
       description: description,
       outputValue: newOutput,
       args: args,
-      localVarNames: localVarNames,
+      localVars: localVars,
       returnValue: returnValue,
     })
   }
@@ -270,7 +295,7 @@ class App extends Component {
             </Grid>
             <Grid item xs={12} md={3}>
               <LocalVarContainer 
-                items={this.state.localVarNames}
+                items={this.state.localVars}
                 onClick={this.handleAddLocalVar}
                 onRemove={this.handleRemoveLocalVar}
                 onChange={this.handleLocalVarChange}
