@@ -52,7 +52,6 @@ class App extends Component {
   componentDidMount() {
     // init output based on intial state
     this.updateOutput(this.state)
-    console.dir(ColourTheme);
   }
 
   // TODO: Reduce duplicate code in handle* functions
@@ -71,11 +70,9 @@ class App extends Component {
   }
 
   handleAddArgument(event) {
-    if (this.state.args.length < 16) {
-      let newState = this.state
-      newState.args.push({name: '', type: '', description: ''})
-      this.updateOutput(newState)
-    }
+    let newState = this.state
+    newState.args.push({name: '', type: '', description: ''})
+    this.updateOutput(newState)
   }
 
   handleRemoveArgument(id) {
