@@ -239,18 +239,14 @@ class App extends Component {
       newOutput += `${headFunction}\n`
     }
 
-    if (headArgumentNames.length > 0) {
-      newOutput += '///\n'
+    // @description
+    if (description !== '') {
+      newOutput += `${headDescription}\n`
     }
 
     // @param
     for (let i = 0; i < headArgumentNames.length; i++) {
       newOutput += `/// @param${'\xa0'.repeat(7)}${headArgumentTypes[i]} ${headArgumentNames[i]} ${headArgumentDescs[i]}\n`
-    }
-
-    // @description
-    if (description !== '') {
-      newOutput += `///\n${headDescription}\n`
     }
 
     if (declArguments.length > 0) {
