@@ -17,10 +17,14 @@ class CopyScriptButton extends Component {
   }
 
   copyScript() {
+    // Copies script text to a temporary textarea so that it can be
+    // copied to the clipboard
     let scriptText = document.getElementById('generated-script').innerHTML
     let tempBox = document.createElement('textarea')
+
     document.body.appendChild(tempBox)
     tempBox.setAttribute("id", "tempBox")
+    scriptText = scriptText.replace(/&nbsp;/g, ' ')
     document.getElementById("tempBox").value = scriptText
     tempBox.select()
     document.execCommand('Copy')
