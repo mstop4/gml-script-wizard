@@ -170,11 +170,11 @@ class App extends Component {
     }
 
     // Arguments
-    let currentArgIndex = 0;
+    let currentArgIndex = 0
 
-    // find longest type and argument names for spacing purposes
-    let typeMaxLength = -3;
-    let nameMaxLength = 0;
+    // find the length of longest type and argument names for spacing purposes
+    let typeMaxLength = -3
+    let nameMaxLength = 0
 
     for (let i = 0; i < args.length; i++) {
       if (args[i].type && args[i].type.length > typeMaxLength) {
@@ -218,21 +218,34 @@ class App extends Component {
     }
 
     // Additional local variables
+
+    // find the length of longest variable name for spacing purposes
+    nameMaxLength = 0
+
+    for (let i = 0; i < localVars.length; i++) {
+      if (localVars[i].name.length > nameMaxLength) {
+        nameMaxLength = localVars[i].name.length
+      }
+    }
+
     for (let i = 0; i < localVars.length; i++) {
       if (localVars[i].name !== '') {
-          let localVarDecl = `var ${localVarPrefix}${localVars[i].name};`
+        let spaceBufferSize = Math.max(0,nameMaxLength-localVars[i].name.length+1)
+        //console.log(nameMaxLength, localVars[i].name.length)
+        let localVarDecl = `var ${localVarPrefix}${localVars[i].name};`
 
-          if (localVars[i].description !== '') {
-            localVarDecl +=  `//${localVars[i].description}`
-          }
+        if (localVars[i].description !== '') {
+          localVarDecl += `${'\xa0'.repeat(spaceBufferSize+2)}// ${localVars[i].description}`
+        }
 
-          localVarDecl += '\n'
+        localVarDecl += '\n'
 
         declLocals.push(localVarDecl)
       }
     }
 
     // Build Script
+    // ------------
 
     // @function
     if (scriptName !== '') {
@@ -253,7 +266,7 @@ class App extends Component {
       newOutput += '\n'
     }
 
-    // arguments
+    // argument declarations
     for (let i = 0; i < declArguments.length; i++) {
       newOutput += declArguments[i]
     }
@@ -262,10 +275,16 @@ class App extends Component {
       newOutput += '\n'
     }
 
-    // local vars
+    // local var declarations
     for (let i = 0; i < declLocals.length; i++) {
       newOutput += declLocals[i]
     }
+
+    if (newOutput !== '') {
+      newOutput += '\n'
+    }
+
+    newOutput += '/* Your code goes here */'
 
     this.setState({
       scriptName: scriptName,
