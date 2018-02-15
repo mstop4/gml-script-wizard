@@ -5,6 +5,7 @@ import Grid from 'material-ui/Grid'
 import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
+import Icon from 'material-ui/Icon'
 
 import OutputBox from './OutputBox'
 import ReturnField from './ReturnField'
@@ -300,7 +301,7 @@ class App extends Component {
           <AppBar>
             <Toolbar>
               <Typography type="headline" align="left">
-                GML Script Template Generator
+                <Icon>description</Icon> GML Script Template Generator
               </Typography>
             </Toolbar>
           </AppBar>
