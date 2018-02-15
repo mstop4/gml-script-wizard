@@ -9,7 +9,7 @@ import Card from 'material-ui/Card'
 
 import DragHandle from '../DragHandle'
 
-const ArgumentField = SortableElement( ({ index, id, name, type, description, onChange, onOpen }) => {
+const ArgumentField = SortableElement( ({ index, id, name, onChange, onOpen }) => {
 
   const onClick = (event) => {
     event.stopPropagation()
