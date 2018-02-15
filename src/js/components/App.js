@@ -228,7 +228,6 @@ class App extends Component {
     for (let i = 0; i < localVars.length; i++) {
       if (localVars[i].name !== '') {
         let spaceBufferSize = Math.max(0,nameMaxLength-localVars[i].name.length+1)
-        //console.log(nameMaxLength, localVars[i].name.length)
         let localVarDecl = `var ${localVarPrefix}${localVars[i].name};`
 
         if (localVars[i].description !== '') {

@@ -102,7 +102,7 @@ class ArgumentDialog extends Component {
 
     this.handleSuggestionsFetchRequested = this.handleSuggestionsFetchRequested.bind(this)
     this.handleSuggestionsClearRequested = this.handleSuggestionsClearRequested.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+    this.handleGetSuggestion = this.handleGetSuggestion.bind(this)
   }
 
   handleSuggestionsFetchRequested({ value }) {
@@ -117,11 +117,14 @@ class ArgumentDialog extends Component {
     })
   }
 
-  handleChange(event, { newValue }) {
-    this.setState({
-      value: newValue
-    })
-    this.props.onChange()
+  handleGetSuggestion(suggestion) {
+    let newValue = getSuggestionValue(suggestion)
+    this.props.onChange({
+      target: {
+        value: newValue,
+        id: 'type'
+      }})
+    return newValue
   }
 
   render() {
@@ -138,7 +141,7 @@ class ArgumentDialog extends Component {
               onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}
               onSuggestionsClearRequested={this.handleSuggestionsClearRequested}
               renderSuggestionsContainer={renderSuggestionsContainer}
-              getSuggestionValue={getSuggestionValue}
+              getSuggestionValue={this.handleGetSuggestion}
               renderSuggestion={renderSuggestion}
               inputProps={{
                 id: "type",
