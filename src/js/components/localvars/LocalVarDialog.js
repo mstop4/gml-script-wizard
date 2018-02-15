@@ -10,6 +10,7 @@ const ArgumentDialog = (props) => {
     <Dialog 
       open={props.isOpen}
       onClose={props.onClose}
+      fullWidth
     >
       <DialogTitle>{props.argInfo.name} Details</DialogTitle>
       <DialogContent>

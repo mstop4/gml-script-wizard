@@ -17,7 +17,15 @@ const suggestions = [
   { label: 'array' },
   { label: 'pointer' },
   { label: 'enum' },
-  { label: 'matrix' }
+  { label: 'matrix' },
+  { label: 'list' },
+  { label: 'queue' },
+  { label: 'grid' },
+  { label: 'priority' },
+  { label: 'stack' },
+  { label: 'map' },
+  { label: 'surface' },
+  { label: 'buffer' } 
 ]
 
 function renderInput(inputProps) {
@@ -104,6 +112,7 @@ class ArgumentDialog extends Component {
     this.handleSuggestionsFetchRequested = this.handleSuggestionsFetchRequested.bind(this)
     this.handleSuggestionsClearRequested = this.handleSuggestionsClearRequested.bind(this)
     this.handleGetSuggestion = this.handleGetSuggestion.bind(this)
+    this.handleSumbit = this.handleSubmit.bind(this)
   }
 
   handleSuggestionsFetchRequested({ value }) {
@@ -128,28 +137,36 @@ class ArgumentDialog extends Component {
     return newValue
   }
 
+  handleSubmit(event) {
+    event.preventDefault()
+  }
+
   render() {
     return (
       <Dialog 
         open={this.props.isOpen}
         onClose={this.props.onClose}
+        fullWidth
       >
         <DialogTitle>{this.props.argInfo.name} Details</DialogTitle>
           <DialogContent>
-            <Autosuggest
-              renderInputComponent={renderInput}
-              suggestions={this.state.suggestions}
-              onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}
-              onSuggestionsClearRequested={this.handleSuggestionsClearRequested}
-              renderSuggestionsContainer={renderSuggestionsContainer}
-              getSuggestionValue={this.handleGetSuggestion}
-              renderSuggestion={renderSuggestion}
-              inputProps={{
-                id: "type",
-                value: this.props.argInfo.type,
-                onChange: this.props.onChange
-              }}
-            />
+            <form onSubmit={this.handleSubmit}>
+              <Autosuggest
+                renderInputComponent={renderInput}
+                suggestions={this.state.suggestions}
+                onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}
+                onSuggestionsClearRequested={this.handleSuggestionsClearRequested}
+                renderSuggestionsContainer={renderSuggestionsContainer}
+                getSuggestionValue={this.handleGetSuggestion}
+                renderSuggestion={renderSuggestion}
+                inputProps={{
+                  id: "type",
+                  ref: 'autosuggest',
+                  value: this.props.argInfo.type,
+                  onChange: this.props.onChange
+                }}
+              />
+            </form>
             <TextField
               id="description"
               label="Description"

@@ -227,11 +227,11 @@ class App extends Component {
 
     for (let i = 0; i < localVars.length; i++) {
       if (localVars[i].name !== '') {
-        let spaceBufferSize = Math.max(0,nameMaxLength-localVars[i].name.length+1)
+        let spaceBufferSize = Math.max(0,nameMaxLength-localVars[i].name.length)
         let localVarDecl = `var ${localVarPrefix}${localVars[i].name};`
 
         if (localVars[i].description !== '') {
-          localVarDecl += `${'\xa0'.repeat(spaceBufferSize+2)}// ${localVars[i].description}`
+          localVarDecl += `${'\xa0'.repeat(spaceBufferSize+1)}// ${localVars[i].description}`
         }
 
         localVarDecl += '\n'
