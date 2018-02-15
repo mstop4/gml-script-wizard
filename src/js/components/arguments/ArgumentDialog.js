@@ -25,6 +25,7 @@ function renderInput(inputProps) {
 
   return (
     <TextField
+      label="Type"
       fullWidth
       inputRef={ref}
       InputProps={{
@@ -145,7 +146,6 @@ class ArgumentDialog extends Component {
               renderSuggestion={renderSuggestion}
               inputProps={{
                 id: "type",
-                label: "Type",
                 value: this.props.argInfo.type,
                 onChange: this.props.onChange
               }}
