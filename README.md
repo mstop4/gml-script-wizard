@@ -20,8 +20,7 @@ As a GML coder who writes a lot of scripts, do you like to document your code us
     var _prec = argument[5];
     var _notme = argument[6];
 
-    var _dsid;  // the ds_list of instance ids
-    var _i;
+    var _dsid, _i;
 
     /* Script body goes here */
 
