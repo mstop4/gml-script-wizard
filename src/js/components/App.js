@@ -301,7 +301,7 @@ class App extends Component {
           <AppBar>
             <Toolbar>
               <Typography type="headline" align="left">
-                <Icon>description</Icon> GML Script Template Generator
+                <Icon>description</Icon> GML Script Wizard
               </Typography>
             </Toolbar>
           </AppBar>
