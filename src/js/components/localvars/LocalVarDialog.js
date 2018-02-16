@@ -3,6 +3,11 @@ import Dialog, {DialogTitle, DialogContent, DialogActions} from 'material-ui/Dia
 import IconButton from 'material-ui/IconButton'
 import Icon from 'material-ui/Icon'
 import TextField from 'material-ui/TextField'
+import Slide from 'material-ui/transitions/Slide'
+
+function Transition(props) {
+  return <Slide direction='up' {...props} />
+}
 
 const ArgumentDialog = (props) => {
 
@@ -10,6 +15,8 @@ const ArgumentDialog = (props) => {
     <Dialog 
       open={props.isOpen}
       onClose={props.onClose}
+      transition={Transition}
+      keepMounted
       fullWidth
     >
       <DialogTitle>{props.argInfo.name} Details</DialogTitle>
