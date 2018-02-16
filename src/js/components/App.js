@@ -271,7 +271,7 @@ class App extends Component {
 
     // @param
     for (let i = 0; i < headArgumentNames.length; i++) {
-      newOutput += `/// @param${'\xa0'.repeat(tagPadLength)}${headArgumentTypes[i]}${headArgumentNames[i]} ${headArgumentDescs[i]}\n`
+      newOutput += `/// @param${'\xa0'.repeat(tagPadLength-1)}${headArgumentTypes[i]} ${headArgumentNames[i]} ${headArgumentDescs[i]}\n`
       firstLine = false
     }
 
