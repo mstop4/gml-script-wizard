@@ -1,9 +1,9 @@
 {
-  "name": "gml-script-template-generator",
-  "version": "0.4.0",
-  "description": "GML Script Template Generator",
+  "name": "gml-script-wizard",
+  "version": "0.6.0",
+  "description": "GML Script Wizard",
   "main": "index.js",
-  "repository": "https://github.com/mstop4/gml-script-template-generator.git",
+  "repository": "https://github.com/mstop4/gml-script-wizard.git",
   "author": "mstop4 <mstop4@gmail.com>",
   "license": "MIT",
   "scripts": {
