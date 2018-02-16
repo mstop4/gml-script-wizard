@@ -12,7 +12,7 @@ const ArgumentContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) =>
     <div className="container-root">
       <div className="container-header">
         <div className="container-title">
-          <Typography type="headline">Arguments</Typography>
+          <Typography variant="headline">Arguments</Typography>
         </div>
         <div className="container-add">
           <AddArgumentButton

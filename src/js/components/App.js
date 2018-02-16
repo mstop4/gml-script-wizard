@@ -26,7 +26,7 @@ class App extends Component {
 
     this.state = {
       localVarPrefix: '_',
-      scriptName: 'untitled_script',
+      scriptName: '',
       description: '',
       outputValue: '',
       args: [],
@@ -300,7 +300,7 @@ class App extends Component {
         <MuiThemeProvider theme={ColourTheme}>
           <AppBar>
             <Toolbar>
-              <Typography type="headline" align="left">
+              <Typography variant="headline" align="left">
                 <Icon>description</Icon> GML Script Wizard
               </Typography>
             </Toolbar>

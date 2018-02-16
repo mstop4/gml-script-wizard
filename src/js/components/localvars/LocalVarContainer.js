@@ -11,7 +11,7 @@ const LocalVarContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) =>
     <div className="container-root">
       <div className="container-header">
         <div className="container-title">
-          <Typography type="headline">Local Variables</Typography>
+          <Typography variant="headline">Local Variables</Typography>
         </div>
         <div className="container-add">
             <AddLocalVarButton

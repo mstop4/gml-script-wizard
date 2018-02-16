@@ -10,7 +10,7 @@ const OutputBox = ({ value }) => {
     <div>
       <div className="output-root">
         <div className="output-title">
-          <Typography type="headline" gutterBottom>Script</Typography>
+          <Typography variant="headline" gutterBottom>Script</Typography>
         </div>
         <div className="output-copy">
           <CopyScriptButton/>

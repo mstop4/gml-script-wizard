@@ -4,7 +4,6 @@ import { SortableElement } from 'react-sortable-hoc'
 import IconButton from 'material-ui/IconButton'
 import Icon from 'material-ui/Icon'
 import TextField from 'material-ui/TextField'
-import Typography from 'material-ui/Typography'
 import Card from 'material-ui/Card'
 
 import DragHandle from '../DragHandle'
