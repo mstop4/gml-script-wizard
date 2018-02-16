@@ -143,6 +143,10 @@ class ArgumentDialog extends Component {
   }
 
   render() {
+
+    // Check if argInfo exists before displaying its info in the dialog
+    let displayInfo = this.props.argInfo ? this.props.argInfo : {name: '', type: '', description: ''}
+    
     return (
       <Dialog 
         open={this.props.isOpen}
@@ -151,7 +155,7 @@ class ArgumentDialog extends Component {
         keepMounted
         fullWidth
       >
-        <DialogTitle>{this.props.argInfo.name} Details</DialogTitle>
+        <DialogTitle>{displayInfo.name} Details</DialogTitle>
           <DialogContent>
             <form onSubmit={this.handleSubmit}>
               <Autosuggest
@@ -165,7 +169,7 @@ class ArgumentDialog extends Component {
                 inputProps={{
                   id: "type",
                   ref: 'autosuggest',
-                  value: this.props.argInfo.type,
+                  value: displayInfo.type,
                   onChange: this.props.onChange
                 }}
               />
@@ -173,7 +177,7 @@ class ArgumentDialog extends Component {
             <TextField
               id="description"
               label="Description"
-              value={this.props.argInfo.description}
+              value={displayInfo.description}
               onChange={this.props.onChange}
               fullWidth
             />

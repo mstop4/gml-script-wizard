@@ -7,6 +7,9 @@ import Transition from '../Transition'
 
 const ArgumentDialog = (props) => {
 
+    // Check if argInfo exists before displaying its info in the dialog
+    let displayInfo = props.argInfo ? props.argInfo : {name: '', description: ''}
+
   return (
     <Dialog 
       open={props.isOpen}
@@ -15,12 +18,12 @@ const ArgumentDialog = (props) => {
       keepMounted
       fullWidth
     >
-      <DialogTitle>{props.argInfo.name} Details</DialogTitle>
+      <DialogTitle>{displayInfo.name} Details</DialogTitle>
       <DialogContent>
         <TextField
         id="description"
         label="description"
-        value={props.argInfo.description}
+        value={displayInfo.description}
         onChange={props.onChange}
         fullWidth
         />
