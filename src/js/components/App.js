@@ -8,7 +8,6 @@ import Typography from 'material-ui/Typography'
 import Icon from 'material-ui/Icon'
 
 import OutputBox from './OutputBox'
-import ReturnField from './ReturnField'
 import DescriptionField from './DescriptionField'
 import ArgumentContainer from './arguments/ArgumentContainer'
 import LocalVarContainer from './localvars/LocalVarContainer'
@@ -129,7 +128,7 @@ class App extends Component {
     this.updateOutput(newState)
   }
 
-  updateOutput ({ scriptName, description, args, localVars, returnValue, localVarPrefix }) {
+  updateOutput({ scriptName, description, args, localVars, returnValue, localVarPrefix }) {
     let newOutput = ''
 
     // Determine how much padding is need between tags and description based on which

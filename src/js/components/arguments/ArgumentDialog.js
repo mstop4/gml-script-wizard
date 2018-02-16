@@ -5,6 +5,7 @@ import Icon from 'material-ui/Icon'
 import TextField from 'material-ui/TextField'
 import { MenuItem } from 'material-ui/Menu'
 import Paper from 'material-ui/Paper'
+import Slide from 'material-ui/transitions/Slide'
 
 import Autosuggest from 'react-autosuggest'
 import match from 'autosuggest-highlight/match'
@@ -99,6 +100,10 @@ function getSuggestions(value) {
     })
 }
 
+function Transition(props) {
+  return <Slide direction='up' {...props} />
+}
+
 class ArgumentDialog extends Component {
 
   constructor(props) {
@@ -146,6 +151,8 @@ class ArgumentDialog extends Component {
       <Dialog 
         open={this.props.isOpen}
         onClose={this.props.onClose}
+        transition={Transition}
+        keepMounted
         fullWidth
       >
         <DialogTitle>{this.props.argInfo.name} Details</DialogTitle>
