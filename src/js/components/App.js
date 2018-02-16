@@ -31,9 +31,7 @@ class App extends Component {
       outputValue: '',
       args: [],
       localVars: [],
-      returnValue: '',
-
-      height: 0
+      returnValue: ''
     }
 
     this.handleArgumentChange = this.handleArgumentChange.bind(this)
@@ -50,24 +48,11 @@ class App extends Component {
     this.handleScriptNameChange = this.handleScriptNameChange.bind(this)
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
     this.updateOutput = this.updateOutput.bind(this)
-
-    this.updateDimensions = this.updateDimensions.bind(this)
-  }
-
-  componentWillMount() {
-    this.updateDimensions()
   }
 
   componentDidMount() {
     // init output based on intial state
     this.updateOutput(this.state)
-
-    // listen for  window resize
-    window.addEventListener('resize', this.updateDimensions)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateDimensions)
   }
 
   // TODO: Reduce duplicate code in handle functions
@@ -308,19 +293,9 @@ class App extends Component {
     })
   }
 
-  updateDimensions() {
-    let elem = document.documentElement
-    let body = document.getElementsByTagName('body')[0]
-    let h = window.innerHeight || elem.clientHeight || body.clientHeight
-
-    console.log(window.innerHeight, elem.clientHeight, body.clientHeight)
-
-    this.setState({ height: h })
-  }
-
   render() {
     return (
-      <div className="app" ref={ (divElement) => this.divElement = divElement }>
+      <div className="app">
         {/* <Reboot/>*/}
         <MuiThemeProvider theme={ColourTheme}>
           <AppBar>
