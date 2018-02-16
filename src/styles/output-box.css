@@ -1,0 +1,12 @@
+.output-root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.output-title {
+  flex-grow: 1;
+}
+
+.output-copy {
+}

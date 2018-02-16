@@ -307,15 +307,15 @@ class App extends Component {
           </AppBar>
           <Grid container>
             <Grid item xs={12} md={6}>
-                <ScriptNameField 
-                  value={this.state.scriptName}
-                  onChange={this.handleScriptNameChange}
-                />
-                <DescriptionField 
-                  value={this.state.description}
-                  onChange={this.handleDescriptionChange}
-                />
-                <OutputBox value={this.state.outputValue}/>
+              <ScriptNameField 
+                value={this.state.scriptName}
+                onChange={this.handleScriptNameChange}
+              />
+              <DescriptionField 
+                value={this.state.description}
+                onChange={this.handleDescriptionChange}
+              />
+              <OutputBox value={this.state.outputValue}/>
             </Grid>
             <Grid item xs={12} md={3}>
               <ArgumentContainer 

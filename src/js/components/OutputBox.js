@@ -1,20 +1,21 @@
 import React from 'react'
-import Grid from 'material-ui/Grid'
 import Card, { CardContent } from 'material-ui/Card'
 import Typography from 'material-ui/Typography'
 import CopyScriptButton from './CopyScriptButton'
 
+import "../../styles/output-box.css"
+
 const OutputBox = ({ value }) => {
   return (
     <div>
-      <Grid container alignItems="center">
-        <Grid item xs={11}>
+      <div className="output-root">
+        <div className="output-title">
           <Typography type="headline" gutterBottom>Script</Typography>
-        </Grid>
-        <Grid item xs={1}>
+        </div>
+        <div className="output-copy">
           <CopyScriptButton/>
-        </Grid>
-      </Grid>
+        </div>
+      </div>
       <Card>
         <CardContent>
           <p id="generated-script">
