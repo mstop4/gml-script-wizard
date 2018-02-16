@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import LocalVarField from './LocalVarField'
-import LocalVarDialog from './LocalVarDialog'
 import { SortableContainer } from 'react-sortable-hoc'
 
 const LocalVarList = SortableContainer( ({ items, onChange, onOpen, onRemove }) => {
@@ -32,18 +31,8 @@ class LocalVarSortable extends Component  {
       index: 0
     }
 
-    this.handleDialogOpen = this.handleDialogOpen.bind(this)
-    this.handleDialogClose = this.handleDialogClose.bind(this)
     this.onFieldChange = this.onFieldChange.bind(this)
     this.onFieldRemove = this.onFieldRemove.bind(this)
-  }
-
-  handleDialogOpen(id) {
-    this.setState({ dialogOpen: true, index: id })
-  }
-
-  handleDialogClose() {
-    this.setState({ dialogOpen: false })
   }
 
   onFieldChange(event) {
@@ -54,7 +43,6 @@ class LocalVarSortable extends Component  {
 
   onFieldRemove() {
     this.props.onRemove(this.state.index)
-    this.handleDialogClose()
   }
 
   render() {
@@ -69,13 +57,6 @@ class LocalVarSortable extends Component  {
 
     return (
       <div>
-        <LocalVarDialog 
-        isOpen={this.state.dialogOpen}
-        argInfo={dialogVar}
-        onClose={this.handleDialogClose}
-        onChange={this.onFieldChange}
-        onRemove={this.onFieldRemove}
-        />
         <LocalVarList 
           index={0}
           items={this.props.items}
@@ -83,7 +64,6 @@ class LocalVarSortable extends Component  {
           onSortEnd={this.props.onSortEnd}
           onChange={this.props.onChange}
           onRemove={this.props.onRemove}
-          onOpen={this.handleDialogOpen}
           useDragHandle={true}
         />
       </div>

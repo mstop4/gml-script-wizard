@@ -10,7 +10,7 @@ import DragHandle from '../DragHandle'
 
 import '../../../styles/list-field.css'
 
-const LocalVarField = SortableElement( ({ index, id, name, onChange, onOpen }) => {
+const LocalVarField = SortableElement( ({ index, id, name, onChange, onRemove }) => {
 
   const onClick = (event) => {
     event.stopPropagation()
@@ -20,10 +20,6 @@ const LocalVarField = SortableElement( ({ index, id, name, onChange, onOpen }) =
     let newArg = event.target.value
     let key = event.target.id
     onChange(newArg, id, key)
-  }
-
-  const onDialogOpen = () => {
-    onOpen(id);
   }
 
   return (
@@ -43,11 +39,15 @@ const LocalVarField = SortableElement( ({ index, id, name, onChange, onOpen }) =
           />
         </div>
         <div className="field-button">
-          <IconButton onClick={onDialogOpen}>
-            <Icon>mode_edit</Icon>
+          <IconButton 
+            color="primary"
+            size="small"
+            onClick={onRemove}
+          >
+            <Icon>delete_forever</Icon>
           </IconButton>
-          </div>
         </div>
+      </div>
     </Card>
   )
 })

@@ -150,7 +150,7 @@ class App extends Component {
     let headDescription =   `/// @description${'\xa0'.repeat(Math.max(2,tagPadLength-6))}${description}`
 
     let declArguments = []
-    let declLocals = []
+    let declLocals = ''
 
     let hasParams = false
 
@@ -160,18 +160,14 @@ class App extends Component {
     if (scriptName !== '') {
       headFunction += `${scriptName}(`
 
-      // add parameters
-      hasParams = false
-
       for (let i = 0; i < args.length; i++) {
         if (args[i].name !== '') {
           headFunction += `${args[i].name}, `
-          hasParams = true
         }
       }
 
-      // Remove final comma and space if script has parameters
-      if (hasParams) {
+      // Strip trailing comma
+      if (args.length > 0) {
         headFunction = headFunction.slice(0,headFunction.length-2)
       }
 
@@ -227,29 +223,15 @@ class App extends Component {
     }
 
     // Additional local variables
-
-    // find the length of longest variable name for spacing purposes
-    nameMaxLength = 0
-
     for (let i = 0; i < localVars.length; i++) {
-      if (localVars[i].name.length > nameMaxLength) {
-        nameMaxLength = localVars[i].name.length
+      if (localVars[i].name !== '') {
+        declLocals += `${localVarPrefix}${localVars[i].name}, `
       }
     }
 
-    for (let i = 0; i < localVars.length; i++) {
-      if (localVars[i].name !== '') {
-        let spaceBufferSize = Math.max(0,nameMaxLength-localVars[i].name.length)
-        let localVarDecl = `var ${localVarPrefix}${localVars[i].name};`
-
-        if (localVars[i].description !== '') {
-          localVarDecl += `${'\xa0'.repeat(spaceBufferSize+2)}// ${localVars[i].description}`
-        }
-
-        localVarDecl += '\n'
-
-        declLocals.push(localVarDecl)
-      }
+    // Strip trailing comma
+    if (localVars.length > 0) {
+      declLocals = declLocals.slice(0,declLocals.length-2)
     }
 
     // Build Script
@@ -285,13 +267,13 @@ class App extends Component {
       firstLine = false
     }
 
-    if (declLocals.length > 0 && !firstLine) {
-      newOutput += '\n'
-    }
-
     // local var declarations
-    for (let i = 0; i < declLocals.length; i++) {
-      newOutput += declLocals[i]
+    if (declLocals !== '') {
+      if (!firstLine) {
+        newOutput += '\n'
+      }
+
+      newOutput += `var ${declLocals};\n`
       firstLine = false
     }
 
