@@ -8,15 +8,3 @@ ul {
   list-style: none;
   padding-left: 0;
 }
-
-#generated-script {
-  color: #fff;
-  font-size: 14px;
-  font-family: 'Roboto Mono', monospace;
-  white-space: pre-line;
-}
-
-.argument-item {
-  padding: 0em 1em 0em;
-  margin: 0px 0em;
-}

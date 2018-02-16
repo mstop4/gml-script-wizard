@@ -1,3 +1,10 @@
+#generated-script {
+  color: #fff;
+  font-size: 14px;
+  font-family: 'Roboto Mono', monospace;
+  white-space: pre-line;
+}
+
 .output-root {
   display: flex;
   justify-content: space-between;
