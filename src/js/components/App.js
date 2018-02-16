@@ -131,12 +131,24 @@ class App extends Component {
 
   updateOutput ({ scriptName, description, args, localVars, returnValue, localVarPrefix }) {
     let newOutput = ''
+
+    // Determine how much padding is need between tags and description based on which
+    // tags are used (@param, @function, @description)
+    let tagPadLength = 2
+
+    if (scriptName !== '') {
+      tagPadLength += 3
+    }
+
+    if (description !== '') {
+      tagPadLength += 3
+    }
     
-    let headFunction =      `/// @function${'\xa0'.repeat(5)}`
+    let headFunction =      `/// @function${'\xa0'.repeat(Math.max(2,tagPadLength-3))}`
     let headArgumentTypes = []
     let headArgumentNames = []
     let headArgumentDescs = []
-    let headDescription =   `/// @description${'\xa0'.repeat(2)}${description}`
+    let headDescription =   `/// @description${'\xa0'.repeat(Math.max(2,tagPadLength-6))}${description}`
 
     let declArguments = []
     let declLocals = []
@@ -232,7 +244,7 @@ class App extends Component {
         let localVarDecl = `var ${localVarPrefix}${localVars[i].name};`
 
         if (localVars[i].description !== '') {
-          localVarDecl += `${'\xa0'.repeat(spaceBufferSize+1)}// ${localVars[i].description}`
+          localVarDecl += `${'\xa0'.repeat(spaceBufferSize+2)}// ${localVars[i].description}`
         }
 
         localVarDecl += '\n'
@@ -244,40 +256,47 @@ class App extends Component {
     // Build Script
     // ------------
 
+    let firstLine = true
+
     // @function
     if (scriptName !== '') {
       newOutput += `${headFunction}\n`
+      firstLine = false
     }
 
     // @description
     if (description !== '') {
       newOutput += `${headDescription}\n`
+      firstLine = false
     }
 
     // @param
     for (let i = 0; i < headArgumentNames.length; i++) {
-      newOutput += `/// @param${'\xa0'.repeat(7)}${headArgumentTypes[i]} ${headArgumentNames[i]} ${headArgumentDescs[i]}\n`
+      newOutput += `/// @param${'\xa0'.repeat(tagPadLength)}${headArgumentTypes[i]}${headArgumentNames[i]} ${headArgumentDescs[i]}\n`
+      firstLine = false
     }
 
-    if (declArguments.length > 0) {
+    if (declArguments.length > 0 && !firstLine) {
       newOutput += '\n'
     }
 
     // argument declarations
     for (let i = 0; i < declArguments.length; i++) {
       newOutput += declArguments[i]
+      firstLine = false
     }
 
-    if (declLocals.length > 0) {
+    if (declLocals.length > 0 && !firstLine) {
       newOutput += '\n'
     }
 
     // local var declarations
     for (let i = 0; i < declLocals.length; i++) {
       newOutput += declLocals[i]
+      firstLine = false
     }
 
-    if (newOutput !== '') {
+    if (newOutput !== '' && !firstLine) {
       newOutput += '\n'
     }
 
