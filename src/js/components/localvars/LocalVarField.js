@@ -10,6 +10,8 @@ import Card from 'material-ui/Card'
 
 import DragHandle from '../DragHandle'
 
+import '../../../styles/list-field.css'
+
 const LocalVarField = SortableElement( ({ index, id, name, onChange, onOpen }) => {
 
   const onClick = (event) => {
@@ -28,11 +30,11 @@ const LocalVarField = SortableElement( ({ index, id, name, onChange, onOpen }) =
 
   return (
     <Card>
-      <Grid container alignItems="center">
-        <Grid item xs={1} md={2}>
+      <div className="field-container">
+        <div className="field-drag-handle">
           <DragHandle/>
-        </Grid>
-        <Grid item xs={10} md={8}>
+          </div>
+          <div className="field-textfield">
           <TextField
             id="name"
             placeholder={"unused"}
@@ -41,13 +43,13 @@ const LocalVarField = SortableElement( ({ index, id, name, onChange, onOpen }) =
             onChange={onFieldChange}
             fullWidth
           />
-        </Grid>
-        <Grid item xs={1} md={2}>
+        </div>
+        <div className="field-button">
           <IconButton onClick={onDialogOpen}>
             <Icon>mode_edit</Icon>
           </IconButton>
-        </Grid>
-      </Grid>
+          </div>
+        </div>
     </Card>
   )
 })

@@ -1,0 +1,19 @@
+.field-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.field-button {
+  padding: 5px;
+}
+
+.field-textfield {
+  padding: 5px;
+  flex-grow: 1;
+}
+
+.field-drag-handle {
+  color: #fff;
+  padding: 8px 16px;
+}
