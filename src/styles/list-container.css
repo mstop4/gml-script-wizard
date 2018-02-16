@@ -1,5 +1,4 @@
 .container-root {
-  height: 80vh;
   overflow-x: hidden;
 }
 
@@ -19,4 +18,8 @@
 }
 
 .container-list {
+  height: 100vh;
+  height: -webkit-calc(100vh - 152px);
+  height: -moz-calc(100vh - 152px);
+  height: calc(100vh - 152px);
 }

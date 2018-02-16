@@ -31,7 +31,9 @@ class App extends Component {
       outputValue: '',
       args: [],
       localVars: [],
-      returnValue: ''
+      returnValue: '',
+
+      height: 0
     }
 
     this.handleArgumentChange = this.handleArgumentChange.bind(this)
@@ -48,14 +50,27 @@ class App extends Component {
     this.handleScriptNameChange = this.handleScriptNameChange.bind(this)
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
     this.updateOutput = this.updateOutput.bind(this)
+
+    this.updateDimensions = this.updateDimensions.bind(this)
+  }
+
+  componentWillMount() {
+    this.updateDimensions()
   }
 
   componentDidMount() {
     // init output based on intial state
     this.updateOutput(this.state)
+
+    // listen for  window resize
+    window.addEventListener('resize', this.updateDimensions)
   }
 
-  // TODO: Reduce duplicate code in handle* functions
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimensions)
+  }
+
+  // TODO: Reduce duplicate code in handle functions
 
   handleArgumentChange(newArg, id, key) {
     // Make a copy of old state and change relevant values
@@ -293,47 +308,59 @@ class App extends Component {
     })
   }
 
+  updateDimensions() {
+    let elem = document.documentElement
+    let body = document.getElementsByTagName('body')[0]
+    let h = window.innerHeight || elem.clientHeight || body.clientHeight
+
+    console.log(window.innerHeight, elem.clientHeight, body.clientHeight)
+
+    this.setState({ height: h })
+  }
+
   render() {
     return (
-      <div className="app">
+      <div className="app" ref={ (divElement) => this.divElement = divElement }>
         {/* <Reboot/>*/}
         <MuiThemeProvider theme={ColourTheme}>
           <AppBar>
             <Toolbar>
               <Typography variant="headline" align="left">
-                <Icon>description</Icon> GML Script Wizard
+                <Icon>description</Icon> GML Script Wizard {this.state.height}
               </Typography>
             </Toolbar>
           </AppBar>
-          <Grid container>
-            <Grid item xs={12} md={6}>
-              <ScriptNameField 
-                value={this.state.scriptName}
-                onChange={this.handleScriptNameChange}
-              />
-              <DescriptionField 
-                value={this.state.description}
-                onChange={this.handleDescriptionChange}
-              />
-              <OutputBox value={this.state.outputValue}/>
+          <div>
+            <Grid container alignItems='stretch'>
+              <Grid item xs={12} md={6}>
+                <ScriptNameField 
+                  value={this.state.scriptName}
+                  onChange={this.handleScriptNameChange}
+                />
+                <DescriptionField 
+                  value={this.state.description}
+                  onChange={this.handleDescriptionChange}
+                />
+                <OutputBox value={this.state.outputValue}/>
+              </Grid>
+              <Grid item xs={6} md={3}>
+                <ArgumentContainer 
+                  items={this.state.args}
+                  onClick={this.handleAddArgument}
+                  onRemove={this.handleRemoveArgument}
+                  onChange={this.handleArgumentChange}
+                  onSortEnd={this.handleArgumentSort}/>
+              </Grid>
+              <Grid item xs={6} md={3}>
+                <LocalVarContainer 
+                  items={this.state.localVars}
+                  onClick={this.handleAddLocalVar}
+                  onRemove={this.handleRemoveLocalVar}
+                  onChange={this.handleLocalVarChange}
+                  onSortEnd={this.handleLocalVarSort}/>
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={3}>
-              <ArgumentContainer 
-                items={this.state.args}
-                onClick={this.handleAddArgument}
-                onRemove={this.handleRemoveArgument}
-                onChange={this.handleArgumentChange}
-                onSortEnd={this.handleArgumentSort}/>
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <LocalVarContainer 
-                items={this.state.localVars}
-                onClick={this.handleAddLocalVar}
-                onRemove={this.handleRemoveLocalVar}
-                onChange={this.handleLocalVarChange}
-                onSortEnd={this.handleLocalVarSort}/>
-            </Grid>
-          </Grid>
+          </div>
         </MuiThemeProvider>
       </div>
     )

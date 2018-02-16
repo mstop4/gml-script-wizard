@@ -21,7 +21,7 @@ const ArgumentContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) =>
         </div>
       </div>
       <div className="container-list">
-        <Scrollbars autoHeight autoHeightMin={`calc(80vh - 5em)`} autoHeightMax={`calc(80vh - 5em)`}>
+        <Scrollbars>
           <ArgumentSortable 
             items={items}
             onChange={onChange}

@@ -20,7 +20,7 @@ const LocalVarContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) =>
         </div>
       </div>
       <div className="container-list">
-        <Scrollbars autoHeight autoHeightMin={`calc(80vh - 5em)`} autoHeightMax={`calc(80vh - 5em)`}>
+        <Scrollbars>
           <LocalVarSortable 
             items={items}
             onChange={onChange}
