@@ -281,7 +281,7 @@ class App extends Component {
       newOutput += '\n'
     }
 
-    newOutput += '/* Your code goes here */'
+    newOutput += '/* Script body goes here */'
 
     this.setState({
       scriptName: scriptName,
