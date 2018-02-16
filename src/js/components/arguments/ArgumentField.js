@@ -1,7 +1,6 @@
 import React from 'react'
 import { SortableElement } from 'react-sortable-hoc'
 
-import Grid from 'material-ui/Grid'
 import IconButton from 'material-ui/IconButton'
 import Icon from 'material-ui/Icon'
 import TextField from 'material-ui/TextField'
@@ -29,7 +28,7 @@ const ArgumentField = SortableElement( ({ index, id, name, onChange, onOpen }) =
 
   return (
     <Card>
-      <div className="field-container">
+      <div className="field-root">
         <div className="field-drag-handle">
           <DragHandle/>
         </div>

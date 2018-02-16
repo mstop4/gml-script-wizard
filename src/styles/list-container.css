@@ -1,0 +1,22 @@
+.container-root {
+  height: 80vh;
+  overflow-x: hidden;
+}
+
+.container-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container-title {
+  flex-grow: 1;
+  padding: 5px;
+}
+
+.container-add {
+  padding: 1px;
+}
+
+.container-list {
+}

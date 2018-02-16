@@ -1,5 +1,4 @@
 import React from 'react'
-import Grid from 'material-ui/Grid'
 import Typography from 'material-ui/Typography'
 import { Scrollbars } from 'react-custom-scrollbars'
 
@@ -9,29 +8,27 @@ import AddLocalVarButton from './AddLocalVarButton'
 const LocalVarContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) => {
 
   return (
-    <div className="item-list">
-      <Grid container alignItems="center">
-        <Grid item xs={11} md={10}>
+    <div className="container-root">
+      <div className="container-header">
+        <div className="container-title">
           <Typography type="headline">Local Variables</Typography>
-        </Grid>
-        <Grid item xs={1} md={2}>
+        </div>
+        <div className="container-add">
             <AddLocalVarButton
               onClick={onClick}
             />
-        </Grid>
-      </Grid>
-      <Grid container>
-        <Grid item xs={12}>
-          <Scrollbars autoHeight autoHeightMin={`calc(80vh - 5em)`} autoHeightMax={`calc(80vh - 5em)`}>
-            <LocalVarSortable 
-              items={items}
-              onChange={onChange}
-              onSortEnd={onSortEnd}
-              onRemove={onRemove}
-            />
-          </Scrollbars>
-        </Grid>
-      </Grid>
+        </div>
+      </div>
+      <div className="container-list">
+        <Scrollbars autoHeight autoHeightMin={`calc(80vh - 5em)`} autoHeightMax={`calc(80vh - 5em)`}>
+          <LocalVarSortable 
+            items={items}
+            onChange={onChange}
+            onSortEnd={onSortEnd}
+            onRemove={onRemove}
+          />
+        </Scrollbars>
+      </div>
     </div>
   )
 }

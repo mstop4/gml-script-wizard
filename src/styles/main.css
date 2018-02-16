@@ -16,12 +16,6 @@ ul {
   white-space: pre-line;
 }
 
-.item-list {
-  height: 80vh;
-  overflow-x: hidden;
-  padding: 0.5em 0em;
-}
-
 .argument-item {
   padding: 0em 1em 0em;
   margin: 0px 0em;
