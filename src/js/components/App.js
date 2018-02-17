@@ -64,7 +64,7 @@ class App extends Component {
     this.updateOutput(newState)
   }
 
-  handleAddArgument(event) {
+  handleAddArgument() {
     let newState = this.state
     newState.args.push({name: '', type: '', description: ''})
     this.updateOutput(newState)
@@ -91,7 +91,7 @@ class App extends Component {
     this.updateOutput(newState)
   }
 
-  handleAddLocalVar(event) {
+  handleAddLocalVar() {
     let newState = this.state
     newState.localVars.push({name: '', description: ''})
     this.updateOutput(newState)
@@ -147,8 +147,6 @@ class App extends Component {
     let declArguments = []
     let declLocals = ''
 
-    let hasParams = false
-
     // Create script JSDoc header
 
     // Script name
@@ -193,7 +191,7 @@ class App extends Component {
   
         if (args[i].type !== '') {
           let spaceBufferSize = Math.max(0,typeMaxLength-args[i].type.length)
-          headArgumentTypes.push(` \{${args[i].type}\}${'\xa0'.repeat(spaceBufferSize)}`)
+          headArgumentTypes.push(` {${args[i].type}}${'\xa0'.repeat(spaceBufferSize)}`)
         } else {
           headArgumentTypes.push('\xa0'.repeat(typeMaxLength+3))
         }

@@ -11,7 +11,7 @@ import DragHandle from '../DragHandle'
 import '../../../styles/list-field.css'
 
 const LocalVarField = SortableElement( (props) => {
-  let { index, id, name, onChange, onRemove } = props
+  let { id, name, onChange, onRemove } = props
   
   const onClick = (event) => {
     event.stopPropagation()

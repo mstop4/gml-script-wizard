@@ -30,7 +30,7 @@ const suggestions = [
 ]
 
 function renderInput(inputProps) {
-  const { classes, ref, ...other} = inputProps
+  const { ref, ...other} = inputProps
 
   return (
     <TextField

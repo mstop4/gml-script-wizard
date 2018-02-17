@@ -49,14 +49,6 @@ class LocalVarSortable extends Component  {
 
   render() {
 
-    let dialogVar
-
-    if (this.props.items.length > 0) {
-      dialogVar = this.props.items[this.state.index]
-    } else {
-      dialogVar = {name: '', description: ''}
-    }
-
     return (
       <div>
         <LocalVarList 
