@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
 import { arrayMove } from 'react-sortable-hoc'
-import Reboot from 'material-ui/Reboot'
 import Grid from 'material-ui/Grid'
-import AppBar from 'material-ui/AppBar'
-import Toolbar from 'material-ui/Toolbar'
-import Typography from 'material-ui/Typography'
-import Icon from 'material-ui/Icon'
 
+import TitleBar from './TitleBar'
 import OutputBox from './OutputBox'
 import DescriptionField from './DescriptionField'
 import ArgumentContainer from './arguments/ArgumentContainer'
@@ -30,7 +26,6 @@ class App extends Component {
       outputValue: '',
       args: [],
       localVars: [],
-      returnValue: ''
     }
 
     this.handleArgumentChange = this.handleArgumentChange.bind(this)
@@ -297,13 +292,7 @@ class App extends Component {
     return (
       <div className="app">
         <MuiThemeProvider theme={ColourTheme}>
-          <AppBar>
-            <Toolbar>
-              <Typography variant="headline" align="left">
-                <Icon>description</Icon> GML Script Wizard {this.state.height}
-              </Typography>
-            </Toolbar>
-          </AppBar>
+          <TitleBar/>
           <div>
             <Grid container alignItems='stretch'>
               <Grid item xs={12} md={6}>
