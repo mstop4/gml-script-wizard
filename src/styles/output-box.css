@@ -13,6 +13,7 @@
 
 .output-title {
   flex-grow: 1;
+  flex-basis: 0;
 }
 
 .output-copy {

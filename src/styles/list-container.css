@@ -10,6 +10,7 @@
 
 .container-title {
   flex-grow: 1;
+  flex-basis: 0;
   padding: 5px;
 }
 
