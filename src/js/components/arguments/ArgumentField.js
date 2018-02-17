@@ -10,7 +10,8 @@ import DragHandle from '../DragHandle'
 
 import '../../../styles/list-field.css'
 
-const ArgumentField = SortableElement( ({ index, id, name, onChange, onOpen }) => {
+const ArgumentField = SortableElement( (props) => {
+  let { index, id, name, onChange, onOpen } = props
 
   const onClick = (event) => {
     event.stopPropagation()

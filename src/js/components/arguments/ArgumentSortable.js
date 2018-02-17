@@ -3,7 +3,9 @@ import ArgumentField from './ArgumentField'
 import ArgumentDialog from './ArgumentDialog'
 import { SortableContainer } from 'react-sortable-hoc'
 
-const ArgumentList = SortableContainer( ({ items, onChange, onOpen, onRemove }) => {
+const ArgumentList = SortableContainer( (props) => {
+  let { items, onChange, onOpen, onRemove } = props
+
   return (
     <div className='argument-list'>
       <ul>

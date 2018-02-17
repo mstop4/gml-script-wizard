@@ -64,7 +64,7 @@ class CopyScriptButton extends Component {
           size="small"
           onClick={this.copyScript}
         >
-        <Icon>content_copy</Icon>
+          <Icon>content_copy</Icon>
         </IconButton>
       </div>
     )

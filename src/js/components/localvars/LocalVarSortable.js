@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import LocalVarField from './LocalVarField'
 import { SortableContainer } from 'react-sortable-hoc'
 
-const LocalVarList = SortableContainer( ({ items, onChange, onOpen, onRemove }) => {
+const LocalVarList = SortableContainer( (props) => {
+  let { items, onChange, onOpen, onRemove } = props
+
   return (
     <div className='argument-list'>
       <ul>

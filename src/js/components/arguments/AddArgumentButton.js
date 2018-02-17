@@ -2,7 +2,7 @@ import React from 'react'
 import IconButton from 'material-ui/IconButton'
 import Icon from 'material-ui/Icon'
 
-const AddArgumentButton = ({onClick}) => (
+const AddArgumentButton = ({ onClick }) => (
     <div className='add-argument-button'>
       <IconButton 
         color="primary"

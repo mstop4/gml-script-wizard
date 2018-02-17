@@ -7,7 +7,9 @@ import AddArgumentButton from './AddArgumentButton'
 
 import '../../../styles/list-container.css'
 
-const ArgumentContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) => {
+const ArgumentContainer = (props) => {
+  let { items, onClick, onChange, onRemove, onSortEnd } = props
+
   return (
     <div className="container-root">
       <div className="container-header">

@@ -5,7 +5,8 @@ import { Scrollbars } from 'react-custom-scrollbars'
 import LocalVarSortable from './LocalVarSortable'
 import AddLocalVarButton from './AddLocalVarButton'
 
-const LocalVarContainer = ({ items, onClick, onChange, onRemove, onSortEnd }) => {
+const LocalVarContainer = (props) => {
+  let { items, onClick, onChange, onRemove, onSortEnd } = props
 
   return (
     <div className="container-root">
