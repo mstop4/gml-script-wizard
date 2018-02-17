@@ -2,7 +2,7 @@ import React from 'react'
 import IconButton from 'material-ui/IconButton'
 import Icon from 'material-ui/Icon'
 
-const AddLocalVarButton = ({onClick}) => (
+const AddLocalVarButton = ({ onClick }) => (
   <div className='add-local-var-button'>
     <IconButton 
       color="primary"
