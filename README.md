@@ -1,5 +1,8 @@
 # [GML Script Wizard](https://mstop4.github.io/gml-script-wizard/)
 
+[![dependencies Status](https://david-dm.org/mstop4/gml-script-wizard/status.svg)](https://david-dm.org/mstop4/gml-script-wizard)
+[![devDependencies Status](https://david-dm.org/mstop4/gml-script-wizard/dev-status.svg)](https://david-dm.org/mstop4/gml-script-wizard?type=dev)
+
 As a GML coder who writes a lot of scripts, do you like to document your code using JSDoc and assigning all your arguments to local variables? For example:
 
     /// @function     collision_line_list(x1, y1, x2, y2, obj, prec, notme)
