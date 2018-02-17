@@ -6,7 +6,7 @@
 As a GML coder who writes a lot of scripts, do you like to document your code using JSDoc and assigning all your arguments to local variables? For example:
 
     /// @function     collision_line_list(x1, y1, x2, y2, obj, prec, notme)
-    /// @description  Returns a ds_list populated with the ids of instances colliding with a given line, or noone if no instance are found.
+    /// @description  Returns a ds_list populated with the ids of instances colliding with a given line.
     /// @param        {real}    x1     start point of the collision line
     /// @param        {real}    y1    
     /// @param        {real}    x2     end point of the collision line
