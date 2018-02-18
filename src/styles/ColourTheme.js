@@ -4,6 +4,13 @@ import green from 'material-ui/colors/green'
 import black from 'material-ui/colors/grey' 
 
 const ColourTheme = createMuiTheme({
+  typography: {
+    fontFamily: '"Open Sans",sans-serif',
+    headline: {
+      fontFamily: 'Oswald'
+    }
+  },
+
   palette: {
     type: 'dark',
     background: {

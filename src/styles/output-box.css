@@ -1,7 +1,7 @@
 #generated-script {
   color: #fff;
   font-size: 14px;
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Droid Sans Mono', monospace;
   white-space: pre-line;
 }
 
@@ -14,7 +14,4 @@
 .output-title {
   flex-grow: 1;
   flex-basis: 0;
-}
-
-.output-copy {
 }

@@ -10,7 +10,7 @@ import LocalVarContainer from './localvars/LocalVarContainer'
 import ScriptNameField from './ScriptNameField'
 
 import { MuiThemeProvider } from 'material-ui/styles'
-import ColourTheme from '../ColourTheme'
+import ColourTheme from '../../styles/ColourTheme'
 
 import '../../styles/main.css'
 
