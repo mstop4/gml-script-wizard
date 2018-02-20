@@ -151,16 +151,18 @@ class App extends Component {
 
     // Script name
     if (scriptName !== '') {
+      let hasArgs = false
       headFunction += `${scriptName}(`
 
       for (let i = 0; i < args.length; i++) {
         if (args[i].name !== '') {
           headFunction += `${args[i].name}, `
+          hasArgs = true
         }
       }
 
       // Strip trailing comma
-      if (args.length > 0) {
+      if (hasArgs) {
         headFunction = headFunction.slice(0,headFunction.length-2)
       }
 
