@@ -43,7 +43,7 @@ const ArgumentDialog = (props) => {
 
           <Typography variant="subheading" gutterBottom>Removing Items</Typography>
           <Typography variant="body2" paragraph>
-            For arguments, click on the <Icon style={{ fontSize: 18}} >mode_edit</Icon> to open up the argument details dialog, then click on <Icon style={{ fontSize: 18}} >delete_forever</Icon> to remove.\n
+            For arguments, click on <Icon style={{ fontSize: 18}} >mode_edit</Icon> to open up the argument details dialog, then click on <Icon style={{ fontSize: 18}} >delete_forever</Icon> to remove.<br/>
             For local variables, click on <Icon style={{ fontSize: 18}} >delete_forever</Icon> to remove.
           </Typography>
 
