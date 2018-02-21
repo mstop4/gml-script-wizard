@@ -63,7 +63,8 @@ const ArgumentDialog = (props) => {
           <Typography variant="subheading" paragraph>
             Created by:&nbsp;
             <a href="https://github.com/mstop4" className="help-link" target="_blank" rel="noopener noreferrer">M.S.T.O.P.</a>&nbsp;
-            (<a href="https://twitter.com/QuadolorGames" className="help-link" target="_blank" rel="noopener noreferrer">@QuadolorGames</a>)
+            (<a href="https://twitter.com/QuadolorGames" className="help-link" target="_blank" rel="noopener noreferrer">@QuadolorGames</a>)<br/>
+            View source code on <a href="https://github.com/mstop4/gml-script-wizard" className="help-link" target="_blank" rel="noopener noreferrer">GitHub</a>
           </Typography>
 
         </DialogContent>
