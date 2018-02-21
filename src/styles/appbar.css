@@ -1,0 +1,15 @@
+.appbar-root {
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.appbar-branding {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.appbar-buttons {
+}
