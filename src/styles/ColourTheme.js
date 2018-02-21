@@ -1,7 +1,6 @@
 import { createMuiTheme } from 'material-ui/styles'
 import red from 'material-ui/colors/red'
-import green from 'material-ui/colors/green'
-import black from 'material-ui/colors/grey' 
+import grey from 'material-ui/colors/grey' 
 
 const ColourTheme = createMuiTheme({
   typography: {
@@ -18,14 +17,14 @@ const ColourTheme = createMuiTheme({
     },
 
     primary: {
-      light: green[600],
+      light: '#039d5b',
       main: '#039d5b',
-      dark: green[900]
+      dark: '#00664d'
     },
     secondary: {
-      light: black[400],
-      main: black[600],
-      dark: black[700]
+      light: grey[400],
+      main: grey[600],
+      dark: grey[700]
     },
     error: {
       light: red[400],
