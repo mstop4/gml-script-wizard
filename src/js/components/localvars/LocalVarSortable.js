@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import LocalVarField from './LocalVarField'
 import { SortableContainer } from 'react-sortable-hoc'
+import PropTypes from 'prop-types'
 
 const LocalVarList = SortableContainer( (props) => {
   let { items, onChange, onOpen, onRemove } = props
@@ -63,6 +64,13 @@ class LocalVarSortable extends Component  {
       </div>
     )
   }
+}
+
+LocalVarSortable.propTypes = {
+  onChange: PropTypes.func,
+  onRemove: PropTypes.func,
+  items: PropTypes.array,
+  onSortEnd: PropTypes.func
 }
 
 export default LocalVarSortable

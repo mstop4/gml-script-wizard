@@ -1,6 +1,7 @@
 import React from 'react'
 import Typography from 'material-ui/Typography'
 import { Scrollbars } from 'react-custom-scrollbars'
+import PropTypes from 'prop-types'
 
 import LocalVarSortable from './LocalVarSortable'
 import AddLocalVarButton from './AddLocalVarButton'
@@ -32,6 +33,14 @@ const LocalVarContainer = (props) => {
       </div>
     </div>
   )
+}
+
+LocalVarContainer.propTypes = {
+  items: PropTypes.array,
+  onClick: PropTypes.func,
+  onChange: PropTypes.func,
+  onRemove: PropTypes.func,
+  onSortEnd: PropTypes.func
 }
 
 export default LocalVarContainer

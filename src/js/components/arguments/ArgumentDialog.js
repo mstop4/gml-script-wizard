@@ -6,6 +6,7 @@ import TextField from 'material-ui/TextField'
 import { MenuItem } from 'material-ui/Menu'
 import Paper from 'material-ui/Paper'
 import Transition from '../Transition'
+import PropTypes from 'prop-types'
 
 import Autosuggest from 'react-autosuggest'
 import match from 'autosuggest-highlight/match'
@@ -201,6 +202,14 @@ class ArgumentDialog extends Component {
       </Dialog>
     )
   }
+}
+
+ArgumentDialog.propTypes = {
+  onChange: PropTypes.func,
+  argInfo: PropTypes.object,
+  isOpen: PropTypes.bool,
+  onClose: PropTypes.func,
+  onRemove: PropTypes.func
 }
 
 export default ArgumentDialog

@@ -25,7 +25,7 @@
   ],
 
   "rules": {
-    "react/prop-types": 0,
+    "react/prop-types": 1,
     "react/no-unescaped-entities": 0,
     "quotes": [1, "single", { "avoidEscape": true, "allowTemplateLiterals": true }]
   }

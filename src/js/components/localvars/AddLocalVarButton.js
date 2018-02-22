@@ -1,6 +1,7 @@
 import React from 'react'
 import IconButton from 'material-ui/IconButton'
 import Icon from 'material-ui/Icon'
+import PropTypes from 'prop-types'
 
 const AddLocalVarButton = ({ onClick }) => (
   <div className='add-local-var-button'>
@@ -13,5 +14,9 @@ const AddLocalVarButton = ({ onClick }) => (
     </IconButton>
   </div>
 )
+
+AddLocalVarButton.propTypes = {
+  onClick: PropTypes.func
+}
 
 export default AddLocalVarButton

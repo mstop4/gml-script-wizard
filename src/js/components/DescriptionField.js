@@ -1,5 +1,6 @@
 import React from 'react'
 import TextField from 'material-ui/TextField'
+import PropTypes from 'prop-types'
 
 const DescriptionField = ({ value, onChange }) => {
   return (
@@ -12,6 +13,11 @@ const DescriptionField = ({ value, onChange }) => {
       onChange={onChange}
     />
   )   
+}
+
+DescriptionField.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func
 }
 
 export default DescriptionField

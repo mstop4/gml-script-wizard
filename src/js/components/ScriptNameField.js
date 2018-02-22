@@ -1,5 +1,6 @@
 import React from 'react'
 import TextField from 'material-ui/TextField'
+import PropTypes from 'prop-types'
 
 const ScriptNameField = ({ value, onChange }) => {
   return (
@@ -12,6 +13,11 @@ const ScriptNameField = ({ value, onChange }) => {
       onChange={onChange}
     />
   )    
+}
+
+ScriptNameField.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func
 }
 
 export default ScriptNameField

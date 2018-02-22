@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ArgumentField from './ArgumentField'
 import ArgumentDialog from './ArgumentDialog'
 import { SortableContainer } from 'react-sortable-hoc'
+import PropTypes from 'prop-types'
 
 const ArgumentList = SortableContainer( (props) => {
   let { items, onChange, onOpen, onRemove } = props
@@ -90,6 +91,13 @@ class ArgumentSortable extends Component {
       </div>
     )
   }
+}
+
+ArgumentSortable.propTypes = {
+  onChange: PropTypes.func,
+  onRemove: PropTypes.func,
+  items: PropTypes.array,
+  onSortEnd: PropTypes.func
 }
 
 export default ArgumentSortable

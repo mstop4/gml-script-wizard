@@ -5,10 +5,11 @@ import Icon from 'material-ui/Icon'
 import Transition from '../Transition'
 import Typography from 'material-ui/Typography/Typography'
 import Divider from 'material-ui/Divider'
+import PropTypes from 'prop-types'
 
 import '../../../styles/help.css'
 
-const ArgumentDialog = (props) => {
+const HelpDialog = (props) => {
   let { isOpen, onClose } = props 
 
   return (
@@ -81,4 +82,9 @@ const ArgumentDialog = (props) => {
   )
 }
 
-export default ArgumentDialog
+HelpDialog.propTypes = {
+  isOpen: PropTypes.bool,
+  onClose: PropTypes.func
+}
+
+export default HelpDialog
