@@ -39,7 +39,6 @@ class App extends Component {
     this.handleAddLocalVar = this.handleAddLocalVar.bind(this)
     this.handleRemoveLocalVar = this.handleRemoveLocalVar.bind(this)
 
-    this.handleReturnChange = this.handleReturnChange.bind(this)
     this.handleScriptNameChange = this.handleScriptNameChange.bind(this)
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
     this.updateOutput = this.updateOutput.bind(this)
@@ -112,12 +111,6 @@ class App extends Component {
     this.updateOutput(newState)
   }
 
-  handleReturnChange(event) {
-    let newState = this.state
-    newState.returnValue = event.target.value
-    this.updateOutput(newState)
-  }
-
   handleScriptNameChange(event) {
     let newState = this.state
     newState.scriptName = event.target.value
@@ -125,8 +118,7 @@ class App extends Component {
   }
 
   updateOutput(newState) {
-    let { scriptName, description, args, localVars, localVarPrefix } = newState
-    let newOutput = generateScript(scriptName, description, args, localVars, localVarPrefix)
+    let newOutput = generateScript(newState)
     this.setState(newOutput)
   }
 

@@ -1,4 +1,4 @@
-const generateScript = (scriptName, description, args, localVars, localVarPrefix) => {
+const generateScript = ({ scriptName, description, args, localVars, localVarPrefix }) => {
   let newOutput = ''
 
   // Determine how much padding is need between tags and description based on which
