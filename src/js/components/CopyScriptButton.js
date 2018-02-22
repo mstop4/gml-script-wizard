@@ -23,9 +23,9 @@ class CopyScriptButton extends Component {
     let tempBox = document.createElement('textarea')
 
     document.body.appendChild(tempBox)
-    tempBox.setAttribute("id", "tempBox")
+    tempBox.setAttribute('id', 'tempBox')
     scriptText = scriptText.replace(/&nbsp;/g, ' ')
-    document.getElementById("tempBox").value = scriptText
+    document.getElementById('tempBox').value = scriptText
     tempBox.select()
     document.execCommand('Copy')
     document.body.removeChild(tempBox)

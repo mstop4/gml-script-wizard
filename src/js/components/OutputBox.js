@@ -3,7 +3,7 @@ import Card, { CardContent } from 'material-ui/Card'
 import Typography from 'material-ui/Typography'
 import CopyScriptButton from './CopyScriptButton'
 
-import "../../styles/output-box.css"
+import '../../styles/output-box.css'
 
 const OutputBox = ({ value }) => {
   return (

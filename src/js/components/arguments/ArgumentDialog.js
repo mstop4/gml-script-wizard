@@ -167,7 +167,7 @@ class ArgumentDialog extends Component {
                 getSuggestionValue={this.handleGetSuggestion}
                 renderSuggestion={renderSuggestion}
                 inputProps={{
-                  id: "type",
+                  id: 'type',
                   ref: 'autosuggest',
                   value: displayInfo.type,
                   onChange: this.props.onChange

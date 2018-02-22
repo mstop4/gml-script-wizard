@@ -36,7 +36,7 @@ const ArgumentField = SortableElement( (props) => {
         <div className="field-textfield">
           <TextField
             id="name"
-            placeholder={"unused"}
+            placeholder={'unused'}
             value={name}
             onClick={onClick}
             onChange={onFieldChange}

@@ -7,7 +7,7 @@
   "author": "mstop4 <mstop4@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack-dev-server --port 8080 --host 0.0.0.0 --hot --open --config webpack.dev.js",
     "build:prod": "./node_modules/.bin/webpack --config webpack.prod.js",
     "test": "mocha --reporter spec ./test/index.js \"./test/components/*.spec.js\"",
     "lint": "esw webpack.config.* src tools --color",
