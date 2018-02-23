@@ -5,11 +5,28 @@ import PropTypes from 'prop-types'
 
 import ArgumentSortable from './ArgumentSortable'
 import AddArgumentButton from './AddArgumentButton'
+import { EVENT_ADD, EVENT_REMOVE, EVENT_SORT, EVENT_CHANGE } from '../../helpers/EventTypes'
 
 import '../../../styles/list-container.css'
 
 const ArgumentContainer = (props) => {
-  let { items, onClick, onChange, onRemove, onSortEnd } = props
+  let { items, onEvent } = props
+
+  const onAdd = () => {
+    onEvent(EVENT_ADD)
+  }
+
+  const onRemove = (id) => {
+    onEvent(EVENT_REMOVE, { id } )
+  }
+
+  const onSortEnd = (event) => {
+    onEvent(EVENT_SORT, { oldIndex: event.oldIndex, newIndex: event.newIndex })
+  }
+
+  const onChange = (newArg, id, key) => {
+    onEvent (EVENT_CHANGE, { newArg, id, key } )
+  }
 
   return (
     <div className="container-root">
@@ -19,7 +36,7 @@ const ArgumentContainer = (props) => {
         </div>
         <div className="container-add">
           <AddArgumentButton
-            onClick={onClick}
+            onClick={onAdd}
           />
         </div>
       </div>
@@ -39,10 +56,7 @@ const ArgumentContainer = (props) => {
 
 ArgumentContainer.propTypes = {
   items: PropTypes.array,
-  onClick: PropTypes.func,
-  onChange: PropTypes.func,
-  onRemove: PropTypes.func,
-  onSortEnd: PropTypes.func
+  onEvent: PropTypes.func,
 }
 
 export default ArgumentContainer

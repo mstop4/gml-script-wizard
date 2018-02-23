@@ -12,6 +12,7 @@ import ScriptNameField from './ScriptNameField'
 import { MuiThemeProvider } from 'material-ui/styles'
 import ColourTheme from '../helpers/ColourTheme'
 import generateScript from '../helpers/ScriptGen'
+import { EVENT_ADD, EVENT_REMOVE, EVENT_SORT, EVENT_CHANGE } from '../helpers/EventTypes'
 
 import '../../styles/main.css'
 
@@ -22,7 +23,7 @@ class App extends Component {
 
     this.state = {
       options: {
-        legacyMode: true,
+        legacyMode: false,
         localVarPrefix: '_'
       },
       scriptName: '',
@@ -32,10 +33,7 @@ class App extends Component {
       localVars: [],
     }
 
-    this.handleArgumentChange = this.handleArgumentChange.bind(this)
-    this.handleArgumentSort = this.handleArgumentSort.bind(this)
-    this.handleAddArgument = this.handleAddArgument.bind(this)
-    this.handleRemoveArgument = this.handleRemoveArgument.bind(this)
+    this.handleArgumentEvent = this.handleArgumentEvent.bind(this)
 
     this.handleLocalVarChange = this.handleLocalVarChange.bind(this)
     this.handleLocalVarSort = this.handleLocalVarSort.bind(this)
@@ -52,33 +50,31 @@ class App extends Component {
     this.updateOutput(this.state)
   }
 
-  // TODO: Reduce duplicate code in handle functions
-
-  handleArgumentChange(newArg, id, key) {
+  handleArgumentEvent(eventType, params) {
     // Make a copy of old state and change relevant values
     let newState = this.state
-    newState.args[id][key] = newArg
-    this.updateOutput(newState)
-  }
+    
+    switch (eventType) {
+      case EVENT_CHANGE:
+        newState.args[params.id][params.key] = params.newArg
+        break
 
-  handleArgumentSort(event) {
-    let newState = this.state
-    newState.args = arrayMove(newState.args, event.oldIndex, event.newIndex)
-    this.updateOutput(newState)
-  }
+      case EVENT_SORT:
+        newState.args = arrayMove(newState.args, params.oldIndex, params.newIndex)
+        break
 
-  handleAddArgument() {
-    let newState = this.state
-    newState.args.push({name: '', type: '', description: ''})
-    this.updateOutput(newState)
-  }
+      case EVENT_ADD:
+        newState.args.push({name: '', type: '', description: ''})
+        break
 
-  handleRemoveArgument(id) {
-    if (this.state.args.length > 0) {
-      let newState = this.state
-      newState.args.splice(id, 1)
-      this.updateOutput(newState)
+      case EVENT_REMOVE:
+        if (this.state.args.length > 0) {
+          newState.args.splice(params.id, 1)
+        }
+        break
     }
+
+    this.updateOutput(newState)
   }
 
   handleLocalVarChange(newArg, id, key) {
@@ -146,10 +142,7 @@ class App extends Component {
               <Grid item xs={12} sm={6} md={3}>
                 <ArgumentContainer 
                   items={this.state.args}
-                  onClick={this.handleAddArgument}
-                  onRemove={this.handleRemoveArgument}
-                  onChange={this.handleArgumentChange}
-                  onSortEnd={this.handleArgumentSort}/>
+                  onEvent={this.handleArgumentEvent}/>
               </Grid>
               <Grid item xs={12} sm={6} md={3}>
                 <LocalVarContainer 
