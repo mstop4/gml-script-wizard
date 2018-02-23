@@ -77,33 +77,26 @@ const generateScript = ({ scriptName, description, args, localVars, options }) =
     // Build JSDoc line
     if (args[i].name !== '') {
 
-      if (legacyMode) {
-        if (args[i].type !== '') {
-          let spaceBufferSize = Math.max(0,typeMaxLength-args[i].type.length)
-          headArgumentTypes.push(` (${args[i].type})${'\xa0'.repeat(spaceBufferSize)}`)
-        } else {
-          headArgumentTypes.push('\xa0'.repeat(typeMaxLength+3))
-        }
-      } else {
+      if (!legacyMode) {
         if (args[i].type !== '') {
           let spaceBufferSize = Math.max(0,typeMaxLength-args[i].type.length)
           headArgumentTypes.push(` {${args[i].type}}${'\xa0'.repeat(spaceBufferSize)}`)
         } else {
           headArgumentTypes.push('\xa0'.repeat(typeMaxLength+3))
         }
-      }
 
-      if (args[i].name !== '') {
-        let spaceBufferSize = Math.max(0,nameMaxLength-args[i].name.length)
-        headArgumentNames.push(`${args[i].name}${'\xa0'.repeat(spaceBufferSize)}`)
-      } else {
-        headArgumentNames.push('\xa0'.repeat(nameMaxLength))
-      }
-
-      if (args[i].description !== '') {
-        headArgumentDescs.push(` ${args[i].description}`)
-      } else {
-        headArgumentDescs.push('')
+        if (args[i].name !== '') {
+          let spaceBufferSize = Math.max(0,nameMaxLength-args[i].name.length)
+          headArgumentNames.push(`${args[i].name}${'\xa0'.repeat(spaceBufferSize)}`)
+        } else {
+          headArgumentNames.push('\xa0'.repeat(nameMaxLength))
+        }
+  
+        if (args[i].description !== '') {
+          headArgumentDescs.push(` ${args[i].description}`)
+        } else {
+          headArgumentDescs.push('')
+        }
       }
 
       // Build declaration line
@@ -142,10 +135,8 @@ const generateScript = ({ scriptName, description, args, localVars, options }) =
   }
 
   // @param
-  for (let i = 0; i < headArgumentNames.length; i++) {
-    if (legacyMode) {
-      newOutput += `//\xa0\xa0${headArgumentNames[i]} ${headArgumentDescs[i]} ${headArgumentTypes[i]}\n`
-    } else {
+  if (!legacyMode) {
+    for (let i = 0; i < headArgumentNames.length; i++) {
       newOutput += `/// @param${'\xa0'.repeat(tagPadLength-1)}${headArgumentTypes[i]} ${headArgumentNames[i]} ${headArgumentDescs[i]}\n`
     }
 
