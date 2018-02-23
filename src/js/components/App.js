@@ -34,11 +34,7 @@ class App extends Component {
     }
 
     this.handleArgumentEvent = this.handleArgumentEvent.bind(this)
-
-    this.handleLocalVarChange = this.handleLocalVarChange.bind(this)
-    this.handleLocalVarSort = this.handleLocalVarSort.bind(this)
-    this.handleAddLocalVar = this.handleAddLocalVar.bind(this)
-    this.handleRemoveLocalVar = this.handleRemoveLocalVar.bind(this)
+    this.handleLocalVarEvent = this.handleLocalVarEvent.bind(this)
 
     this.handleScriptNameChange = this.handleScriptNameChange.bind(this)
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
@@ -77,31 +73,31 @@ class App extends Component {
     this.updateOutput(newState)
   }
 
-  handleLocalVarChange(newArg, id, key) {
+  handleLocalVarEvent(eventType, params) {
     // Make a copy of old state and change relevant values
     let newState = this.state
-    newState.localVars[id][key] = newArg
-    this.updateOutput(newState)
-  }
+    
+    switch (eventType) {
+      case EVENT_CHANGE:
+        newState.localVars[params.id][params.key] = params.newArg
+        break
 
-  handleLocalVarSort(event) {
-    let newState = this.state
-    newState.localVars = arrayMove(newState.localVars, event.oldIndex, event.newIndex)
-    this.updateOutput(newState)
-  }
+      case EVENT_SORT:
+        newState.localVars = arrayMove(newState.localVars, params.oldIndex, params.newIndex)
+        break
 
-  handleAddLocalVar() {
-    let newState = this.state
-    newState.localVars.push({name: '', description: ''})
-    this.updateOutput(newState)
-  }
+      case EVENT_ADD:
+        newState.localVars.push({name: '', type: '', description: ''})
+        break
 
-  handleRemoveLocalVar(id) {
-    if (this.state.localVars.length > 0) {
-      let newState = this.state
-      newState.localVars.splice(id, 1)
-      this.updateOutput(newState)
+      case EVENT_REMOVE:
+        if (this.state.localVars.length > 0) {
+          newState.localVars.splice(params.id, 1)
+        }
+        break
     }
+
+    this.updateOutput(newState)
   }
 
   handleDescriptionChange(event) {
@@ -147,10 +143,7 @@ class App extends Component {
               <Grid item xs={12} sm={6} md={3}>
                 <LocalVarContainer 
                   items={this.state.localVars}
-                  onClick={this.handleAddLocalVar}
-                  onRemove={this.handleRemoveLocalVar}
-                  onChange={this.handleLocalVarChange}
-                  onSortEnd={this.handleLocalVarSort}/>
+                  onEvent={this.handleLocalVarEvent}/>
               </Grid>
             </Grid>
           </div>
