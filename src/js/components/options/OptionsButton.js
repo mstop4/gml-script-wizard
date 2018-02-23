@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import HelpDialog from './HelpDialog'
+import OptionsDialog from './OptionsDialog'
 import IconButton from 'material-ui/IconButton'
 import Icon from 'material-ui/Icon'
 
-class HelpButton extends Component {
+class OptionsButton extends Component {
   constructor() {
     super()
 
@@ -13,6 +13,7 @@ class HelpButton extends Component {
 
     this.handleDialogOpen = this.handleDialogOpen.bind(this)
     this.handleDialogClose = this.handleDialogClose.bind(this)
+    this.onChange = this.onChange.bind(this)
   }
 
   handleDialogOpen() {
@@ -23,19 +24,24 @@ class HelpButton extends Component {
     this.setState({ dialogOpen: false })
   }
 
+  onChange() {
+
+  }
+
   render() {
     return (
       <div>
-        <HelpDialog
+        <OptionsDialog
           isOpen={this.state.dialogOpen}
           onClose={this.handleDialogClose}
+          onChange={this.onChange}
         />
         <IconButton onClick={this.handleDialogOpen}>
-          <Icon>help_outline</Icon>
+          <Icon>build</Icon>
         </IconButton>
       </div>
     )
   }
 }
 
-export default HelpButton
+export default OptionsButton
