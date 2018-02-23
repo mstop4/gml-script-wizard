@@ -1,26 +1,37 @@
-const generateScript = ({ scriptName, description, args, localVars, localVarPrefix }) => {
+const generateScript = ({ scriptName, description, args, localVars, options }) => {
+  let { localVarPrefix, legacyMode } = options
   let newOutput = ''
 
-  // Determine how much padding is need between tags and description based on which
-  // tags are used (@param, @function, @description)
-  let tagPadLength = 2
-
-  if (scriptName !== '') {
-    tagPadLength += 3
-  }
-
-  if (description !== '') {
-    tagPadLength += 3
-  }
-  
-  let headFunction =      `/// @function${'\xa0'.repeat(Math.max(2,tagPadLength-3))}`
+  let headFunction =      ''
+  let headDescription =   ''
   let headArgumentTypes = []
   let headArgumentNames = []
   let headArgumentDescs = []
-  let headDescription =   `/// @description${'\xa0'.repeat(Math.max(2,tagPadLength-6))}${description}`
 
   let declArguments = []
   let declLocals = ''
+
+  let tagPadLength = 0
+
+  if (legacyMode) {
+    headFunction =    '/// '
+    headDescription = `//\xa0\xa0${description}`
+  } else {
+    // Determine how much padding is need between tags and description based on which
+    // tags are used (@param, @function, @description)
+    tagPadLength = 2
+
+    if (scriptName !== '') {
+      tagPadLength += 3
+    }
+
+    if (description !== '') {
+      tagPadLength += 3
+    }
+    
+    headFunction =      `/// @function${'\xa0'.repeat(Math.max(2,tagPadLength-3))}`
+    headDescription =   `/// @description${'\xa0'.repeat(Math.max(2,tagPadLength-6))}${description}`
+  }
 
   // Create script JSDoc header
 
@@ -66,11 +77,20 @@ const generateScript = ({ scriptName, description, args, localVars, localVarPref
     // Build JSDoc line
     if (args[i].name !== '') {
 
-      if (args[i].type !== '') {
-        let spaceBufferSize = Math.max(0,typeMaxLength-args[i].type.length)
-        headArgumentTypes.push(` {${args[i].type}}${'\xa0'.repeat(spaceBufferSize)}`)
+      if (legacyMode) {
+        if (args[i].type !== '') {
+          let spaceBufferSize = Math.max(0,typeMaxLength-args[i].type.length)
+          headArgumentTypes.push(` (${args[i].type})${'\xa0'.repeat(spaceBufferSize)}`)
+        } else {
+          headArgumentTypes.push('\xa0'.repeat(typeMaxLength+3))
+        }
       } else {
-        headArgumentTypes.push('\xa0'.repeat(typeMaxLength+3))
+        if (args[i].type !== '') {
+          let spaceBufferSize = Math.max(0,typeMaxLength-args[i].type.length)
+          headArgumentTypes.push(` {${args[i].type}}${'\xa0'.repeat(spaceBufferSize)}`)
+        } else {
+          headArgumentTypes.push('\xa0'.repeat(typeMaxLength+3))
+        }
       }
 
       if (args[i].name !== '') {
@@ -123,7 +143,12 @@ const generateScript = ({ scriptName, description, args, localVars, localVarPref
 
   // @param
   for (let i = 0; i < headArgumentNames.length; i++) {
-    newOutput += `/// @param${'\xa0'.repeat(tagPadLength-1)}${headArgumentTypes[i]} ${headArgumentNames[i]} ${headArgumentDescs[i]}\n`
+    if (legacyMode) {
+      newOutput += `//\xa0\xa0${headArgumentNames[i]} ${headArgumentDescs[i]} ${headArgumentTypes[i]}\n`
+    } else {
+      newOutput += `/// @param${'\xa0'.repeat(tagPadLength-1)}${headArgumentTypes[i]} ${headArgumentNames[i]} ${headArgumentDescs[i]}\n`
+    }
+
     firstLine = false
   }
 

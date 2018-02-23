@@ -21,7 +21,10 @@ class App extends Component {
     super()
 
     this.state = {
-      localVarPrefix: '_',
+      options: {
+        legacyMode: true,
+        localVarPrefix: '_'
+      },
       scriptName: '',
       description: '',
       outputValue: '',
