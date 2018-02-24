@@ -31,6 +31,6 @@ Now, do you find it tedious to write those headers over and over again for each 
 
 **GML Script Wizard** is a tool that will help you generate and modify script templates just be filling in a few fields.
 
-* Conforms to GMS 2 JSDoc guidelines for documenting scripts.
+* Conforms to both GM:S 1.4 and GMS 2 (JSDoc) documentation styles for documenting scripts.
 * Add, remove, and rearrange arguments and additional local variables with ease.
-* Copy the script template with a simple click of a button to paste it into the GMS2 IDE.
+* Copy the script template with a simple click of a button to paste it into the GameMaker Studio IDE or the script editor, or your choice.
