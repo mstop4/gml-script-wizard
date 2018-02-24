@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import OptionsDialog from './OptionsDialog'
 import IconButton from 'material-ui/IconButton'
 import Icon from 'material-ui/Icon'
+import PropTypes from 'prop-types'
 
 class OptionsButton extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
       dialogOpen: false
@@ -13,7 +14,6 @@ class OptionsButton extends Component {
 
     this.handleDialogOpen = this.handleDialogOpen.bind(this)
     this.handleDialogClose = this.handleDialogClose.bind(this)
-    this.onChange = this.onChange.bind(this)
   }
 
   handleDialogOpen() {
@@ -24,17 +24,14 @@ class OptionsButton extends Component {
     this.setState({ dialogOpen: false })
   }
 
-  onChange() {
-
-  }
-
   render() {
     return (
       <div>
         <OptionsDialog
           isOpen={this.state.dialogOpen}
+          options={this.props.options}
           onClose={this.handleDialogClose}
-          onChange={this.onChange}
+          onEvent={this.props.onEvent}
         />
         <IconButton onClick={this.handleDialogOpen}>
           <Icon>build</Icon>
@@ -42,6 +39,11 @@ class OptionsButton extends Component {
       </div>
     )
   }
+}
+
+OptionsButton.propTypes = {
+  options: PropTypes.object,
+  onEvent: PropTypes.func
 }
 
 export default OptionsButton

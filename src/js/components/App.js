@@ -12,7 +12,7 @@ import ScriptNameField from './ScriptNameField'
 import { MuiThemeProvider } from 'material-ui/styles'
 import ColourTheme from '../helpers/ColourTheme'
 import generateScript from '../helpers/ScriptGen'
-import { EVENT_ADD, EVENT_REMOVE, EVENT_SORT, EVENT_CHANGE } from '../helpers/EventTypes'
+import { EVENT_ITEM_ADD, EVENT_ITEM_REMOVE, EVENT_ITEM_SORT, EVENT_ITEM_CHANGE, EVENT_LEGACY_SWITCH } from '../helpers/EventTypes'
 
 import '../../styles/main.css'
 
@@ -35,6 +35,7 @@ class App extends Component {
 
     this.handleArgumentEvent = this.handleArgumentEvent.bind(this)
     this.handleLocalVarEvent = this.handleLocalVarEvent.bind(this)
+    this.handleOptionsEvent = this.handleOptionsEvent.bind(this)
 
     this.handleScriptNameChange = this.handleScriptNameChange.bind(this)
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
@@ -51,19 +52,19 @@ class App extends Component {
     let newState = this.state
     
     switch (eventType) {
-      case EVENT_CHANGE:
+      case EVENT_ITEM_CHANGE:
         newState.args[params.id][params.key] = params.newArg
         break
 
-      case EVENT_SORT:
+      case EVENT_ITEM_SORT:
         newState.args = arrayMove(newState.args, params.oldIndex, params.newIndex)
         break
 
-      case EVENT_ADD:
+      case EVENT_ITEM_ADD:
         newState.args.push({name: '', type: '', description: ''})
         break
 
-      case EVENT_REMOVE:
+      case EVENT_ITEM_REMOVE:
         if (this.state.args.length > 0) {
           newState.args.splice(params.id, 1)
         }
@@ -78,23 +79,41 @@ class App extends Component {
     let newState = this.state
     
     switch (eventType) {
-      case EVENT_CHANGE:
-        newState.localVars[params.id][params.key] = params.newArg
+      case EVENT_ITEM_CHANGE:
+        newState.localVars[params.id] = params.newArg
         break
 
-      case EVENT_SORT:
+      case EVENT_ITEM_SORT:
         newState.localVars = arrayMove(newState.localVars, params.oldIndex, params.newIndex)
         break
 
-      case EVENT_ADD:
+      case EVENT_ITEM_ADD:
         newState.localVars.push({name: '', type: '', description: ''})
         break
 
-      case EVENT_REMOVE:
+      case EVENT_ITEM_REMOVE:
         if (this.state.localVars.length > 0) {
           newState.localVars.splice(params.id, 1)
         }
         break
+    }
+
+    this.updateOutput(newState)
+  }
+
+  handleOptionsEvent(eventType, params) {
+    // Make a copy of old state and change relevant values
+    let newState = this.state
+
+    switch (eventType) {
+      case EVENT_LEGACY_SWITCH:
+        newState.options.legacyMode = !newState.options.legacyMode
+        break
+
+      case EVENT_ITEM_CHANGE:
+        console.log(params.id)
+        newState.options[params.id] = params.newArg
+        break;
     }
 
     this.updateOutput(newState)
@@ -121,7 +140,10 @@ class App extends Component {
     return (
       <div className="app">
         <MuiThemeProvider theme={ColourTheme}>
-          <TitleBar/>
+          <TitleBar
+            options={this.state.options}
+            onEvent={this.handleOptionsEvent}
+          />
           <div>
             <Grid container alignItems='stretch'>
               <Grid item xs={12} sm={12} md={6}>
