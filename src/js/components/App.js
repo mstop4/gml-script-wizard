@@ -80,7 +80,7 @@ class App extends Component {
     
     switch (eventType) {
       case EVENT_ITEM_CHANGE:
-        newState.localVars[params.id] = params.newArg
+        newState.localVars[params.id][params.key] = params.newArg
         break
 
       case EVENT_ITEM_SORT:
@@ -88,7 +88,7 @@ class App extends Component {
         break
 
       case EVENT_ITEM_ADD:
-        newState.localVars.push({name: '', type: '', description: ''})
+        newState.localVars.push({name: '', description: ''})
         break
 
       case EVENT_ITEM_REMOVE:
@@ -111,7 +111,6 @@ class App extends Component {
         break
 
       case EVENT_ITEM_CHANGE:
-        console.log(params.id)
         newState.options[params.id] = params.newArg
         break;
     }

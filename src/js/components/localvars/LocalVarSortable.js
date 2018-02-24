@@ -33,19 +33,6 @@ class LocalVarSortable extends Component  {
       dialogOpen: false,
       index: 0
     }
-
-    this.onFieldChange = this.onFieldChange.bind(this)
-    this.onFieldRemove = this.onFieldRemove.bind(this)
-  }
-
-  onFieldChange(event) {
-    let newArg = event.target.value
-    let key = event.target.id
-    this.props.onChange(newArg, this.state.index, key)
-  }
-
-  onFieldRemove() {
-    this.props.onRemove(this.state.index)
   }
 
   render() {

@@ -23,7 +23,7 @@ const LocalVarContainer = (props) => {
   }
 
   const onChange = (newArg, id, key) => {
-    onEvent (EVENT_ITEM_CHANGE, { newArg, id, key } )
+    onEvent(EVENT_ITEM_CHANGE, { newArg, id, key } )
   }
 
   return (

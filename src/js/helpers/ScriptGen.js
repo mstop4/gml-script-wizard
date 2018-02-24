@@ -140,7 +140,9 @@ const generateScript = ({ scriptName, description, args, localVars, options }) =
       newOutput += `/// @param${'\xa0'.repeat(tagPadLength-1)}${headArgumentTypes[i]} ${headArgumentNames[i]} ${headArgumentDescs[i]}\n`
     }
 
-    firstLine = false
+    if (headArgumentNames.length > 0) {
+      firstLine = false
+    }
   }
 
   if (declArguments.length > 0 && !firstLine) {
