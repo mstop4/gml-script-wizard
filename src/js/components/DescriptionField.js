@@ -9,6 +9,7 @@ const DescriptionField = ({ value, onChange }) => {
       label="Description"
       margin="normal"
       fullWidth
+      multiline
       value={value}
       onChange={onChange}
     />

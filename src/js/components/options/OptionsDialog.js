@@ -62,7 +62,7 @@ const OptionsDialog = (props) => {
                 onChange={handleLegacySwitch}
               />
             }
-            label={options.legacyMode ? 'GM:S 1.4' : 'GMS 2'}
+            label={options.legacyMode ? 'GameMaker: Studio 1.4' : 'GameMaker Studio 2'}
           />
         </FormGroup>
         <Divider/>
@@ -70,6 +70,7 @@ const OptionsDialog = (props) => {
           id="localVarPrefix"
           label="Local Variable Prefix"
           placeholder="none"
+          margin="normal"
           value={options.localVarPrefix}
           onClick={handleTextFieldClick}
           onChange={handlePrefixChange}
