@@ -1,7 +1,7 @@
 import React from 'react'
 import { expect } from 'chai'
 import { shallow, mount } from 'enzyme'
-import ScriptNameField from '../../src/js/components/ScriptNameField.js'
+import ScriptNameField from '../../src/js/components/ScriptNameField'
 
 describe('ScriptNameField Component', () => {
 

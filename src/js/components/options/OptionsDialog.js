@@ -11,17 +11,31 @@ import Switch from 'material-ui/Switch'
 import Divider from 'material-ui/Divider/Divider'
 import { FormGroup, FormControlLabel, FormLabel } from 'material-ui/Form'
 
+import { connect } from 'react-redux'
+import { legacyToggle } from '../../actions/options'
+
 import propTypes from 'prop-types'
-import { EVENT_LEGACY_SWITCH, EVENT_ITEM_CHANGE } from '../../helpers/EventTypes'
+import { EVENT_ITEM_CHANGE } from '../../helpers/EventTypes'
 
 import '../../../styles/options.css'
 
+const mapStateToProps = (state) => {
+  return {
+    legacyMode: !state.options.legacyMode 
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLegacyChange: () => dispatch(legacyToggle())
+  }
+}
 
 const OptionsDialog = (props) => {
   let { isOpen, options, onClose, onEvent } = props
 
   const handleLegacySwitch = () => {
-    onEvent(EVENT_LEGACY_SWITCH, {} )
+    this.props.onLegacyChange()
   }
 
   const handlePrefixChange = (event) => {
@@ -58,7 +72,7 @@ const OptionsDialog = (props) => {
           <FormControlLabel
             control={
               <Switch
-                checked={!options.legacyMode}
+                checked={this.props.legacyMode}
                 onChange={handleLegacySwitch}
               />
             }
@@ -87,4 +101,4 @@ OptionsDialog.propTypes = {
   onEvent: propTypes.func
 }
 
-export default OptionsDialog
+export default connect(mapStateToProps, mapDispatchToProps)(OptionsDialog)

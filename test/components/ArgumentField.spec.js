@@ -1,7 +1,7 @@
 import React from 'react'
 import { expect } from 'chai'
 import { shallow, mount } from 'enzyme'
-import ArgumentField from '../../src/js/components/ArgumentField.js'
+import ArgumentField from '../../src/js/components/ArgumentField'
 
 // TODO: rewrite tests so that they are compatible with react-sortable-hoc
 

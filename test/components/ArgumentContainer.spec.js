@@ -1,7 +1,7 @@
 import React from 'react'
 import { expect } from 'chai'
 import { shallow, mount } from 'enzyme'
-import ArgumentContainer from '../../src/js/components/ArgumentContainer.js'
+import ArgumentContainer from '../../src/js/components/ArgumentContainer'
 
 describe('ArgumentContainer Component', () => {
 
