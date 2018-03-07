@@ -12,7 +12,7 @@ import ScriptNameField from './ScriptNameField'
 import { MuiThemeProvider } from 'material-ui/styles'
 import ColourTheme from '../helpers/ColourTheme'
 import generateScript from '../helpers/ScriptGen'
-import { EVENT_ITEM_ADD, EVENT_ITEM_REMOVE, EVENT_ITEM_SORT, EVENT_ITEM_CHANGE, EVENT_LEGACY_SWITCH } from '../helpers/EventTypes'
+import { EVENT_ITEM_ADD, EVENT_ITEM_REMOVE, EVENT_ITEM_SORT, EVENT_ITEM_CHANGE } from '../helpers/EventTypes'
 
 import '../../styles/main.css'
 
@@ -35,7 +35,6 @@ class App extends Component {
 
     this.handleArgumentEvent = this.handleArgumentEvent.bind(this)
     this.handleLocalVarEvent = this.handleLocalVarEvent.bind(this)
-    this.handleOptionsEvent = this.handleOptionsEvent.bind(this)
 
     this.handleScriptNameChange = this.handleScriptNameChange.bind(this)
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
@@ -101,23 +100,6 @@ class App extends Component {
     this.updateOutput(newState)
   }
 
-  handleOptionsEvent(eventType, params) {
-    // Make a copy of old state and change relevant values
-    let newState = this.state
-
-    switch (eventType) {
-      case EVENT_LEGACY_SWITCH:
-        newState.options.legacyMode = !newState.options.legacyMode
-        break
-
-      case EVENT_ITEM_CHANGE:
-        newState.options[params.id] = params.newArg
-        break;
-    }
-
-    this.updateOutput(newState)
-  }
-
   handleDescriptionChange(event) {
     let newState = this.state
     newState.description = event.target.value
@@ -139,10 +121,7 @@ class App extends Component {
     return (
       <div className="app">
         <MuiThemeProvider theme={ColourTheme}>
-          <TitleBar
-            options={this.state.options}
-            onEvent={this.handleOptionsEvent}
-          />
+          <TitleBar/>
           <div>
             <Grid container alignItems='stretch'>
               <Grid item xs={12} sm={12} md={6}>

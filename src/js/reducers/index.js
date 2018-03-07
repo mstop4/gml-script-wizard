@@ -24,6 +24,12 @@ const rootReducer = (state = initialState, action) => {
 
     case event.OPT_LEGACY: {
       newState.options.legacyMode = !newState.options.legacyMode
+      break
+    }
+
+    case event.OPT_CHANGE: {
+      newState.options[action.payload.id] = action.payload.value
+      break
     }
   }
 

@@ -12,27 +12,28 @@ import Divider from 'material-ui/Divider/Divider'
 import { FormGroup, FormControlLabel, FormLabel } from 'material-ui/Form'
 
 import { connect } from 'react-redux'
-import { legacyToggle } from '../../actions/options'
+import { legacyToggle, prefixChange } from '../../actions/options'
 
 import propTypes from 'prop-types'
-import { EVENT_ITEM_CHANGE } from '../../helpers/EventTypes'
 
 import '../../../styles/options.css'
 
 const mapStateToProps = (state) => ({
-  legacyMode: state.options.legacyMode
+  options: {
+    localVarPrefix: state.options.localVarPrefix,
+    legacyMode: state.options.legacyMode
+  }
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    onLegacyChange: () => dispatch(legacyToggle())
-})
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLegacyChange: () => dispatch(legacyToggle()),
+    onPrefixChange: (event) => dispatch(prefixChange(event.target.id, event.target.value))
+  }
+}
 
 const OptionsDialog = (props) => {
-  let { isOpen, options, onClose, onEvent, onLegacyChange, legacyMode } = props
-
-  const handlePrefixChange = (event) => {
-    onEvent(EVENT_ITEM_CHANGE, { id: event.target.id, newArg: event.target.value } )
-  }
+  let { isOpen, options, onClose, onLegacyChange, onPrefixChange } = props
 
   const handleTextFieldClick = (event) => {
     event.stopPropagation()
@@ -64,11 +65,11 @@ const OptionsDialog = (props) => {
           <FormControlLabel
             control={
               <Switch
-                checked={legacyMode}
+                checked={options.legacyMode}
                 onChange={onLegacyChange}
               />
             }
-            label={legacyMode ? 'GameMaker: Studio 1.4' : 'GameMaker Studio 2'}
+            label={options.legacyMode ? 'GameMaker: Studio 1.4' : 'GameMaker Studio 2'}
           />
         </FormGroup>
         <Divider/>
@@ -79,7 +80,7 @@ const OptionsDialog = (props) => {
           margin="normal"
           value={options.localVarPrefix}
           onClick={handleTextFieldClick}
-          onChange={handlePrefixChange}
+          onChange={onPrefixChange}
         />
       </div>
     </Dialog>
@@ -90,7 +91,8 @@ OptionsDialog.propTypes = {
   isOpen: propTypes.bool,
   options: propTypes.object,
   onClose: propTypes.func,
-  onEvent: propTypes.func
+  onLegacyChange: propTypes.func,
+  onPrefixChange: propTypes.func
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OptionsDialog)

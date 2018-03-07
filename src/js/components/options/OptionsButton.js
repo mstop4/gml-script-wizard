@@ -29,9 +29,7 @@ class OptionsButton extends Component {
       <div>
         <OptionsDialog
           isOpen={this.state.dialogOpen}
-          options={this.props.options}
           onClose={this.handleDialogClose}
-          onEvent={this.props.onEvent}
         />
         <IconButton onClick={this.handleDialogOpen}>
           <Icon>build</Icon>
