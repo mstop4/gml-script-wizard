@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { arrayMove } from 'react-sortable-hoc'
 import Grid from 'material-ui/Grid'
 
 import TitleBar from './TitleBar'
@@ -11,8 +10,6 @@ import ScriptNameField from './ScriptNameField'
 
 import { MuiThemeProvider } from 'material-ui/styles'
 import ColourTheme from '../helpers/ColourTheme'
-import generateScript from '../helpers/ScriptGen'
-import { EVENT_ITEM_ADD, EVENT_ITEM_REMOVE, EVENT_ITEM_SORT, EVENT_ITEM_CHANGE } from '../helpers/EventTypes'
 
 import '../../styles/main.css'
 
@@ -21,58 +18,7 @@ class App extends Component {
   constructor() {
     super()
 
-    this.state = {
-      options: {
-        legacyMode: false,
-        localVarPrefix: '_'
-      },
-      scriptName: '',
-      description: '',
-      outputValue: '',
-      args: [],
-      localVars: [],
-    }
-
-    this.handleLocalVarEvent = this.handleLocalVarEvent.bind(this)
-
-    this.updateOutput = this.updateOutput.bind(this)
-  }
-
-  componentDidMount() {
-    // init output based on intial state
-    this.updateOutput(this.state)
-  }
-
-  handleLocalVarEvent(eventType, params) {
-    // Make a copy of old state and change relevant values
-    let newState = this.state
-    
-    switch (eventType) {
-      case EVENT_ITEM_CHANGE:
-        newState.localVars[params.id][params.key] = params.newArg
-        break
-
-      case EVENT_ITEM_SORT:
-        newState.localVars = arrayMove(newState.localVars, params.oldIndex, params.newIndex)
-        break
-
-      case EVENT_ITEM_ADD:
-        newState.localVars.push({name: '', description: ''})
-        break
-
-      case EVENT_ITEM_REMOVE:
-        if (this.state.localVars.length > 0) {
-          newState.localVars.splice(params.id, 1)
-        }
-        break
-    }
-
-    this.updateOutput(newState)
-  }
-
-  updateOutput(newState) {
-    let newOutput = generateScript(newState)
-    this.setState(newOutput)
+    this.state = {}
   }
 
   render() {

@@ -1,7 +1,7 @@
 import React from 'react'
 import Typography from 'material-ui/Typography'
 import { Scrollbars } from 'react-custom-scrollbars'
-//simport PropTypes from 'prop-types'
+//import PropTypes from 'prop-types'
 
 import ArgumentSortable from './ArgumentSortable'
 import AddArgumentButton from './AddArgumentButton'
