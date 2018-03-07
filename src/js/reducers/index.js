@@ -56,6 +56,28 @@ const rootReducer = (state = initialState, action) => {
       break
     }
 
+    case event.LVAR_CHANGE: {
+      newState.localVars[action.payload.id][action.payload.key] = action.payload.value
+      break
+    }
+
+    case event.LVAR_SORT: {
+      newState.localVars = arrayMove(newState.localVars, action.payload.oldIndex, action.payload.newIndex)
+      break
+    }
+
+    case event.LVAR_ADD: {
+      newState.localVars.push({name: '', type: '', description: ''})
+      break
+    }
+
+    case event.LVAR_REMOVE: {
+      if (newState.localVars.length > 0) {
+        newState.localVars.splice(action.payload.id, 1)
+      }
+      break
+    }
+
     case event.OPT_LEGACY: {
       newState.options.legacyMode = !newState.options.legacyMode
       break
