@@ -1,5 +1,5 @@
 const generateScript = ({ scriptName, description, args, localVars, options }) => {
-  let { localVarPrefix, legacyMode } = options
+
   let newOutput = ''
 
   let headFunction =      ''
@@ -13,10 +13,11 @@ const generateScript = ({ scriptName, description, args, localVars, options }) =
 
   let tagPadLength = 0
 
-  if (legacyMode) {
+  if (options.legacyMode) {
     headFunction =    '/// '
     headDescription = `//\xa0\xa0${description}`
   } else {
+
     // Determine how much padding is need between tags and description based on which
     // tags are used (@param, @function, @description)
     tagPadLength = 2
@@ -29,8 +30,8 @@ const generateScript = ({ scriptName, description, args, localVars, options }) =
       tagPadLength += 3
     }
     
-    headFunction =      `/// @function${'\xa0'.repeat(Math.max(2,tagPadLength-3))}`
-    headDescription =   `/// @description${'\xa0'.repeat(Math.max(2,tagPadLength-6))}${description}`
+    headFunction =      `/// ${options.funcTag}${'\xa0'.repeat(Math.max(2,tagPadLength-3))}`
+    headDescription =   `/// ${options.descTag}${'\xa0'.repeat(Math.max(2,tagPadLength-6))}${description}`
   }
 
   // Create script JSDoc header
@@ -77,7 +78,7 @@ const generateScript = ({ scriptName, description, args, localVars, options }) =
     // Build JSDoc line
     if (args[i].name !== '') {
 
-      if (!legacyMode) {
+      if (!options.legacyMode) {
         if (args[i].type !== '') {
           let spaceBufferSize = Math.max(0,typeMaxLength-args[i].type.length)
           headArgumentTypes.push(` {${args[i].type}}${'\xa0'.repeat(spaceBufferSize)}`)
@@ -100,7 +101,7 @@ const generateScript = ({ scriptName, description, args, localVars, options }) =
       }
 
       // Build declaration line
-      declArguments.push(`var ${localVarPrefix}${args[i].name} = argument[${currentArgIndex}];\n`)
+      declArguments.push(`var ${options.localVarPrefix}${args[i].name} = argument[${currentArgIndex}];\n`)
       currentArgIndex++
     }
   }
@@ -108,7 +109,7 @@ const generateScript = ({ scriptName, description, args, localVars, options }) =
   // Additional local variables
   for (let i = 0; i < localVars.length; i++) {
     if (localVars[i].name !== '') {
-      declLocals += `${localVarPrefix}${localVars[i].name}, `
+      declLocals += `${options.localVarPrefix}${localVars[i].name}, `
     }
   }
 
@@ -135,9 +136,9 @@ const generateScript = ({ scriptName, description, args, localVars, options }) =
   }
 
   // @param
-  if (!legacyMode) {
+  if (!options.legacyMode) {
     for (let i = 0; i < headArgumentNames.length; i++) {
-      newOutput += `/// @param${'\xa0'.repeat(tagPadLength-1)}${headArgumentTypes[i]} ${headArgumentNames[i]} ${headArgumentDescs[i]}\n`
+      newOutput += `/// ${options.argTag}${'\xa0'.repeat(tagPadLength-1)}${headArgumentTypes[i]} ${headArgumentNames[i]} ${headArgumentDescs[i]}\n`
     }
 
     if (headArgumentNames.length > 0) {
@@ -171,13 +172,7 @@ const generateScript = ({ scriptName, description, args, localVars, options }) =
 
   newOutput += '/* Script body goes here */'
 
-  return {
-    scriptName: scriptName,
-    description: description,
-    outputValue: newOutput,
-    args: args,
-    localVars: localVars,
-  }
+  return newOutput
 }
 
 export default generateScript

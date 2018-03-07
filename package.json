@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "https://github.com/mstop4/gml-script-wizard.git",
   "author": "mstop4 <mstop4@gmail.com>",
-  "license": "BSD 2-Clause",
+  "license": "BSD-2-Clause",
   "scripts": {
     "build": "webpack-dev-server --port 8080 --host 0.0.0.0 --hot --open --config webpack.dev.js",
     "build:prod": "./node_modules/.bin/webpack --config webpack.prod.js",
