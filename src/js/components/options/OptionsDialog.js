@@ -2,13 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Transition from '../Transition'
 import LegacyToggle from './LegacyToggle'
+import LocalVarPrefixField from './LocalVarPrefixField'
 import Dialog from 'material-ui/Dialog/Dialog'
 import AppBar from 'material-ui/AppBar/AppBar'
 import Toolbar from 'material-ui/Toolbar/Toolbar'
 import Typography from 'material-ui/Typography'
 import IconButton from 'material-ui/IconButton'
 import Icon from 'material-ui/Icon'
-import TextField from 'material-ui/TextField'
 import Divider from 'material-ui/Divider/Divider'
 
 import { prefixChange } from '../../actions/options'
@@ -27,11 +27,7 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 const OptionsDialog = (props) => {
-  let { isOpen, options, onClose, onPrefixChange } = props
-
-  const handleTextFieldClick = (event) => {
-    event.stopPropagation()
-  }
+  let { isOpen, onClose } = props
 
   return (
     <Dialog 
@@ -56,15 +52,7 @@ const OptionsDialog = (props) => {
       <div className="options-root">
         <LegacyToggle/>
         <Divider/>
-        <TextField
-          id="localVarPrefix"
-          label="Local Variable Prefix"
-          placeholder="none"
-          margin="normal"
-          value={options.localVarPrefix}
-          onClick={handleTextFieldClick}
-          onChange={onPrefixChange}
-        />
+        <LocalVarPrefixField/>
       </div>
     </Dialog>
   )
