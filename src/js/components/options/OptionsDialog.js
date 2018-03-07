@@ -25,12 +25,10 @@ const mapStateToProps = (state) => ({
   }
 })
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onLegacyChange: () => dispatch(legacyToggle()),
-    onPrefixChange: (event) => dispatch(prefixChange(event.target.id, event.target.value))
-  }
-}
+const mapDispatchToProps = (dispatch) => ({
+  onLegacyChange: () => dispatch(legacyToggle()),
+  onPrefixChange: (event) => dispatch(prefixChange(event.target.id, event.target.value))
+})
 
 const OptionsDialog = (props) => {
   let { isOpen, options, onClose, onLegacyChange, onPrefixChange } = props

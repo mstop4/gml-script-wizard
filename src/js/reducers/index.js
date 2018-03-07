@@ -22,6 +22,16 @@ const rootReducer = (state = initialState, action) => {
 
   switch (action.type) {
 
+    case event.NAME_CHANGE: {
+      newState.scriptName = action.payload.value
+      break
+    }
+
+    case event.DESC_CHANGE: {
+      newState.description = action.payload.value
+      break
+    }
+
     case event.OPT_LEGACY: {
       newState.options.legacyMode = !newState.options.legacyMode
       break

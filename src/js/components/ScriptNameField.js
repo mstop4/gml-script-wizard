@@ -1,6 +1,17 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import TextField from 'material-ui/TextField'
 import PropTypes from 'prop-types'
+
+import { scriptNameChange } from '../actions/id'
+
+const mapStateToProps = (state) => ({
+  value: state.scriptName
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  onChange: (event) => dispatch(scriptNameChange(event.target.value)),
+})
 
 const ScriptNameField = ({ value, onChange }) => {
   return (
@@ -20,4 +31,4 @@ ScriptNameField.propTypes = {
   onChange: PropTypes.func
 }
 
-export default ScriptNameField
+export default connect(mapStateToProps, mapDispatchToProps)(ScriptNameField)

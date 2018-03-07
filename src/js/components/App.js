@@ -36,8 +36,6 @@ class App extends Component {
     this.handleArgumentEvent = this.handleArgumentEvent.bind(this)
     this.handleLocalVarEvent = this.handleLocalVarEvent.bind(this)
 
-    this.handleScriptNameChange = this.handleScriptNameChange.bind(this)
-    this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
     this.updateOutput = this.updateOutput.bind(this)
   }
 
@@ -100,18 +98,6 @@ class App extends Component {
     this.updateOutput(newState)
   }
 
-  handleDescriptionChange(event) {
-    let newState = this.state
-    newState.description = event.target.value
-    this.updateOutput(newState)
-  }
-
-  handleScriptNameChange(event) {
-    let newState = this.state
-    newState.scriptName = event.target.value
-    this.updateOutput(newState)
-  }
-
   updateOutput(newState) {
     let newOutput = generateScript(newState)
     this.setState(newOutput)
@@ -125,14 +111,8 @@ class App extends Component {
           <div>
             <Grid container alignItems='stretch'>
               <Grid item xs={12} sm={12} md={6}>
-                <ScriptNameField 
-                  value={this.state.scriptName}
-                  onChange={this.handleScriptNameChange}
-                />
-                <DescriptionField 
-                  value={this.state.description}
-                  onChange={this.handleDescriptionChange}
-                />
+                <ScriptNameField/>
+                <DescriptionField/>
                 <OutputBox value={this.state.outputValue}/>
               </Grid>
               <Grid item xs={12} sm={6} md={3}>

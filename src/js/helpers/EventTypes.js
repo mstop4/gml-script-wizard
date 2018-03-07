@@ -4,6 +4,9 @@ export const EVENT_ITEM_ADD = 'EVENT_ITEM_ADD'
 export const EVENT_ITEM_REMOVE = 'EVENT_ITEM_REMOVE'
 export const EVENT_LEGACY_SWITCH = 'EVENT_LEGACY_SWITCH'
 
+export const NAME_CHANGE = 'NAME_CHANGE'
+export const DESC_CHANGE = 'DESC_CHANGE'
+
 export const ARG_CHANGE = 'ARG_CHANGE'
 export const ARG_SORT = 'ARG_SORT'
 export const ARG_ADD = 'ARG_ADD'
