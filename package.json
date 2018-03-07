@@ -14,7 +14,8 @@
     "lint:watch": "yarn run lint --watch",
     "electron:dev": "ELECTRON_START_URL=http://localhost:8080 electron ./src/js/electron-index.js",
     "electron:prod": "yarn build && electron ./src/js/electron-index.js",
-    "start": "npm-run-all --parallel build lint:watch"
+    "start": "npm-run-all --parallel build lint:watch",
+    "gh-pages": "yarn build:prod && push-dir --dir=dist --branch=gh-pages --cleanup"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
