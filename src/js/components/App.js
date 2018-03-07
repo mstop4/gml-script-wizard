@@ -113,7 +113,7 @@ class App extends Component {
               <Grid item xs={12} sm={12} md={6}>
                 <ScriptNameField/>
                 <DescriptionField/>
-                <OutputBox value={this.state.outputValue}/>
+                <OutputBox/>
               </Grid>
               <Grid item xs={12} sm={6} md={3}>
                 <ArgumentContainer 

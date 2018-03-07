@@ -1,4 +1,5 @@
 import * as event from '../helpers/EventTypes'
+import generateScript from '../helpers/ScriptGen'
 
 const initialState = {
   options: {
@@ -43,6 +44,7 @@ const rootReducer = (state = initialState, action) => {
     }
   }
 
+  newState.outputValue = generateScript(newState).outputValue
   return newState
 }
 
