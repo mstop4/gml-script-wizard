@@ -13,16 +13,21 @@ const initialState = {
 }
 
 const rootReducer = (state = initialState, action) => {
+  let newState = {
+    ...state,
+    options: {
+      ...state.options
+    }
+  }
+
   switch (action.type) {
 
     case event.OPT_LEGACY: {
-      state.options.legacyMode = !state.options.legacyMode
-      return state;
+      newState.options.legacyMode = !newState.options.legacyMode
     }
-
-    default:
-      return state;
   }
+
+  return newState
 }
 
 export default rootReducer

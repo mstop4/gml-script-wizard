@@ -19,24 +19,16 @@ import { EVENT_ITEM_CHANGE } from '../../helpers/EventTypes'
 
 import '../../../styles/options.css'
 
-const mapStateToProps = (state) => {
-  return {
-    legacyMode: !state.options.legacyMode 
-  }
-}
+const mapStateToProps = (state) => ({
+  legacyMode: state.options.legacyMode
+})
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = (dispatch) => ({
     onLegacyChange: () => dispatch(legacyToggle())
-  }
-}
+})
 
 const OptionsDialog = (props) => {
-  let { isOpen, options, onClose, onEvent } = props
-
-  const handleLegacySwitch = () => {
-    this.props.onLegacyChange()
-  }
+  let { isOpen, options, onClose, onEvent, onLegacyChange, legacyMode } = props
 
   const handlePrefixChange = (event) => {
     onEvent(EVENT_ITEM_CHANGE, { id: event.target.id, newArg: event.target.value } )
@@ -72,11 +64,11 @@ const OptionsDialog = (props) => {
           <FormControlLabel
             control={
               <Switch
-                checked={this.props.legacyMode}
-                onChange={handleLegacySwitch}
+                checked={legacyMode}
+                onChange={onLegacyChange}
               />
             }
-            label={options.legacyMode ? 'GameMaker: Studio 1.4' : 'GameMaker Studio 2'}
+            label={legacyMode ? 'GameMaker: Studio 1.4' : 'GameMaker Studio 2'}
           />
         </FormGroup>
         <Divider/>
