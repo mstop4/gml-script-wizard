@@ -5,7 +5,6 @@ import IconButton from 'material-ui/IconButton'
 import Icon from 'material-ui/Icon'
 import TextField from 'material-ui/TextField'
 import Card from 'material-ui/Card'
-
 import DragHandle from '../DragHandle'
 
 import '../../../styles/list-field.css'
@@ -20,7 +19,7 @@ const ArgumentField = SortableElement( (props) => {
   const onFieldChange = (event) => {
     let newArg = event.target.value
     let key = event.target.id
-    onChange(newArg, id, key)
+    onChange(id, key, newArg)
   }
 
   const onDialogOpen = () => {

@@ -11,22 +11,27 @@ import Switch from 'material-ui/Switch'
 import Divider from 'material-ui/Divider/Divider'
 import { FormGroup, FormControlLabel, FormLabel } from 'material-ui/Form'
 
+import { connect } from 'react-redux'
+import { legacyToggle, prefixChange } from '../../actions/options'
+
 import propTypes from 'prop-types'
-import { EVENT_LEGACY_SWITCH, EVENT_ITEM_CHANGE } from '../../helpers/EventTypes'
 
 import '../../../styles/options.css'
 
+const mapStateToProps = (state) => ({
+  options: {
+    localVarPrefix: state.options.localVarPrefix,
+    legacyMode: state.options.legacyMode
+  }
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  onLegacyChange: () => dispatch(legacyToggle()),
+  onPrefixChange: (event) => dispatch(prefixChange(event.target.id, event.target.value))
+})
 
 const OptionsDialog = (props) => {
-  let { isOpen, options, onClose, onEvent } = props
-
-  const handleLegacySwitch = () => {
-    onEvent(EVENT_LEGACY_SWITCH, {} )
-  }
-
-  const handlePrefixChange = (event) => {
-    onEvent(EVENT_ITEM_CHANGE, { id: event.target.id, newArg: event.target.value } )
-  }
+  let { isOpen, options, onClose, onLegacyChange, onPrefixChange } = props
 
   const handleTextFieldClick = (event) => {
     event.stopPropagation()
@@ -58,8 +63,8 @@ const OptionsDialog = (props) => {
           <FormControlLabel
             control={
               <Switch
-                checked={!options.legacyMode}
-                onChange={handleLegacySwitch}
+                checked={options.legacyMode}
+                onChange={onLegacyChange}
               />
             }
             label={options.legacyMode ? 'GameMaker: Studio 1.4' : 'GameMaker Studio 2'}
@@ -73,7 +78,7 @@ const OptionsDialog = (props) => {
           margin="normal"
           value={options.localVarPrefix}
           onClick={handleTextFieldClick}
-          onChange={handlePrefixChange}
+          onChange={onPrefixChange}
         />
       </div>
     </Dialog>
@@ -84,7 +89,8 @@ OptionsDialog.propTypes = {
   isOpen: propTypes.bool,
   options: propTypes.object,
   onClose: propTypes.func,
-  onEvent: propTypes.func
+  onLegacyChange: propTypes.func,
+  onPrefixChange: propTypes.func
 }
 
-export default OptionsDialog
+export default connect(mapStateToProps, mapDispatchToProps)(OptionsDialog)

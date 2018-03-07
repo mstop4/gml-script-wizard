@@ -1,7 +1,7 @@
 import React from 'react'
 import { expect } from 'chai'
 import { shallow, mount } from 'enzyme'
-import OutputBox from '../../src/js/components/OutputBox.js'
+import OutputBox from '../../src/js/components/OutputBox'
 
 const wrapper = shallow(<OutputBox />)
 

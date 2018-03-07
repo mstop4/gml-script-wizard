@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import ArgumentField from './ArgumentField'
 import ArgumentDialog from './ArgumentDialog'
 import { SortableContainer } from 'react-sortable-hoc'
+
+import { argumentChange, argumentSort, argumentRemove } from '../../actions/arguments'
 import PropTypes from 'prop-types'
 
 const ArgumentList = SortableContainer( (props) => {
@@ -25,6 +28,16 @@ const ArgumentList = SortableContainer( (props) => {
   )
 })
 
+const mapStateToProps = (state) => ({
+  items: state.args
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  onChange: (id, key, value) => dispatch(argumentChange(id, key, value)),
+  onRemove: (id) => dispatch(argumentRemove(id)),
+  onSortEnd: (event) => dispatch(argumentSort(event.oldIndex, event.newIndex))
+})
+
 class ArgumentSortable extends Component {
 
   constructor(props) {
@@ -37,8 +50,8 @@ class ArgumentSortable extends Component {
 
     this.handleDialogOpen = this.handleDialogOpen.bind(this)
     this.handleDialogClose = this.handleDialogClose.bind(this)
-    this.onFieldChange = this.onFieldChange.bind(this)
     this.onFieldRemove = this.onFieldRemove.bind(this)
+    this.onFieldChange = this.onFieldChange.bind(this)
   }
 
   handleDialogOpen(id) {
@@ -52,7 +65,7 @@ class ArgumentSortable extends Component {
   onFieldChange(event) {
     let newArg = event.target.value
     let key = event.target.id
-    this.props.onChange(newArg, this.state.index, key)
+    this.props.onChange(this.state.index, key, newArg)
   }
 
   onFieldRemove() {
@@ -100,4 +113,4 @@ ArgumentSortable.propTypes = {
   onSortEnd: PropTypes.func
 }
 
-export default ArgumentSortable
+export default connect(mapStateToProps, mapDispatchToProps)(ArgumentSortable)

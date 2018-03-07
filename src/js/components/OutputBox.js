@@ -1,10 +1,15 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import Card, { CardContent } from 'material-ui/Card'
 import Typography from 'material-ui/Typography'
 import CopyScriptButton from './CopyScriptButton'
 import PropTypes from 'prop-types'
 
 import '../../styles/output-box.css'
+
+const mapStateToProps = (state) => ({
+  value: state.outputValue
+})
 
 const OutputBox = ({ value }) => {
   return (
@@ -32,4 +37,4 @@ OutputBox.propTypes = {
   value: PropTypes.string
 }
 
-export default OutputBox
+export default connect(mapStateToProps, null)(OutputBox)

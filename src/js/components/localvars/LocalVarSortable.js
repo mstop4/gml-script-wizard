@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import LocalVarField from './LocalVarField'
 import { SortableContainer } from 'react-sortable-hoc'
+
+import { localVarChange, localVarSort, localVarRemove } from '../../actions/localVars'
 import PropTypes from 'prop-types'
 
 const LocalVarList = SortableContainer( (props) => {
@@ -24,6 +27,16 @@ const LocalVarList = SortableContainer( (props) => {
   )
 })
 
+const mapStateToProps = (state) => ({
+  items: state.localVars
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  onChange: (id, key, value) => dispatch(localVarChange(id, key, value)),
+  onRemove: (id) => dispatch(localVarRemove(id)),
+  onSortEnd: (event) => dispatch(localVarSort(event.oldIndex, event.newIndex))
+})
+
 class LocalVarSortable extends Component  {
 
   constructor(props) {
@@ -36,7 +49,6 @@ class LocalVarSortable extends Component  {
   }
 
   render() {
-
     return (
       <div>
         <LocalVarList 
@@ -60,4 +72,4 @@ LocalVarSortable.propTypes = {
   onSortEnd: PropTypes.func
 }
 
-export default LocalVarSortable
+export default connect(mapStateToProps, mapDispatchToProps)(LocalVarSortable)

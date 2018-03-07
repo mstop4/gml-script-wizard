@@ -1,7 +1,7 @@
 import React from 'react'
 import { expect } from 'chai'
 import { shallow, mount } from 'enzyme'
-import DescriptionField from '../../src/js/components/DescriptionField.js'
+import DescriptionField from '../../src/js/components/DescriptionField'
 
 describe('DescriptionField Component', () => {
 

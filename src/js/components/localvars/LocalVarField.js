@@ -20,7 +20,11 @@ const LocalVarField = SortableElement( (props) => {
   const onFieldChange = (event) => {
     let newArg = event.target.value
     let key = event.target.id
-    onChange(newArg, id, key)
+    onChange(id, key, newArg)
+  }
+
+  const onFieldRemove = () => {
+    onRemove(id)
   }
 
   return (
@@ -43,7 +47,7 @@ const LocalVarField = SortableElement( (props) => {
           <IconButton 
             color="primary"
             size="small"
-            onClick={onRemove}
+            onClick={onFieldRemove}
           >
             <Icon>delete_forever</Icon>
           </IconButton>

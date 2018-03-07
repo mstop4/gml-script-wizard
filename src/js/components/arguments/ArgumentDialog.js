@@ -27,7 +27,8 @@ const suggestions = [
   { label: 'stack' },
   { label: 'map' },
   { label: 'surface' },
-  { label: 'buffer' } 
+  { label: 'buffer' },
+  { label: 'object' }
 ]
 
 function renderInput(inputProps) {
