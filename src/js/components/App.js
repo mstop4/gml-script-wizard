@@ -33,7 +33,6 @@ class App extends Component {
       localVars: [],
     }
 
-    this.handleArgumentEvent = this.handleArgumentEvent.bind(this)
     this.handleLocalVarEvent = this.handleLocalVarEvent.bind(this)
 
     this.updateOutput = this.updateOutput.bind(this)
@@ -42,33 +41,6 @@ class App extends Component {
   componentDidMount() {
     // init output based on intial state
     this.updateOutput(this.state)
-  }
-
-  handleArgumentEvent(eventType, params) {
-    // Make a copy of old state and change relevant values
-    let newState = this.state
-    
-    switch (eventType) {
-      case EVENT_ITEM_CHANGE:
-        newState.args[params.id][params.key] = params.newArg
-        break
-
-      case EVENT_ITEM_SORT:
-        newState.args = arrayMove(newState.args, params.oldIndex, params.newIndex)
-        break
-
-      case EVENT_ITEM_ADD:
-        newState.args.push({name: '', type: '', description: ''})
-        break
-
-      case EVENT_ITEM_REMOVE:
-        if (this.state.args.length > 0) {
-          newState.args.splice(params.id, 1)
-        }
-        break
-    }
-
-    this.updateOutput(newState)
   }
 
   handleLocalVarEvent(eventType, params) {
@@ -116,9 +88,7 @@ class App extends Component {
                 <OutputBox/>
               </Grid>
               <Grid item xs={12} sm={6} md={3}>
-                <ArgumentContainer 
-                  items={this.state.args}
-                  onEvent={this.handleArgumentEvent}/>
+                <ArgumentContainer/>
               </Grid>
               <Grid item xs={12} sm={6} md={3}>
                 <LocalVarContainer 

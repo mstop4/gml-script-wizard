@@ -1,5 +1,6 @@
 import * as event from '../helpers/EventTypes'
 import generateScript from '../helpers/ScriptGen'
+import { arrayMove } from 'react-sortable-hoc'
 
 const initialState = {
   options: {
@@ -16,9 +17,9 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
   let newState = {
     ...state,
-    options: {
-      ...state.options
-    }
+    options: { ...state.options },
+    args: [ ...state.args ],
+    localVars: [ ...state.localVars ]
   }
 
   switch (action.type) {
@@ -30,6 +31,28 @@ const rootReducer = (state = initialState, action) => {
 
     case event.DESC_CHANGE: {
       newState.description = action.payload.value
+      break
+    }
+
+    case event.ARG_CHANGE: {
+      newState.args[action.payload.id][action.payload.key] = action.payload.value
+      break
+    }
+
+    case event.ARG_SORT: {
+      newState.args = arrayMove(newState.args, action.payload.oldIndex, action.payload.newIndex)
+      break
+    }
+
+    case event.ARG_ADD: {
+      newState.args.push({name: '', type: '', description: ''})
+      break
+    }
+
+    case event.ARG_REMOVE: {
+      if (newState.args.length > 0) {
+        newState.args.splice(action.payload.id, 1)
+      }
       break
     }
 

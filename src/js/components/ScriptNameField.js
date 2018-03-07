@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  onChange: (event) => dispatch(scriptNameChange(event.target.value)),
+  onChange: (event) => dispatch(scriptNameChange(event.target.value))
 })
 
 const ScriptNameField = ({ value, onChange }) => {
