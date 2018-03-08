@@ -8,6 +8,9 @@ import { FormControl } from 'material-ui/Form'
 import { funcTagChange } from '../../actions/options'
 import propTypes from 'prop-types'
 
+const style = {
+  width: '10em'
+}
 
 const mapStateToProps = (state) => ({
   funcTag: state.options.functionTag
@@ -28,6 +31,7 @@ const FuncTagSelector = (props) => {
         value={funcTag}
         onChange={onTagChange}
         input={<Input name="funcTagSelect" id="funcTagSelect" />}
+        style={style}
       >
         <MenuItem value="@function">@function</MenuItem>
         <MenuItem value="@func">@func</MenuItem>

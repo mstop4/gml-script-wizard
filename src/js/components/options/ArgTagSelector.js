@@ -8,6 +8,9 @@ import { FormControl } from 'material-ui/Form'
 import { argTagChange } from '../../actions/options'
 import propTypes from 'prop-types'
 
+const style = {
+  width: '10em'
+}
 
 const mapStateToProps = (state) => ({
   argTag: state.options.argumentTag
@@ -24,10 +27,10 @@ const ArgTagSelector = (props) => {
     <FormControl>
       <InputLabel htmlFor="argTagSelect">Argument Tag</InputLabel>
       <Select
-        autoWidth
         value={argTag}
         onChange={onTagChange}
         input={<Input name="argTagSelect" id="argTagSelect" />}
+        style={style}
       >
         <MenuItem value="@argument">@argument</MenuItem>
         <MenuItem value="@arg">@arg</MenuItem>

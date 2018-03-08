@@ -8,6 +8,9 @@ import { FormControl } from 'material-ui/Form'
 import { descTagChange } from '../../actions/options'
 import propTypes from 'prop-types'
 
+const style = {
+  width: '10em'
+}
 
 const mapStateToProps = (state) => ({
   descTag: state.options.descriptionTag
@@ -28,6 +31,7 @@ const DescTagSelector = (props) => {
         value={descTag}
         onChange={onTagChange}
         input={<Input name="descTagSelect" id="descTagSelect" />}
+        style={style}
       >
         <MenuItem value="@description">@description</MenuItem>
         <MenuItem value="@desc">@desc</MenuItem>
