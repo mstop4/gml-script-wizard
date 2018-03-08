@@ -11,27 +11,20 @@ const generateScript = ({ scriptName, description, args, localVars, options }) =
   let declArguments = []
   let declLocals = ''
 
-  let tagPadLength = 0
+  // Determine how much padding is need between tags and description based on which
+  // tags are used
+  let funcTagLength = scriptName !== '' ? options.functionTag.length : 0
+  let descTagLength = description !== '' ? options.descriptionTag.length : 0
+  let argTagLength = args.length > 0 ? options.argumentTag.length : 0
+
+  let tagPadLength = Math.max(funcTagLength, descTagLength, argTagLength) + 2
 
   if (options.legacyMode) {
     headFunction =    '/// '
     headDescription = `//\xa0\xa0${description}`
   } else {
-
-    // Determine how much padding is need between tags and description based on which
-    // tags are used (@param, @function, @description)
-    tagPadLength = 2
-
-    if (scriptName !== '') {
-      tagPadLength += 3
-    }
-
-    if (description !== '') {
-      tagPadLength += 3
-    }
-    
-    headFunction =      `/// ${options.functionTag}${'\xa0'.repeat(Math.max(2,tagPadLength-3))}`
-    headDescription =   `/// ${options.descriptionTag}${'\xa0'.repeat(Math.max(2,tagPadLength-6))}${description}`
+    headFunction =      `/// ${options.functionTag}${'\xa0'.repeat(Math.max(2,tagPadLength-funcTagLength))}`
+    headDescription =   `/// ${options.descriptionTag}${'\xa0'.repeat(Math.max(2,tagPadLength-descTagLength))}${description}`
   }
 
   // Create script JSDoc header
@@ -138,7 +131,7 @@ const generateScript = ({ scriptName, description, args, localVars, options }) =
   // @param
   if (!options.legacyMode) {
     for (let i = 0; i < headArgumentNames.length; i++) {
-      newOutput += `/// ${options.argumentTag}${'\xa0'.repeat(tagPadLength-1)}${headArgumentTypes[i]} ${headArgumentNames[i]} ${headArgumentDescs[i]}\n`
+      newOutput += `/// ${options.argumentTag}${'\xa0'.repeat(tagPadLength-argTagLength-1)}${headArgumentTypes[i]} ${headArgumentNames[i]} ${headArgumentDescs[i]}\n`
     }
 
     if (headArgumentNames.length > 0) {
