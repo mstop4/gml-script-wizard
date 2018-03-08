@@ -1,8 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
+
 import Transition from '../Transition'
 import LegacyToggle from './LegacyToggle'
 import LocalVarPrefixField from './LocalVarPrefixField'
+import FuncTagSelector from './FuncTagSelector'
+
 import Dialog from 'material-ui/Dialog/Dialog'
 import AppBar from 'material-ui/AppBar/AppBar'
 import Toolbar from 'material-ui/Toolbar/Toolbar'
@@ -53,6 +56,7 @@ const OptionsDialog = (props) => {
         <LegacyToggle/>
         <Divider/>
         <LocalVarPrefixField/>
+        <FuncTagSelector/>
       </div>
     </Dialog>
   )

@@ -30,8 +30,8 @@ const generateScript = ({ scriptName, description, args, localVars, options }) =
       tagPadLength += 3
     }
     
-    headFunction =      `/// ${options.funcTag}${'\xa0'.repeat(Math.max(2,tagPadLength-3))}`
-    headDescription =   `/// ${options.descTag}${'\xa0'.repeat(Math.max(2,tagPadLength-6))}${description}`
+    headFunction =      `/// ${options.functionTag}${'\xa0'.repeat(Math.max(2,tagPadLength-3))}`
+    headDescription =   `/// ${options.descriptionTag}${'\xa0'.repeat(Math.max(2,tagPadLength-6))}${description}`
   }
 
   // Create script JSDoc header
@@ -138,7 +138,7 @@ const generateScript = ({ scriptName, description, args, localVars, options }) =
   // @param
   if (!options.legacyMode) {
     for (let i = 0; i < headArgumentNames.length; i++) {
-      newOutput += `/// ${options.argTag}${'\xa0'.repeat(tagPadLength-1)}${headArgumentTypes[i]} ${headArgumentNames[i]} ${headArgumentDescs[i]}\n`
+      newOutput += `/// ${options.argumentTag}${'\xa0'.repeat(tagPadLength-1)}${headArgumentTypes[i]} ${headArgumentNames[i]} ${headArgumentDescs[i]}\n`
     }
 
     if (headArgumentNames.length > 0) {

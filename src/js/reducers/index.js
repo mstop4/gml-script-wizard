@@ -8,7 +8,7 @@ const initialState = {
     localVarPrefix: '_',
     functionTag: '@function',
     descriptionTag: '@description',
-    argTag: '@param'
+    argumentTag: '@argument'
   },
   scriptName: '',
   description: '',
