@@ -6,6 +6,7 @@ import LegacyToggle from './LegacyToggle'
 import LocalVarPrefixField from './LocalVarPrefixField'
 import FuncTagSelector from './FuncTagSelector'
 import DescTagSelector from './DescTagSelector'
+import ArgTagSelector from './ArgTagSelector'
 
 import Dialog from 'material-ui/Dialog/Dialog'
 import AppBar from 'material-ui/AppBar/AppBar'
@@ -59,6 +60,7 @@ const OptionsDialog = (props) => {
         <LocalVarPrefixField/>
         <FuncTagSelector/>
         <DescTagSelector/>
+        <ArgTagSelector/>
       </div>
     </Dialog>
   )
