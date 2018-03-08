@@ -3,6 +3,7 @@
 ## v.0.9
 
 * Switched to using Redux to maintain app state.
+* Added settings to change between different function, description, and argument tags.
 * Bug fix: Clicking the delete button on a local variable field will now remove that field instead of always the first one.
 
 ## v.0.8

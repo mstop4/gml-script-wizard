@@ -5,7 +5,10 @@ import { arrayMove } from 'react-sortable-hoc'
 const initialState = {
   options: {
     legacyMode: false,
-    localVarPrefix: '_'
+    localVarPrefix: '_',
+    functionTag: '@function',
+    descriptionTag: '@description',
+    argumentTag: '@argument'
   },
   scriptName: '',
   description: '',
@@ -89,7 +92,7 @@ const rootReducer = (state = initialState, action) => {
     }
   }
 
-  newState.outputValue = generateScript(newState).outputValue
+  newState.outputValue = generateScript(newState)
   return newState
 }
 
