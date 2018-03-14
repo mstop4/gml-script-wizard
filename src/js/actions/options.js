@@ -1,4 +1,4 @@
-import { OPT_LEGACY, OPT_CHANGE } from '../helpers/EventTypes'
+import { OPT_LEGACY, OPT_CHANGE } from '../helpers/eventTypes'
 
 export const legacyToggle = () => ({
   type: OPT_LEGACY

@@ -1,5 +1,5 @@
-import * as event from '../helpers/EventTypes'
-import generateScript from '../helpers/ScriptGen'
+import * as event from '../helpers/eventTypes'
+import generateScript from '../helpers/generateScript'
 import { arrayMove } from 'react-sortable-hoc'
 
 const initialState = {
