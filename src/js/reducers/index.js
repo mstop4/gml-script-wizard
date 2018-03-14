@@ -1,21 +1,7 @@
 import * as event from '../helpers/eventTypes'
 import generateScript from '../helpers/generateScript'
 import { arrayMove } from 'react-sortable-hoc'
-
-const initialState = {
-  options: {
-    legacyMode: false,
-    localVarPrefix: '_',
-    functionTag: '@function',
-    descriptionTag: '@description',
-    argumentTag: '@argument'
-  },
-  scriptName: '',
-  description: '',
-  outputValue: '',
-  args: [],
-  localVars: [],
-}
+import { initialState } from '../helpers/initialState'
 
 const rootReducer = (state = initialState, action) => {
   let newState = {
