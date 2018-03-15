@@ -49,6 +49,7 @@
   "dependencies": {
     "autosuggest-highlight": "^3.1.1",
     "babel-polyfill": "^6.26.0",
+    "lodash": "^4.17.5",
     "material-ui": "^1.0.0-beta.36",
     "npm": "^5.7.1",
     "prop-types": "^15.6.0",
