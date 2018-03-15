@@ -1,4 +1,4 @@
-import { NAME_CHANGE, DESC_CHANGE } from '../helpers/EventTypes'
+import { NAME_CHANGE, DESC_CHANGE } from '../helpers/eventTypes'
 
 export const scriptNameChange = (value) => ({
   type: NAME_CHANGE,

@@ -1,4 +1,4 @@
-import { ARG_CHANGE, ARG_SORT, ARG_ADD, ARG_REMOVE } from '../helpers/EventTypes'
+import { ARG_CHANGE, ARG_SORT, ARG_ADD, ARG_REMOVE } from '../helpers/eventTypes'
 
 export const argumentChange = (id, key, value) => ({
   type: ARG_CHANGE,

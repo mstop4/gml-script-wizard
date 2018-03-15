@@ -1,4 +1,4 @@
-import { LVAR_CHANGE, LVAR_SORT, LVAR_ADD, LVAR_REMOVE } from '../helpers/EventTypes'
+import { LVAR_CHANGE, LVAR_SORT, LVAR_ADD, LVAR_REMOVE } from '../helpers/eventTypes'
 
 export const localVarChange = (id, key, value) => ({
   type: LVAR_CHANGE,
