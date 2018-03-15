@@ -1,6 +1,10 @@
 # Changelog
 
-## v.0.9
+## v.0.9.2
+
+* App settings now persist between sessions, until your browser's local storage is cleared.
+
+## v.0.9.1
 
 * Switched to using Redux to maintain app state.
 * Added settings to change between different function, description, and argument tags.
