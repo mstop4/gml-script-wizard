@@ -15,8 +15,8 @@ if (loadedState) {
 
 const store = createStore(
   rootReducer,
-  initialStateCopy,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  initialStateCopy//,
+  //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
 store.subscribe(throttle(() => {
