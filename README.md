@@ -1,8 +1,5 @@
 # GML Script Wizard
 
-[![dependencies Status](https://david-dm.org/mstop4/gml-script-wizard/status.svg)](https://david-dm.org/mstop4/gml-script-wizard)
-[![devDependencies Status](https://david-dm.org/mstop4/gml-script-wizard/dev-status.svg)](https://david-dm.org/mstop4/gml-script-wizard?type=dev)
-
 **[GML Script Wizard](https://mstop4.github.io/gml-script-wizard/)** is a tool that will help you generate and modify GML script headers just be filling in a few fields.
 
 !["Screenshot 1"](https://github.com/mstop4/gml-script-wizard/blob/master/docs/gmlsw-1.png)
