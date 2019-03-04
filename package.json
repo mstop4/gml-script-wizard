@@ -12,9 +12,9 @@
     "lint": "esw webpack.config.* src tools --color",
     "lint:watch": "yarn lint --watch",
     "electron": "npx electron electron/main.js",
-    "build:electron-win": "electron-packager electron GMLScriptWizard --platform=win32 --arch=x64 --overwrite",
-    "build:electron-mac": "electron-packager electron GMLScriptWizard --platform=darwin --arch=x64 --overwrite",
-    "build:electron-linux": "electron-packager electron GMLScriptWizard --platform=linux --arch=x64 --overwrite",
+    "build:electron-win": "electron-packager electron GMLScriptWizard2 --platform=win32 --arch=x64 --overwrite --no-tmpdir",
+    "build:electron-mac": "electron-packager electron GMLScriptWizard --platform=darwin --arch=x64 --overwrite --no-tmpdir",
+    "build:electron-linux": "electron-packager electron GMLScriptWizard --platform=linux --arch=x64 --overwrite --no-tmpdir",
     "gh-pages": "yarn build && npx push-dir --dir=dist --branch=gh-pages --cleanup"
   },
   "devDependencies": {

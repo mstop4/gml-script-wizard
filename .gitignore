@@ -9,3 +9,7 @@ yarn-error.log
 GMLScriptWizard-win32-x64/
 GMLScriptWizard-darwin-x64/
 GMLScriptWizard-linux-x64/
+
+win32-x64-template/
+darwin-x64-template/
+linux-x64-template/
