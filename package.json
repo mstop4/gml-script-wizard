@@ -12,6 +12,9 @@
     "lint": "esw webpack.config.* src tools --color",
     "lint:watch": "yarn run lint --watch",
     "electron": "npx electron main.js",
+    "build:electron-win": "electron-packager electron GMLScriptWizard --platform=win32 --arch=x64 --overwrite",
+    "build:electron-mac": "electron-packager electron GMLScriptWizard --platform=darwin --arch=x64 --overwrite",
+    "build:electron-linux": "electron-packager electron GMLScriptWizard --platform=linux --arch=x64 --overwrite",
     "gh-pages": "yarn build && push-dir --dir=dist --branch=gh-pages --cleanup"
   },
   "devDependencies": {
@@ -30,8 +33,6 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.0.6",
     "inline-source-map": "^0.6.2",
-    "jsdom": "^11.6.0",
-    "npm-run-all": "^4.1.2",
     "path": "^0.12.7",
     "style-loader": "^0.20.2",
     "uglifyjs-webpack-plugin": "^1.1.6",
