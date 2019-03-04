@@ -5,3 +5,7 @@ electron-dist/*
 .DS_Store
 yarn-error.log
 *.stackdump
+
+GMLScriptWizard-win32-x64/
+GMLScriptWizard-darwin-x64/
+GMLScriptWizard-linux-x64/

@@ -1,6 +1,6 @@
 {
   "name": "gml-script-wizard",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "GML Script Wizard",
   "main": "index.js",
   "repository": "https://github.com/mstop4/gml-script-wizard.git",
@@ -11,7 +11,7 @@
     "build": "./node_modules/.bin/webpack --config webpack.prod.js",
     "lint": "esw webpack.config.* src tools --color",
     "lint:watch": "yarn run lint --watch",
-    "electron": "npx electron main.js",
+    "electron": "npx electron electron/main.js",
     "build:electron-win": "electron-packager electron GMLScriptWizard --platform=win32 --arch=x64 --overwrite",
     "build:electron-mac": "electron-packager electron GMLScriptWizard --platform=darwin --arch=x64 --overwrite",
     "build:electron-linux": "electron-packager electron GMLScriptWizard --platform=linux --arch=x64 --overwrite",
