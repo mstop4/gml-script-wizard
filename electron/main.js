@@ -23,10 +23,7 @@ app.on('ready', () => {
       app.quit();
     }
 
-    else {
-      mainWindow.close();
-      mainWindow = null;
-    }
+    mainWindow = null;
   });
 
   app.on('activate', function() {
