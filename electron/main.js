@@ -12,7 +12,10 @@ app.on('ready', () => {
   mainWindow.loadURL(`file://${__dirname}/index.html`);
   mainWindow.setMenu(null);
 
-  mainWindow.on('closed', () => {
+  mainWindow.on('window-all-closed', () => {
     mainWindow = null;
+    if (process.platform !== 'darwin') {
+      app.quit();
+    }
   });
 });
