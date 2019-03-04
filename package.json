@@ -10,12 +10,12 @@
     "start": "webpack-dev-server --port 8081 --host 0.0.0.0 --hot --open --config webpack.dev.js",
     "build": "./node_modules/.bin/webpack --config webpack.prod.js",
     "lint": "esw webpack.config.* src tools --color",
-    "lint:watch": "yarn run lint --watch",
+    "lint:watch": "yarn lint --watch",
     "electron": "npx electron electron/main.js",
     "build:electron-win": "electron-packager electron GMLScriptWizard --platform=win32 --arch=x64 --overwrite",
     "build:electron-mac": "electron-packager electron GMLScriptWizard --platform=darwin --arch=x64 --overwrite",
     "build:electron-linux": "electron-packager electron GMLScriptWizard --platform=linux --arch=x64 --overwrite",
-    "gh-pages": "yarn build && push-dir --dir=dist --branch=gh-pages --cleanup"
+    "gh-pages": "yarn build && npx push-dir --dir=dist --branch=gh-pages --cleanup"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
