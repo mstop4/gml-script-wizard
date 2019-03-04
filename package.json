@@ -1,6 +1,6 @@
 {
   "name": "gml-script-wizard",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "description": "GML Script Wizard",
   "main": "index.js",
   "repository": "https://github.com/mstop4/gml-script-wizard.git",
