@@ -94,7 +94,14 @@ const generateScript = ({ scriptName, description, args, localVars, options }) =
       }
 
       // Build declaration line
-      declArguments.push(`var ${options.localVarPrefix}${args[i].name} = argument[${currentArgIndex}];\n`)
+      let declArg = `var ${options.localVarPrefix}${args[i].name} = argument[${currentArgIndex}];`
+      const declArgPad = nameMaxLength - args[i].name.length + 2
+
+      if (options.legacyMode && args[i].description) {
+        declArg += `${'\xa0'.repeat(declArgPad)}// ${args[i].description}`
+      }
+
+      declArguments.push(`${declArg}\n`)
       currentArgIndex++
     }
   }
