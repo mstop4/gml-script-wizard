@@ -8,7 +8,7 @@
   "license": "BSD-2-Clause",
   "scripts": {
     "start": "webpack-dev-server --port 8081 --host 0.0.0.0 --hot --open --config webpack.dev.js",
-    "build": "./node_modules/.bin/webpack --config webpack.prod.js && cp dist/js electron/js && cp dist/index.html electron/index.html",
+    "build": "./node_modules/.bin/webpack --config webpack.prod.js && cp -r dist/js electron && cp -r dist/index.html electron",
     "lint": "esw webpack.config.* src tools --color",
     "lint:watch": "yarn lint --watch",
     "electron": "npx electron electron/main.js",
