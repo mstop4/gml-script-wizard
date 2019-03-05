@@ -1,5 +1,10 @@
 # Changelog
 
+## v.0.9.3
+
+* Added native builds for Windows, macOS, and Linux
+* Argument descriptions are now written beside their respective argument declarations in GameMaker: Studio 1.4 mode.
+
 ## v.0.9.2
 
 * App settings now persist between sessions, until your browser's local storage is cleared.
