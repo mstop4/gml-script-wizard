@@ -2,8 +2,9 @@
 
 ## v.0.9.3
 
-* Added native builds for Windows, macOS, and Linux
-* Argument descriptions are now written beside their respective argument declarations in GameMaker: Studio 1.4 mode.
+* Added basic native builds for Windows, macOS, and Linux for offline use. I know there's no Linux IDE for either GM:S 1.4 or GMS2, I just added it in for the sake of completeness. 🙂
+* Argument descriptions are now added beside their respective argument declarations in GameMaker: Studio 1.4 mode.
+* Updated old dependencies that had security issues.
 
 ## v.0.9.2
 
